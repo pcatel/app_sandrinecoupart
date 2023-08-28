@@ -5,6 +5,7 @@ import 'ecrans/infos_nutrition.dart';
 import 'ecrans/recettes.dart';
 import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
+import 'drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -18,8 +19,16 @@ class HomeScreen extends StatelessWidget {
         MediaQuery.of(context).size.height / numberOfContainers;
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
+    drawer: const MyDrawerWidget(),
+    appBar: AppBar(
+        backgroundColor: const Color(0xFF609a7d),
+        title: const Text(
+          'Sandrine Coupart : Diététicienne - Nutritionniste',
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 1, 1, 1)),
+        ),
       ),
       body: Column(
         children: [
