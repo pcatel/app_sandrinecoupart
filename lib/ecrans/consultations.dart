@@ -10,9 +10,11 @@ class Ecran1 extends StatelessWidget {
     int numberOfContainers = 6;
     double containerHeight =
         MediaQuery.of(context).size.height / numberOfContainers;
+    double textContainerHeight = containerHeight * 1.5;
+
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-     // drawer: const MyDrawerWidget(),
+      // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
         title: const Text(
@@ -23,8 +25,8 @@ class Ecran1 extends StatelessWidget {
               color: Color.fromARGB(255, 1, 1, 1)),
         ),
       ),
-      body: 
-      Column(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
             alignment: Alignment.center,
@@ -50,14 +52,122 @@ class Ecran1 extends StatelessWidget {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-          const Text(
-            'Page 1',
-            style: TextStyle(fontSize: 24),
+          Container(
+        
+            height: textContainerHeight,
+            width: containerWidth,
+            color: Colors.red, // Couleur du container rouge
+          ),
+          Row(
+         
+            children: [
+              Container(
+                alignment: Alignment.center,
+                width: containerWidth / 2,
+                height: containerHeight,
+                decoration: const BoxDecoration(
+                
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF609a7d),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Consultations',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 7, 7, 7)),
+                ),
+              ),
+               Container(
+                alignment: Alignment.center,
+                width: containerWidth / 2,
+                height: containerHeight,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF609a7d),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Déroulement',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 7, 7, 7)),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+               Container(
+                alignment: Alignment.center,
+                width: containerWidth / 2,
+                height: containerHeight,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-3.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF609a7d),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Téléconsultations',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 7, 7, 7)),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: containerWidth / 2,
+                height: containerHeight,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-4.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF609a7d),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Relations Mutuelle',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 7, 7, 7)),
+                ),
+              ),
+            ],
           ),
         ],
       ),
-         bottomNavigationBar: const BottomNavigationBarScreen(backgroundColor: Color(0xFFDE8C07),),
+      bottomNavigationBar:
+          const BottomNavigationBarScreen(backgroundColor: Color(0xFFDE8C07)),
     );
   }
 }
-
