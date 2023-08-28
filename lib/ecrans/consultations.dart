@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
+import 'consultations_consultations.dart';
+import 'consultations_deroulement.dart';
+import 'consultations_teleconsultations.dart';
+import 'consultations_relations_mutuelle.dart';
 //import '../drawer.dart';
 
 class Ecran1 extends StatelessWidget {
@@ -61,105 +65,131 @@ class Ecran1 extends StatelessWidget {
           Row(
          
             children: [
-              Container(
-                alignment: Alignment.center,
-                width: containerWidth / 2,
-                height: containerHeight,
-                decoration: const BoxDecoration(
-                
-                  color: Colors.blue,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF609a7d),
-                      BlendMode.color,
+              GestureDetector(
+                onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Ecran9()));
+              },
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  width: containerWidth / 2,
+                  height: containerHeight,
+                  decoration: const BoxDecoration(
+                  
+                    color: Colors.blue,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg'),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Color(0xFFDE8C07),
+                        BlendMode.color,
+                      ),
                     ),
                   ),
-                ),
-                child: const Text(
-                  'Consultations',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
-                ),
-              ),
-               Container(
-                alignment: Alignment.center,
-                width: containerWidth / 2,
-                height: containerHeight,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF609a7d),
-                      BlendMode.color,
-                    ),
+                  child: const Text(
+                    'Consultations',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 7, 7, 7)),
                   ),
                 ),
-                child: const Text(
-                  'Déroulement',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
-                ),
               ),
+
+
+               GestureDetector(
+                onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Ecran10()));
+              },
+                 child: Container(
+                    alignment: Alignment.bottomCenter,
+                  width: containerWidth / 2,
+                  height: containerHeight,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg'),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Color(0xFFDE8C07),
+                        BlendMode.color,
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    'Déroulement',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 7, 7, 7)),
+                  ),
+                             ),
+               ),
             ],
           ),
           Row(
             children: [
-               Container(
-                alignment: Alignment.center,
-                width: containerWidth / 2,
-                height: containerHeight,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-3.jpg'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF609a7d),
-                      BlendMode.color,
+               GestureDetector(
+                onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Ecran11()));
+              },
+                 child: Container(
+                 alignment: Alignment.bottomCenter,
+                  width: containerWidth / 2,
+                  height: containerHeight,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-3.jpg'),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Color(0xFFDE8C07),
+                        BlendMode.color,
+                      ),
                     ),
                   ),
-                ),
-                child: const Text(
-                  'Téléconsultations',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
-                ),
-              ),
-              Container(
-                alignment: Alignment.center,
-                width: containerWidth / 2,
-                height: containerHeight,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-4.jpg'),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF609a7d),
-                      BlendMode.color,
+                  child: const Text(
+                    'Téléconsultations',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 7, 7, 7)),
+                  ),
+                             ),
+               ),
+              GestureDetector(
+                onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Ecran12()));
+              },
+                child: Container(
+                   alignment: Alignment.bottomCenter,
+                  width: containerWidth / 2,
+                  height: containerHeight,
+                  decoration: const BoxDecoration(
+                    color: Colors.blue,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-4.jpg'),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Color(0xFFDE8C07),
+                        BlendMode.color,
+                      ),
                     ),
                   ),
-                ),
-                child: const Text(
-                  'Relations Mutuelle',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
+                  child: const Text(
+                    'Relations Mutuelle',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 7, 7, 7)),
+                  ),
                 ),
               ),
             ],
