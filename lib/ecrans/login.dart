@@ -57,7 +57,7 @@ class Ecran8 extends StatelessWidget {
                     color: Color.fromARGB(255, 7, 7, 7)),
               ),
             ),
-            Container(
+            SizedBox(
            
              height: formContainerHeight,
              width: containerWidth,
