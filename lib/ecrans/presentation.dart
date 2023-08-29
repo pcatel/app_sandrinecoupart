@@ -25,8 +25,15 @@ class _PresentationState extends State<Presentation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ecran 13'),
+       appBar: AppBar(
+        backgroundColor: const Color(0xFF609a7d),
+        title: const Text(
+          'Sandrine Coupart : Diététicienne - Nutritionniste',
+          style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 1, 1, 1)),
+        ),
       ),
       body: FutureBuilder<List<String>>(
         future: fetchData(),
@@ -36,62 +43,108 @@ class _PresentationState extends State<Presentation> {
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            return Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(16.0),
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.blue, // Couleur de fond
-                  ),
-                  child: const Image(
-                    image: NetworkImage('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'), // Remplacez par l'URL de votre image
-                    width: 150, // Largeur de l'image
-                    height: 150, // Hauteur de l'image
-                  ),
-                ),
-                const SizedBox(height: 16), // Espace entre l'image et les containers
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: snapshot.data?.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.all(16.0), // Espace autour du container
-                        decoration: BoxDecoration(
-                          color: Colors.grey[300], // Couleur de fond
-                          borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                        ),
-                        child: ListTile(
-                          title: Text(snapshot.data?[index] ?? ''),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomeScreen()),
-                    );
-                  },
-                  child: Container(
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
                     margin: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    child: const Center(
-                      child: Text(
-                        'Bienvenue',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
+                    child: ClipOval(
+                      child: Container(
+                        width: 150, // Largeur de l'image
+                        height: 150, // Hauteur de l'image
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black, // Couleur de la bordure
+                            width: 2.0, // Largeur de la bordure
+                          ),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: NetworkImage('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'), // Remplacez par l'URL de votre image
+                            fit: BoxFit.cover, // Ajustement de l'image pour remplir le cercle
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 16), // Espace entre l'image et les containers
+                  Container(
+                    margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: BoxDecoration(
+                      color: Colors.grey[300], // Couleur de fond
+                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data?[0] ?? ''),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: BoxDecoration(
+                      color: Colors.orange[300], // Couleur de fond
+                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data?[1] ?? ''),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),  Container(
+                    margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: BoxDecoration(
+                      color: Colors.orange[300], // Couleur de fond
+                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data?[2] ?? ''),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ), Container(
+                    margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: BoxDecoration(
+                      color: Colors.orange[300], // Couleur de fond
+                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data?[3] ?? ''),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ), Container(
+                    margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: BoxDecoration(
+                      color: Colors.orange[300], // Couleur de fond
+                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    ),
+                    child: ListTile(
+                      title: Text(snapshot.data?[4] ?? ''),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),
+                  // Ajoutez autant de containers avec des styles différents que nécessaire
+                  const SizedBox(height: 16),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                      );
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.all(16.0),
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      padding: const EdgeInsets.all(16.0),
+                      child: const Center(
+                        child: Text(
+                          'Bienvenue',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             );
           }
         },

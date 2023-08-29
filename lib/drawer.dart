@@ -21,40 +21,47 @@ class MyDrawerWidget extends StatelessWidget {
             // En-tête avec 20% de l'espace
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.3,
-              child: const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Color(0xFFdc9a7d),
-                ),
-                child: UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
-                  accountName: Row(
-                    children: [
-                      Text(
-                        "Sandrine COUPART",
-                        style: TextStyle(
-                            color: Color(0xFF00353F),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Presentation()),
+                  );
+                },
+                child: const DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFdc9a7d),
                   ),
-                  accountEmail: Row(
-                    children: [
-                      Text(
-                        "Diététicienne - Nutritionniste",
-                        style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF430C05),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  currentAccountPictureSize: Size.square(100),
-                  currentAccountPicture: CircleAvatar(
-                    //backgroundImage: AssetImage('assets/images/matete.png'),
-                    backgroundImage: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'),
-                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                  child: UserAccountsDrawerHeader(
+                    decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
+                    accountName: Row(
+                      children: [
+                        Text(
+                          "Sandrine COUPART",
+                          style: TextStyle(
+                              color: Color(0xFF00353F),
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    accountEmail: Row(
+                      children: [
+                        Text(
+                          "Diététicienne - Nutritionniste",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF430C05),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    currentAccountPictureSize: Size.square(100),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'),
+                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    ),
                   ),
                 ),
               ),
@@ -76,9 +83,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Consultations",
                             style: TextStyle(
@@ -102,9 +107,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Ateliers prévention",
                             style: TextStyle(
@@ -128,9 +131,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Infos nutrition",
                             style: TextStyle(
@@ -154,9 +155,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Recettes",
                             style: TextStyle(
@@ -180,9 +179,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Témoignages",
                             style: TextStyle(
@@ -206,9 +203,7 @@ class MyDrawerWidget extends StatelessWidget {
                         ),
                         child: ListTile(
                           dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
+                          visualDensity: const VisualDensity(vertical: -4),
                           title: const Text(
                             "Contacts",
                             style: TextStyle(
@@ -226,32 +221,7 @@ class MyDrawerWidget extends StatelessWidget {
                           },
                         ),
                       ),
-                       Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFE91E63),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity:
-                              const VisualDensity(vertical: -4), // to compact
-
-                          title: const Text(
-                            "Tests",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Presentation()),
-                            );
-                          },
-                        ),
-                      ),
+                    
                     ],
                   ),
                 ),
