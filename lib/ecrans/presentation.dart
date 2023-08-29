@@ -3,12 +3,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../home_screen.dart'; // Assurez-vous que le chemin est correct
 
-class Ecran13 extends StatefulWidget {
+class Presentation extends StatefulWidget {
+  const Presentation({super.key});
+
   @override
-  _Ecran13State createState() => _Ecran13State();
+  _PresentationState createState() => _PresentationState();
 }
 
-class _Ecran13State extends State<Ecran13> {
+class _PresentationState extends State<Presentation> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read.php'));
 
@@ -42,7 +44,11 @@ class _Ecran13State extends State<Ecran13> {
                     shape: BoxShape.circle,
                     color: Colors.blue, // Couleur de fond
                   ),
-                  child: const Icon(Icons.image, size: 50, color: Colors.white),
+                  child: const Image(
+                    image: NetworkImage('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'), // Remplacez par l'URL de votre image
+                    width: 150, // Largeur de l'image
+                    height: 150, // Hauteur de l'image
+                  ),
                 ),
                 const SizedBox(height: 16), // Espace entre l'image et les containers
                 Expanded(
@@ -93,5 +99,3 @@ class _Ecran13State extends State<Ecran13> {
     );
   }
 }
-
-void main() => runApp(MaterialApp(home: Ecran13()));
