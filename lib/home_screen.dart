@@ -90,7 +90,7 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
+             color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
             ),
@@ -152,7 +152,7 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
+           color: Color.fromARGB(255, 7, 7, 7)),
         ),
       ),
             ),
@@ -183,7 +183,7 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
             ),
@@ -214,7 +214,7 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
             ),

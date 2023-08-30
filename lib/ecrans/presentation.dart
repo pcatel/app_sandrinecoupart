@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../home_screen.dart'; // Assurez-vous que le chemin est correct
+import 'package:google_fonts/google_fonts.dart';
 
 class Presentation extends StatefulWidget {
   const Presentation({super.key});
@@ -12,7 +13,7 @@ class Presentation extends StatefulWidget {
 
 class _PresentationState extends State<Presentation> {
   Future<List<String>> fetchData() async {
-    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read.php'));
+    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_presentation.php'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
@@ -47,7 +48,8 @@ class _PresentationState extends State<Presentation> {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.all(16.0),
+                    //margin: const EdgeInsets.all(16.0),
+                      margin:const EdgeInsets.only(top: 2),
                     child: ClipOval(
                       child: Container(
                         width: 150, // Largeur de l'image
@@ -68,54 +70,60 @@ class _PresentationState extends State<Presentation> {
                   ),
                   const SizedBox(height: 16), // Espace entre l'image et les containers
                   Container(
-                    margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300], // Couleur de fond
-                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    //margin: const EdgeInsets.all(5.0),
+                    margin:const EdgeInsets.only(top: 2),
+                     // Espace autour du container
+                    decoration: const BoxDecoration(
+                      //color: Colors.grey[300], // Couleur de fond
+                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
                     ),
                     child: ListTile(
-                      title: Text(snapshot.data?[0] ?? ''),
+                      title: Text(snapshot.data?[0] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: BoxDecoration(
-                      color: Colors.orange[300], // Couleur de fond
-                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    margin:const EdgeInsets.only(top: 2),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: const BoxDecoration(
+                      //color: Colors.orange[300], // Couleur de fond
+                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
                     ),
-                    child: ListTile(
-                      title: Text(snapshot.data?[1] ?? ''),
+                      child: ListTile(
+                      title: Text(snapshot.data?[1] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),  Container(
-                    margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: BoxDecoration(
-                      color: Colors.orange[300], // Couleur de fond
-                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    margin:const EdgeInsets.only(top: 2),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: const BoxDecoration(
+                      //color: Colors.orange[300], // Couleur de fond
+                     // borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
                     ),
-                    child: ListTile(
-                      title: Text(snapshot.data?[2] ?? ''),
+                     child: ListTile(
+                      title: Text(snapshot.data?[2] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ), Container(
-                    margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: BoxDecoration(
-                      color: Colors.orange[300], // Couleur de fond
-                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                      margin:const EdgeInsets.only(top: 2),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: const BoxDecoration(
+                      //color: Colors.orange[300], // Couleur de fond
+                     // borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
                     ),
-                    child: ListTile(
-                      title: Text(snapshot.data?[3] ?? ''),
+                     child: ListTile(
+                      title: Text(snapshot.data?[3] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ), Container(
-                    margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: BoxDecoration(
-                      color: Colors.orange[300], // Couleur de fond
-                      borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
+                    margin:const EdgeInsets.only(top: 2),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+                    decoration: const BoxDecoration(
+                     // color: Colors.orange[300], // Couleur de fond
+                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
                     ),
                     child: ListTile(
-                      title: Text(snapshot.data?[4] ?? ''),
+                      title: Text(snapshot.data?[4] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
