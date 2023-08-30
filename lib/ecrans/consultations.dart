@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'consultations_consultations.dart';
 import 'consultations_deroulement.dart';
 import 'consultations_teleconsultations.dart';
 import 'consultations_relations_mutuelle.dart';
 //import '../drawer.dart';
 
-class Ecran1 extends StatelessWidget {
-  const Ecran1({Key? key}) : super(key: key);
+class Ecran1 extends StatefulWidget {
+  const Ecran1({super.key});
+
+  @override
+ _Ecran1State createState() => _Ecran1State();
+}
+
+class _Ecran1State extends State<Ecran1> {
+  Future<List<String>> fetchData() async {
+    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonData = json.decode(response.body);
+      return jsonData.cast<String>();
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +75,36 @@ class Ecran1 extends StatelessWidget {
             ),
           ),
           Container(
-        
             height: textContainerHeight,
             width: containerWidth,
             color: Colors.red, // Couleur du container rouge
+           child: FutureBuilder<List<String>>(
+  future: fetchData(),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const CircularProgressIndicator();
+    } else if (snapshot.hasError) {
+      return const Text('Erreur de chargement des données');
+    } else if (!snapshot.hasData) {
+      return const Text('Aucune donnée disponible');
+    } else {
+      List<String> dataList = snapshot.data ?? []; // Add this line to handle null data
+      String queryResult = dataList.join('\n');
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            queryResult,
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+      );
+    }
+  },
+),
+
           ),
           Row(
-         
             children: [
               GestureDetector(
                 onTap: () {
@@ -201,3 +242,4 @@ class Ecran1 extends StatelessWidget {
     );
   }
 }
+
