@@ -6,6 +6,7 @@ import 'consultations_consultations.dart';
 import 'consultations_deroulement.dart';
 import 'consultations_teleconsultations.dart';
 import 'consultations_relations_mutuelle.dart';
+import 'package:google_fonts/google_fonts.dart';
 //import '../drawer.dart';
 
 class Ecran1 extends StatefulWidget {
@@ -48,7 +49,7 @@ class Ecran1State extends State<Ecran1> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             alignment: Alignment.center,
@@ -74,35 +75,38 @@ class Ecran1State extends State<Ecran1> {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-          Container(
-            height: textContainerHeight,
-            width: containerWidth,
-            color: Colors.red, // Couleur du container rouge
-           child: FutureBuilder<List<String>>(
-  future: fetchData(),
-  builder: (context, snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const CircularProgressIndicator();
-    } else if (snapshot.hasError) {
-      return const Text('Erreur de chargement des données');
-    } else if (!snapshot.hasData) {
-      return const Text('Aucune donnée disponible');
-    } else {
-      List<String> dataList = snapshot.data ?? []; // Add this line to handle null data
-      String queryResult = dataList.join('\n');
-      return SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            queryResult,
-            style: const TextStyle(color: Colors.white),
+          FittedBox(
+          fit: BoxFit.scaleDown,
+            child: SizedBox(
+              height: textContainerHeight,
+              width: containerWidth,
+              //color: Colors.red, // Couleur du container rouge
+             child: FutureBuilder<List<String>>(
+            future: fetchData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return const Text('Erreur de chargement des données');
+              } else if (!snapshot.hasData) {
+                return const Text('Aucune donnée disponible');
+              } else {
+                List<String> dataList = snapshot.data ?? []; // Add this line to handle null data
+                String queryResult = dataList.join('\n');
+                return SingleChildScrollView(
+                  child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              queryResult,
+               style: GoogleFonts.nanumPenScript(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+                  ),
+                );
+              }
+            },
           ),
-        ),
-      );
-    }
-  },
-),
-
+          
+            ),
           ),
           Row(
             children: [

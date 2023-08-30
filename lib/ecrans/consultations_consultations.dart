@@ -12,6 +12,44 @@ class Ecran9 extends StatefulWidget {
 
 class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  Widget processJson(String jsonValue) {
+  int colonIndex = jsonValue.indexOf(':');
+  
+  if (colonIndex != -1) {
+    String boldText = jsonValue.substring(0, colonIndex + 1);
+    String remainingText = jsonValue.substring(colonIndex + 1);
+    
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          boldText,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          remainingText,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+          ),
+        ),
+      ],
+    );
+  } else {
+    return Text(
+      jsonValue,
+      style: const TextStyle(
+        fontSize: 18,
+        color: Colors.black,
+      ),
+    );
+  }
+}
+
 
   List<Color> tabColors = [
     const Color(0xFFDE8C07),
@@ -27,16 +65,15 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
   List<String> jsonValues = []; // New list to store JSON values
 
   @override
- void initState() {
-  super.initState(); // Appelez super.initState() ici
+  void initState() {
+    super.initState(); // Appelez super.initState() ici
 
-  fetchData().then((_) {
-    setState(() {
-      _tabController = TabController(length: 7, vsync: this);
+    fetchData().then((_) {
+      setState(() {
+        _tabController = TabController(length: 7, vsync: this);
+      });
     });
-  });
-
-}
+  }
 
   Future<void> fetchData() async {
     final response = await http.get(Uri.parse(
@@ -91,6 +128,13 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
+          const Text(
+            'les 7 points principaux',
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 7, 7, 7)),
+          ),
           Container(
             color: const Color.fromARGB(255, 249, 223, 181),
             child: TabBar(
@@ -111,27 +155,23 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
             child: Container(
               color: Colors.grey[300],
               child: TabBarView(
-                controller: _tabController,
-                children: List.generate(
-                  7,
-                  (index) {
-                    // Récupérer la valeur JSON pour l'onglet actuel
-                    String jsonValue = jsonValues.isNotEmpty ? jsonValues[index] : 'toto';
+  controller: _tabController,
+  children: List.generate(
+    7,
+    (index) {
+      String jsonValue = jsonValues.isNotEmpty ? jsonValues[index] : '';
 
-                    return Center(
-                      child: Container(
-                        alignment: Alignment.center,
-                        color: tabColors[index],
-                        child: Text(
-                          jsonValue, // Afficher le contenu JSON pour l'onglet actuel
-                          style: const TextStyle(
-                              fontSize: 18, color: Colors.black),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+      return Center(
+        child: Container(
+          alignment: Alignment.center,
+          color: tabColors[index],
+          child: processJson(jsonValue),
+        ),
+      );
+    },
+  ),
+),
+
             ),
           ),
         ],

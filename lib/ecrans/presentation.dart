@@ -13,7 +13,8 @@ class Presentation extends StatefulWidget {
 
 class PresentationState extends State<Presentation> {
   Future<List<String>> fetchData() async {
-    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_presentation.php'));
+    final response = await http.get(Uri.parse(
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_presentation.php'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
@@ -26,7 +27,7 @@ class PresentationState extends State<Presentation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
@@ -49,7 +50,7 @@ class PresentationState extends State<Presentation> {
                 children: [
                   Container(
                     //margin: const EdgeInsets.all(16.0),
-                      margin:const EdgeInsets.only(top: 2),
+                    margin: const EdgeInsets.only(top: 1),
                     child: ClipOval(
                       child: Container(
                         width: 150, // Largeur de l'image
@@ -61,79 +62,90 @@ class PresentationState extends State<Presentation> {
                           ),
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: NetworkImage('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'), // Remplacez par l'URL de votre image
-                            fit: BoxFit.cover, // Ajustement de l'image pour remplir le cercle
+                            image: NetworkImage(
+                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'), // Remplacez par l'URL de votre image
+                            fit: BoxFit
+                                .cover, // Ajustement de l'image pour remplir le cercle
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 16), // Espace entre l'image et les containers
+                  const SizedBox(
+                      height: 1), // Espace entre l'image et les containers
                   Container(
-                    //margin: const EdgeInsets.all(5.0),
-                    margin:const EdgeInsets.only(top: 2),
-                     // Espace autour du container
-                    decoration: const BoxDecoration(
-                      //color: Colors.grey[300], // Couleur de fond
-                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                    ),
+                    margin: const EdgeInsets.only(top: 1),
+                    // Espace autour du container
+                 
                     child: ListTile(
-                      title: Text(snapshot.data?[0] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
+                      title: Text(
+                        snapshot.data?[0] ?? '',
+                        style: GoogleFonts.nanumPenScript(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
                   Container(
-                    margin:const EdgeInsets.only(top: 2),
+                    margin: const EdgeInsets.only(top: 1),
                     //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: const BoxDecoration(
-                      //color: Colors.orange[300], // Couleur de fond
-                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                    ),
-                      child: ListTile(
-                      title: Text(snapshot.data?[1] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
-                      // Appliquez ici les styles que vous souhaitez
-                    ),
-                  ),  Container(
-                    margin:const EdgeInsets.only(top: 2),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: const BoxDecoration(
-                      //color: Colors.orange[300], // Couleur de fond
-                     // borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                    ),
-                     child: ListTile(
-                      title: Text(snapshot.data?[2] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
-                      // Appliquez ici les styles que vous souhaitez
-                    ),
-                  ), Container(
-                      margin:const EdgeInsets.only(top: 2),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: const BoxDecoration(
-                      //color: Colors.orange[300], // Couleur de fond
-                     // borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                    ),
-                     child: ListTile(
-                      title: Text(snapshot.data?[3] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
-                      // Appliquez ici les styles que vous souhaitez
-                    ),
-                  ), Container(
-                    margin:const EdgeInsets.only(top: 2),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                    decoration: const BoxDecoration(
-                     // color: Colors.orange[300], // Couleur de fond
-                      //borderRadius: BorderRadius.circular(10.0), // Bordures arrondies
-                    ),
+                   
                     child: ListTile(
-                      title: Text(snapshot.data?[4] ?? '', style: GoogleFonts.nanumPenScript(fontSize: 16),),
+                      title: Text(
+                        snapshot.data?[1] ?? '',
+                        style: GoogleFonts.nanumPenScript(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 1),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+                  
+                    child: ListTile(
+                      title: Text(
+                        snapshot.data?[2] ?? '',
+                        style: GoogleFonts.nanumPenScript(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 1),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+
+                    child: ListTile(
+                      title: Text(
+                        snapshot.data?[3] ?? '',
+                        style: GoogleFonts.nanumPenScript(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      // Appliquez ici les styles que vous souhaitez
+                    ),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 1),
+                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
+
+                    child: ListTile(
+                      title: Text(
+                        snapshot.data?[4] ?? '',
+                        style: GoogleFonts.nanumPenScript(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
                   // Ajoutez autant de containers avec des styles différents que nécessaire
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 1),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
                       );
                     },
                     child: Container(
