@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import '../bottom_navigation.dart';
 
 class Ecran9 extends StatefulWidget {
   const Ecran9({Key? key}) : super(key: key);
 
   @override
-  _Ecran9State createState() => _Ecran9State();
+  Ecran9State createState() => Ecran9State();
 }
 
-class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
+class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   List<Color> tabColors = [
@@ -21,25 +23,38 @@ class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
     const Color(0xFFF0D2A3),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 7, vsync: this);
-  }
+  List<String> jsonData = [];
+  List<String> jsonValues = []; // New list to store JSON values
 
   @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
+ void initState() {
+  super.initState(); // Appelez super.initState() ici
+
+  fetchData().then((_) {
+    setState(() {
+      _tabController = TabController(length: 7, vsync: this);
+    });
+  });
+
+}
+
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse(
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_consultation.php'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> parsedData = json.decode(response.body);
+      jsonData = parsedData.cast<String>();
+
+      // Store JSON values in the new list
+      jsonValues.addAll(jsonData);
+    } else {
+      throw Exception('Failed to load data');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    int numberOfContainers = 6;
-    double containerHeight =
-        MediaQuery.of(context).size.height / numberOfContainers;
-    double containerWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
@@ -55,8 +70,7 @@ class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
         children: [
           Container(
             alignment: Alignment.center,
-            height: containerHeight,
-            width: containerWidth,
+            height: 150, // Adjust the height as needed
             decoration: const BoxDecoration(
               color: Colors.white,
               image: DecorationImage(
@@ -78,13 +92,13 @@ class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
             ),
           ),
           Container(
-            color: Color.fromARGB(255, 249, 223, 181),
+            color: const Color.fromARGB(255, 249, 223, 181),
             child: TabBar(
               controller: _tabController,
               indicator: const BoxDecoration(
                 color: Color(0xFFDE8C07),
               ),
-              labelColor: Colors.black, // Couleur du texte des onglets actifs
+              labelColor: Colors.black,
               tabs: List.generate(
                 7,
                 (index) => Tab(
@@ -100,16 +114,22 @@ class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
                 controller: _tabController,
                 children: List.generate(
                   7,
-                  (index) => Center(
-                    child: Container(
-                      alignment: Alignment.center,
-                      color: tabColors[index],
-                      child: Text(
-                        'Contenu de l\'onglet ${index + 1}',
-                        style: const TextStyle(fontSize: 18),
+                  (index) {
+                    // Récupérer la valeur JSON pour l'onglet actuel
+                    String jsonValue = jsonValues.isNotEmpty ? jsonValues[index] : 'toto';
+
+                    return Center(
+                      child: Container(
+                        alignment: Alignment.center,
+                        color: tabColors[index],
+                        child: Text(
+                          jsonValue, // Afficher le contenu JSON pour l'onglet actuel
+                          style: const TextStyle(
+                              fontSize: 18, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
             ),

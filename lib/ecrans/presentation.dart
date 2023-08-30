@@ -8,10 +8,10 @@ class Presentation extends StatefulWidget {
   const Presentation({super.key});
 
   @override
-  _PresentationState createState() => _PresentationState();
+  PresentationState createState() => PresentationState();
 }
 
-class _PresentationState extends State<Presentation> {
+class PresentationState extends State<Presentation> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_presentation.php'));
 

@@ -12,10 +12,10 @@ class Ecran1 extends StatefulWidget {
   const Ecran1({super.key});
 
   @override
- _Ecran1State createState() => _Ecran1State();
+ Ecran1State createState() => Ecran1State();
 }
 
-class _Ecran1State extends State<Ecran1> {
+class Ecran1State extends State<Ecran1> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
 
