@@ -18,7 +18,7 @@ class _Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
     const Color(0xFFF0D2A3),
     const Color(0xFFF0D2A3),
     const Color(0xFFDE8C07),
-     const Color(0xFFF0D2A3),
+    const Color(0xFFF0D2A3),
   ];
 
   @override
