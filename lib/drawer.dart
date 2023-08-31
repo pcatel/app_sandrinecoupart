@@ -6,6 +6,7 @@ import 'ecrans/recettes.dart';
 import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
+import 'ecrans/test.dart';
 
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
@@ -217,6 +218,30 @@ class MyDrawerWidget extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => const Ecran6()),
+                            );
+                          },
+                        ),
+                      ),
+                          Container(
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFE91E63),
+                        ),
+                        child: ListTile(
+                          dense: true,
+                          visualDensity: const VisualDensity(vertical: -4),
+                          title: const Text(
+                            "Test",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF1e1e1e),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyApp()),
                             );
                           },
                         ),

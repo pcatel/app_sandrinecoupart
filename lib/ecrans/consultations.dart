@@ -180,7 +180,7 @@ class Ecran1State extends State<Ecran1> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran11()));
+                    MaterialPageRoute(builder: (context) => const Ecran15()));
               },
                  child: Container(
                  alignment: Alignment.bottomCenter,

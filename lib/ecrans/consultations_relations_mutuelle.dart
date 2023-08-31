@@ -23,28 +23,33 @@ class Ecran12 extends StatelessWidget {
               color: Color.fromARGB(255, 1, 1, 1)),
         ),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        height: containerHeight,
-        width: containerWidth,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            image: DecorationImage(
-              image: NetworkImage(
-                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                  Color(0xFFDE8C07),
-                BlendMode.color,
-              ),
-            )),
-        child: const Text(
-          'Relations Mutuelles',
-          style: TextStyle(
-              fontSize: 36,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
-        ),
+      body: Column(
+       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            height: containerHeight,
+            width: containerWidth,
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                image: DecorationImage(
+                  image: NetworkImage(
+                      'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                      Color(0xFFDE8C07),
+                    BlendMode.color,
+                  ),
+                )),
+            child: const Text(
+              'Relations Mutuelles',
+              style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 7, 7, 7)),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: const BottomNavigationBarScreen(
         backgroundColor:   Color(0xFFDE8C07),

@@ -1,90 +1,25 @@
 import 'package:flutter/material.dart';
+import '../bottom_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../bottom_navigation.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class Ecran9 extends StatefulWidget {
-  const Ecran9({Key? key}) : super(key: key);
+  const Ecran9({super.key});
 
   @override
   Ecran9State createState() => Ecran9State();
 }
 
-class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-  Widget processJson(String jsonValue) {
-  int colonIndex = jsonValue.indexOf(':');
-  
-  if (colonIndex != -1) {
-    String boldText = jsonValue.substring(0, colonIndex + 1);
-    String remainingText = jsonValue.substring(colonIndex + 1);
-    
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          boldText,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          remainingText,
-          style: const TextStyle(
-            fontSize: 18,
-            color: Colors.black,
-          ),
-        ),
-      ],
-    );
-  } else {
-    return Text(
-      jsonValue,
-      style: const TextStyle(
-        fontSize: 18,
-        color: Colors.black,
-      ),
-    );
-  }
-}
-
-
-  List<Color> tabColors = [
-    const Color(0xFFDE8C07),
-    const Color(0xFFF0D2A3),
-    const Color(0xFFDE8C07),
-    const Color(0xFFF0D2A3),
-    const Color(0xFFF0D2A3),
-    const Color(0xFFDE8C07),
-    const Color(0xFFF0D2A3),
-  ];
-
-  List<String> jsonData = [];
-  List<String> jsonValues = []; // New list to store JSON values
-
-  @override
-  void initState() {
-    super.initState(); // Appelez super.initState() ici
-
-    fetchData().then((_) {
-      setState(() {
-        _tabController = TabController(length: 7, vsync: this);
-      });
-    });
-  }
-
-  Future<void> fetchData() async {
+class Ecran9State extends State<Ecran9> {
+  Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_consultation.php'));
 
     if (response.statusCode == 200) {
-      List<dynamic> parsedData = json.decode(response.body);
-      jsonData = parsedData.cast<String>();
-
-      // Store JSON values in the new list
-      jsonValues.addAll(jsonData);
+      List<dynamic> jsonData = json.decode(response.body);
+      return jsonData.cast<String>();
     } else {
       throw Exception('Failed to load data');
     }
@@ -92,7 +27,14 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    int numberOfContainers = 6;
+    double containerHeight =
+        MediaQuery.of(context).size.height / numberOfContainers;
+    double textContainerHeight = containerHeight * 1.5;
+
+    double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
         title: const Text(
@@ -104,10 +46,13 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Aligne les enfants en haut
+  
         children: [
           Container(
             alignment: Alignment.center,
-            height: 150, // Adjust the height as needed
+            height: containerHeight,
+            width: containerWidth,
             decoration: const BoxDecoration(
               color: Colors.white,
               image: DecorationImage(
@@ -121,64 +66,51 @@ class Ecran9State extends State<Ecran9> with SingleTickerProviderStateMixin {
               ),
             ),
             child: const Text(
-              'Les consultations',
+              'Consultations',
               style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-          const Text(
-            'les 7 points principaux',
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 7, 7, 7)),
-          ),
-          Container(
-            color: const Color.fromARGB(255, 249, 223, 181),
-            child: TabBar(
-              controller: _tabController,
-              indicator: const BoxDecoration(
-                color: Color(0xFFDE8C07),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: SizedBox(
+              height: textContainerHeight,
+              width: containerWidth,
+              //color: Colors.red, // Couleur du container rouge
+              child: FutureBuilder<List<String>>(
+                future: fetchData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return const Text('Erreur de chargement des données');
+                  } else if (!snapshot.hasData) {
+                    return const Text('Aucune donnée disponible');
+                  } else {
+                    List<String> dataList = snapshot.data ??
+                        []; // Add this line to handle null data
+                    String queryResult = dataList.join('\n');
+                    return SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          queryResult,
+                          style: GoogleFonts.nanumPenScript(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    );
+                  }
+                },
               ),
-              labelColor: Colors.black,
-              tabs: List.generate(
-                7,
-                (index) => Tab(
-                  text: '${index + 1}',
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.grey[300],
-              child: TabBarView(
-  controller: _tabController,
-  children: List.generate(
-    7,
-    (index) {
-      String jsonValue = jsonValues.isNotEmpty ? jsonValues[index] : '';
-
-      return Center(
-        child: Container(
-          alignment: Alignment.center,
-          color: tabColors[index],
-          child: processJson(jsonValue),
-        ),
-      );
-    },
-  ),
-),
-
             ),
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavigationBarScreen(
-        backgroundColor: Color(0xFFDE8C07),
-      ),
+      bottomNavigationBar:
+          const BottomNavigationBarScreen(backgroundColor: Color(0xFFDE8C07)),
     );
   }
 }

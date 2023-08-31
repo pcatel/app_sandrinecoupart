@@ -47,6 +47,8 @@ class PresentationState extends State<Presentation> {
           } else {
             return SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     //margin: const EdgeInsets.all(16.0),
@@ -76,7 +78,7 @@ class PresentationState extends State<Presentation> {
                   Container(
                     margin: const EdgeInsets.only(top: 1),
                     // Espace autour du container
-                 
+
                     child: ListTile(
                       title: Text(
                         snapshot.data?[0] ?? '',
@@ -89,7 +91,7 @@ class PresentationState extends State<Presentation> {
                   Container(
                     margin: const EdgeInsets.only(top: 1),
                     //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                   
+
                     child: ListTile(
                       title: Text(
                         snapshot.data?[1] ?? '',
@@ -102,7 +104,7 @@ class PresentationState extends State<Presentation> {
                   Container(
                     margin: const EdgeInsets.only(top: 1),
                     //margin: const EdgeInsets.all(16.0), // Espace autour du container
-                  
+
                     child: ListTile(
                       title: Text(
                         snapshot.data?[2] ?? '',
@@ -125,19 +127,7 @@ class PresentationState extends State<Presentation> {
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 1),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
 
-                    child: ListTile(
-                      title: Text(
-                        snapshot.data?[4] ?? '',
-                        style: GoogleFonts.nanumPenScript(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      // Appliquez ici les styles que vous souhaitez
-                    ),
-                  ),
                   // Ajoutez autant de containers avec des styles différents que nécessaire
                   const SizedBox(height: 1),
                   GestureDetector(
