@@ -80,52 +80,99 @@ class Ecran15State extends State<Ecran15> {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-          FutureBuilder<List<Step>>(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return const Text('Erreur de chargement des données');
-              } else if (!snapshot.hasData) {
-                return const Text('Aucune donnée disponible');
-              } else {
-                List<Step> steps = snapshot.data ?? [];
-                return Column(
-  children: steps.map((step) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        children: [
-          Container(
-            width: 30,
-            height: 30,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0xFFDE8C07),
-            ),
-            child: Center(
-              child: Text(
-                step.number.toString(),
-                style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+    FutureBuilder<List<Step>>(
+  future: fetchData(),
+  builder: (context, snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const CircularProgressIndicator();
+    } else if (snapshot.hasError) {
+      return const Text('Erreur de chargement des données');
+    } else if (!snapshot.hasData) {
+      return const Text('Aucune donnée disponible');
+    } else {
+      List<Step> steps = snapshot.data ?? [];
+      return Column(
+        children: steps.map((step) {
+          List<String> parts = step.title.split(':'); // Diviser le texte en parties
+          if (parts.length == 2) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                children: [
+                  Container(
+               
+                    width: 30,
+                    height: 30,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFDE8C07),
+                    ),
+                    child: Center(
+                      child: Text(
+                        step.number.toString(),
+                        style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: RichText(
+                      overflow: TextOverflow.visible,
+                      text: TextSpan(
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: '${parts[0]}:', // Partie avant le ":"
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 138, 86, 3), // Style en rouge
+                              fontWeight: FontWeight.bold, // Texte en gras
+                            ),
+                          ),
+                          TextSpan(
+                            text: parts[1], // Partie après le ":"
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ),
-          const SizedBox(width: 10),
-          Flexible(
-            child: Text(
-              step.title,
-              overflow: TextOverflow.visible, // Texte dépassant le conteneur sera visible
-            ),
-          ),
-        ],
-      ),
-    );
-  }).toList(),
-);
-              }
-            },
-          ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: 30,
+                    height: 30,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFDE8C07),
+                    ),
+                    child: Center(
+                      child: Text(
+                        step.number.toString(),
+                        style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Flexible(
+                    child: Text(
+                      step.title,
+                      overflow: TextOverflow.visible, // Texte dépassant le conteneur sera visible
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        }).toList(),
+      );
+    }
+  },
+),
         ],
       ),
       bottomNavigationBar:
