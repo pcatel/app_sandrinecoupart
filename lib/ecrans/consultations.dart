@@ -49,7 +49,7 @@ class Ecran1State extends State<Ecran1> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
             alignment: Alignment.center,

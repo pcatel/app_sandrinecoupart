@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                   'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
-                Color(0xFFFF9800),
+                Color(0xFF548235),
                 BlendMode.color,
               ),
             )),
