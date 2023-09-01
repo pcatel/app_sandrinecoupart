@@ -28,7 +28,9 @@ class PresentationState extends State<Presentation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+      
         backgroundColor: const Color(0xFF609a7d),
+        centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(

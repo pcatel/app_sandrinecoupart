@@ -1,13 +1,15 @@
+import 'package:app_sandrinecoupart/ecrans/alimentation_travail.dart';
+import 'package:app_sandrinecoupart/ecrans/cuisine_quotidien.dart';
 import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'consultations_consultations.dart';
-//import 'consultations_deroulement.dart';
-//import 'consultations_teleconsultations.dart';
-//import 'consultations_relations_mutuelle.dart';
+
+import 'alimentation_durable.dart';
+import 'cuisine_enfant_parent.dart';
+
 import 'package:google_fonts/google_fonts.dart';
-//import '../drawer.dart';
+
 
 class AtelierPrevention extends StatefulWidget {
   const AtelierPrevention({super.key});
@@ -113,7 +115,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConsultationsConsultations()));
+                    MaterialPageRoute(builder: (context) => const AlimentationDurable()));
               },
                 child: Container(
                   alignment: Alignment.bottomCenter,
@@ -146,7 +148,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
+                    MaterialPageRoute(builder: (context) => const CusineEnfantParent()));
               },
                  child: Container(
                     alignment: Alignment.bottomCenter,
@@ -180,7 +182,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
+                    MaterialPageRoute(builder: (context) => const CusineQuotidien()));
               },
                  child: Container(
                  alignment: Alignment.bottomCenter,
@@ -210,7 +212,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
+                    MaterialPageRoute(builder: (context) => const AlimentationTravail()));
               },
                 child: Container(
                    alignment: Alignment.bottomCenter,
