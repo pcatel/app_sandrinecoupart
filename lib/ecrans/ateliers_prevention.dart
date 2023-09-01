@@ -30,17 +30,10 @@ class AtelierPreventionState extends State<AtelierPrevention> {
 
   @override
   Widget build(BuildContext context) {
-    
+    double containerHeight = MediaQuery.of(context).size.height * 0.10;
+    double fittedBoxHeight = MediaQuery.of(context).size.height * 0.50;
+    double sizedBoxHeight = MediaQuery.of(context).size.height * 0.40;
 
-    double containerHeight = MediaQuery.of(context).size.height *
-        0.10;
-    double fittedBoxHeight = MediaQuery.of(context).size.height *
-        0.50;
-    double sizedBoxHeight = MediaQuery.of(context).size.height *
-        0.40;
-    
-    
-    
     double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -56,6 +49,8 @@ class AtelierPreventionState extends State<AtelierPrevention> {
         ),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: Alignment.center,
@@ -83,7 +78,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               ),
             ),
           ),
-          Container(
+          SizedBox(
             height: fittedBoxHeight,
             width: containerWidth,
             child: FutureBuilder<List<String>>(
@@ -137,14 +132,12 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               },
             ),
           ),
-          Container(
+          SizedBox(
             height: containerHeight,
             child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                height: sizedBoxHeight/2,
+                SizedBox(
+                  height: sizedBoxHeight / 2,
                   child: Row(
                     children: [
                       GestureDetector(
@@ -222,8 +215,8 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                     ],
                   ),
                 ),
-                Container(
-                height: sizedBoxHeight/2,
+                SizedBox(
+                  height: sizedBoxHeight / 2,
                   child: Row(
                     children: [
                       GestureDetector(
@@ -238,7 +231,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                         child: Container(
                           alignment: Alignment.bottomCenter,
                           width: containerWidth / 2,
-                         // height: containerHeight,
+                          // height: containerHeight,
                           decoration: const BoxDecoration(
                             color: Colors.blue,
                             image: DecorationImage(
@@ -274,7 +267,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                         child: Container(
                           alignment: Alignment.bottomCenter,
                           width: containerWidth / 2,
-                      //   height: containerHeight,
+                          //   height: containerHeight,
                           decoration: const BoxDecoration(
                             color: Colors.blue,
                             image: DecorationImage(

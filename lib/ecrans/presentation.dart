@@ -28,32 +28,32 @@ class PresentationState extends State<Presentation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      
         backgroundColor: const Color(0xFF609a7d),
         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 1, 1, 1),
+          ),
         ),
       ),
-      body: FutureBuilder<List<String>>(
-        future: fetchData(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return SingleChildScrollView(
-              child: Column(
+      body: Center(
+        child: FutureBuilder<List<String>>(
+          future: fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    //margin: const EdgeInsets.all(16.0),
+                    // Votre code pour l'image ici
                     margin: const EdgeInsets.only(top: 1),
                     child: ClipOval(
                       child: Container(
@@ -75,12 +75,10 @@ class PresentationState extends State<Presentation> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                      height: 1), // Espace entre l'image et les containers
+                  const SizedBox(height: 1),
                   Container(
+                    // Votre code pour le premier ListTile ici
                     margin: const EdgeInsets.only(top: 1),
-                    // Espace autour du container
-
                     child: ListTile(
                       title: Text(
                         snapshot.data?[0] ?? '',
@@ -91,9 +89,8 @@ class PresentationState extends State<Presentation> {
                     ),
                   ),
                   Container(
+                    // Votre code pour le deuxième ListTile ici
                     margin: const EdgeInsets.only(top: 1),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-
                     child: ListTile(
                       title: Text(
                         snapshot.data?[1] ?? '',
@@ -104,9 +101,8 @@ class PresentationState extends State<Presentation> {
                     ),
                   ),
                   Container(
+                    // Votre code pour le troisième ListTile ici
                     margin: const EdgeInsets.only(top: 1),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-
                     child: ListTile(
                       title: Text(
                         snapshot.data?[2] ?? '',
@@ -117,9 +113,8 @@ class PresentationState extends State<Presentation> {
                     ),
                   ),
                   Container(
+                    // Votre code pour le quatrième ListTile ici
                     margin: const EdgeInsets.only(top: 1),
-                    //margin: const EdgeInsets.all(16.0), // Espace autour du container
-
                     child: ListTile(
                       title: Text(
                         snapshot.data?[3] ?? '',
@@ -129,18 +124,18 @@ class PresentationState extends State<Presentation> {
                       // Appliquez ici les styles que vous souhaitez
                     ),
                   ),
-
-                  // Ajoutez autant de containers avec des styles différents que nécessaire
                   const SizedBox(height: 1),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                          builder: (context) => const HomeScreen(),
+                        ),
                       );
                     },
                     child: Container(
+                      // Votre code pour le bouton Bienvenue ici
                       margin: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
                         color: Colors.green,
@@ -156,10 +151,10 @@ class PresentationState extends State<Presentation> {
                     ),
                   ),
                 ],
-              ),
-            );
-          }
-        },
+              );
+            }
+          },
+        ),
       ),
     );
   }
