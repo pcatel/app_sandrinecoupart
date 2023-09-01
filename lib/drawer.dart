@@ -6,6 +6,7 @@ import 'ecrans/recettes.dart';
 import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
+import 'ecrans/test.dart';
 
 
 class MyDrawerWidget extends StatelessWidget {
@@ -224,7 +225,30 @@ class MyDrawerWidget extends StatelessWidget {
                           },
                         ),
                       ),
-              
+                 Container(
+                        decoration: const BoxDecoration(
+                          color: Color(0xFFE91E63),
+                        ),
+                        child: ListTile(
+                          dense: true,
+                          visualDensity: const VisualDensity(vertical: -4),
+                          title: const Text(
+                            "Contacts",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF1e1e1e),
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyList()),
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),
