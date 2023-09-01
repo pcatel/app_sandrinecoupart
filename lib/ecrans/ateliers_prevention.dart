@@ -9,14 +9,14 @@ import 'consultations_consultations.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../drawer.dart';
 
-class Ecran2 extends StatefulWidget {
-  const Ecran2({super.key});
+class AtelierPrevention extends StatefulWidget {
+  const AtelierPrevention({super.key});
 
   @override
- Ecran2State createState() => Ecran2State();
+ AtelierPreventionState createState() => AtelierPreventionState();
 }
 
-class Ecran2State extends State<Ecran2> {
+class AtelierPreventionState extends State<AtelierPrevention> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
 
@@ -113,7 +113,7 @@ class Ecran2State extends State<Ecran2> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran9()));
+                    MaterialPageRoute(builder: (context) => const ConsultationsConsultations()));
               },
                 child: Container(
                   alignment: Alignment.bottomCenter,
@@ -146,7 +146,7 @@ class Ecran2State extends State<Ecran2> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran2()));
+                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
               },
                  child: Container(
                     alignment: Alignment.bottomCenter,
@@ -180,7 +180,7 @@ class Ecran2State extends State<Ecran2> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran2()));
+                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
               },
                  child: Container(
                  alignment: Alignment.bottomCenter,
@@ -210,7 +210,7 @@ class Ecran2State extends State<Ecran2> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran2()));
+                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
               },
                 child: Container(
                    alignment: Alignment.bottomCenter,

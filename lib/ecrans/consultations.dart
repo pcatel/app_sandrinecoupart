@@ -9,14 +9,14 @@ import 'consultations_relations_mutuelle.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import '../drawer.dart';
 
-class Ecran1 extends StatefulWidget {
-  const Ecran1({super.key});
+class Consultations extends StatefulWidget {
+  const Consultations({super.key});
 
   @override
- Ecran1State createState() => Ecran1State();
+ ConsultationsState createState() => ConsultationsState();
 }
 
-class Ecran1State extends State<Ecran1> {
+class ConsultationsState extends State<Consultations> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
 
@@ -113,7 +113,7 @@ class Ecran1State extends State<Ecran1> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran9()));
+                    MaterialPageRoute(builder: (context) => const ConsultationsConsultations()));
               },
                 child: Container(
                   alignment: Alignment.bottomCenter,
@@ -146,7 +146,7 @@ class Ecran1State extends State<Ecran1> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran10()));
+                    MaterialPageRoute(builder: (context) => const ConsultationsDeroulement()));
               },
                  child: Container(
                     alignment: Alignment.bottomCenter,
@@ -180,7 +180,7 @@ class Ecran1State extends State<Ecran1> {
                GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran15()));
+                    MaterialPageRoute(builder: (context) => const ConsultationsTeleconsultation()));
               },
                  child: Container(
                  alignment: Alignment.bottomCenter,
@@ -210,7 +210,7 @@ class Ecran1State extends State<Ecran1> {
               GestureDetector(
                 onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran12()));
+                    MaterialPageRoute(builder: (context) => const ConsultationsMutuelle()));
               },
                 child: Container(
                    alignment: Alignment.bottomCenter,

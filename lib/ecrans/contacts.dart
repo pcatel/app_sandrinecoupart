@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
 
 //import '../drawer.dart';
-class Ecran6 extends StatelessWidget {
-  const Ecran6({Key? key}) : super(key: key);
+class Contacts extends StatelessWidget {
+  const Contacts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

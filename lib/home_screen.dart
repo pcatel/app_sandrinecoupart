@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran1()));
+                    MaterialPageRoute(builder: (context) => const Consultations()));
               },
               child:   Container(
             alignment: Alignment.center,
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran2()));
+                    MaterialPageRoute(builder: (context) => const AtelierPrevention()));
               },
               child: Container(
         alignment: Alignment.center,
@@ -99,7 +99,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran3()));
+                    MaterialPageRoute(builder: (context) => const InfosNutrition()));
               },
               child: Container(
         alignment: Alignment.center,
@@ -130,7 +130,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran4()));
+                    MaterialPageRoute(builder: (context) => const Recettes()));
               },
               child: Container(
         alignment: Alignment.center,
@@ -161,7 +161,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran5()));
+                    MaterialPageRoute(builder: (context) => const Temoignages()));
               },
               child: Container(
         alignment: Alignment.center,
@@ -192,7 +192,7 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Ecran6()));
+                    MaterialPageRoute(builder: (context) => const Contacts()));
               },
               child: Container(
         alignment: Alignment.center,

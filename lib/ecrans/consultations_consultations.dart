@@ -5,14 +5,14 @@ import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 
 
-class Ecran9 extends StatefulWidget {
-  const Ecran9({super.key});
+class ConsultationsConsultations extends StatefulWidget {
+  const ConsultationsConsultations({super.key});
 
   @override
-  Ecran9State createState() => Ecran9State();
+  ConsultationsConsultationsState createState() => ConsultationsConsultationsState();
 }
 
-class Ecran9State extends State<Ecran9> {
+class ConsultationsConsultationsState extends State<ConsultationsConsultations> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_consultation.php'));

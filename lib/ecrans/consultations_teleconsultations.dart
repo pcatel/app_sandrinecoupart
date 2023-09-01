@@ -10,14 +10,14 @@ class Step {
   Step(this.number, this.title);
 }
 
-class Ecran15 extends StatefulWidget {
-  const Ecran15({super.key});
+class ConsultationsTeleconsultation extends StatefulWidget {
+  const ConsultationsTeleconsultation({super.key});
 
   @override
-  Ecran15State createState() => Ecran15State();
+  ConsultationsTeleconsultationState createState() => ConsultationsTeleconsultationState();
 }
 
-class Ecran15State extends State<Ecran15> {
+class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsultation> {
   Future<List<Step>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_teleconsultation.php'));

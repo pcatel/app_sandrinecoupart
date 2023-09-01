@@ -4,14 +4,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 
-class Ecran12 extends StatefulWidget {
-  const Ecran12({Key? key}) : super(key: key);
+class ConsultationsMutuelle extends StatefulWidget {
+  const ConsultationsMutuelle({Key? key}) : super(key: key);
 
   @override
-  Ecran12State createState() => Ecran12State();
+  ConsultationsMutuelleState createState() => ConsultationsMutuelleState();
 }
 
-class Ecran12State extends State<Ecran12> {
+class ConsultationsMutuelleState extends State<ConsultationsMutuelle> {
   Future<List<String>> fetchMutuelleData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_Mutuelle.php'));

@@ -6,7 +6,7 @@ import 'ecrans/recettes.dart';
 import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
-import 'ecrans/test.dart';
+
 
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
@@ -26,7 +26,8 @@ class MyDrawerWidget extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Presentation()),
+                    MaterialPageRoute(
+                        builder: (context) => const Presentation()),
                   );
                 },
                 child: const DrawerHeader(
@@ -97,7 +98,7 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran1()),
+                                  builder: (context) => const Consultations()),
                             );
                           },
                         ),
@@ -121,7 +122,8 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran2()),
+                                  builder: (context) =>
+                                      const AtelierPrevention()),
                             );
                           },
                         ),
@@ -145,7 +147,7 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran3()),
+                                  builder: (context) => const InfosNutrition()),
                             );
                           },
                         ),
@@ -169,7 +171,7 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran4()),
+                                  builder: (context) => const Recettes()),
                             );
                           },
                         ),
@@ -193,7 +195,7 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran5()),
+                                  builder: (context) => const Temoignages()),
                             );
                           },
                         ),
@@ -217,36 +219,12 @@ class MyDrawerWidget extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Ecran6()),
+                                  builder: (context) => const Contacts()),
                             );
                           },
                         ),
                       ),
-                          Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFE91E63),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Test",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MyApp()),
-                            );
-                          },
-                        ),
-                      ),
-                    
+              
                     ],
                   ),
                 ),

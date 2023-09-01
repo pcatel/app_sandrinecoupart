@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
 
-class Ecran8 extends StatelessWidget {
-  const Ecran8({Key? key}) : super(key: key);
+class Login extends StatelessWidget {
+  const Login({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
 
 //import '../drawer.dart';
-class Ecran3 extends StatelessWidget {
-  const Ecran3({Key? key}) : super(key: key);
+class InfosNutrition extends StatelessWidget {
+  const InfosNutrition({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -3,14 +3,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../bottom_navigation.dart';
 
-class Ecran10 extends StatefulWidget {
-  const Ecran10({Key? key}) : super(key: key);
+class ConsultationsDeroulement extends StatefulWidget {
+  const ConsultationsDeroulement({Key? key}) : super(key: key);
 
   @override
-  Ecran10State createState() => Ecran10State();
+  ConsultationsDeroulementState createState() => ConsultationsDeroulementState();
 }
 
-class Ecran10State extends State<Ecran10> with SingleTickerProviderStateMixin {
+class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   Widget processJson(String jsonValue) {
     int colonIndex = jsonValue.indexOf(':');
