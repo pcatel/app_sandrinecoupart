@@ -31,12 +31,12 @@ class AtelierPreventionState extends State<AtelierPrevention> {
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height * 0.10;
-    double fittedBoxHeight = MediaQuery.of(context).size.height * 0.50;
-    double sizedBoxHeight = MediaQuery.of(context).size.height * 0.40;
-
+    //double fittedBoxHeight = MediaQuery.of(context).size.height * 0.60;
     double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+     backgroundColor: const Color(0xFF84A66F),
+   
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
         title: const Text(
@@ -53,11 +53,11 @@ class AtelierPreventionState extends State<AtelierPrevention> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            alignment: Alignment.center,
+            alignment: Alignment.center,// Alignez en haut de l'écran
             height: containerHeight,
             width: containerWidth,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Color.fromARGB(255, 117, 17, 17),
               image: DecorationImage(
                 image: NetworkImage(
                   'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg',
@@ -78,9 +78,8 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               ),
             ),
           ),
-          SizedBox(
-            height: fittedBoxHeight,
-            width: containerWidth,
+          Expanded(
+            // Utilisez Expanded pour prendre le reste de l'espace disponible
             child: FutureBuilder<List<String>>(
               future: fetchData(),
               builder: (context, snapshot) {
@@ -94,14 +93,13 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                   List<String> dataList = snapshot.data ?? [];
                   return SingleChildScrollView(
                     child: Container(
-                      color: const Color.fromARGB(255, 132, 166, 111),
+                      color: Color(0xFF84A66F),
                       child: Column(
                         children: dataList.map((item) {
                           List<String> separatedText = item.split(':');
                           String title = separatedText[0];
                           String description =
                               separatedText.length > 1 ? separatedText[1] : '';
-
                           return ExpansionTile(
                             backgroundColor: const Color(0xFFD5EEC5),
                             title: Text(
@@ -132,91 +130,88 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               },
             ),
           ),
-          SizedBox(
-            height: containerHeight,
+          Container(
+            alignment: Alignment.bottomCenter, // Alignez en bas de l'écran
             child: Column(
               children: [
-                SizedBox(
-                  height: sizedBoxHeight / 2,
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AlimentationDurable(),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          width: containerWidth / 2,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg',
-                              ),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Color(0xFF548235),
-                                BlendMode.color,
-                              ),
-                            ),
+                Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AlimentationDurable(),
                           ),
-                          child: const Text(
-                            'Alimentation durable',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        width: containerWidth / 2,
+                        height: containerHeight,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg',
+                            ),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Color(0xFF548235),
+                              BlendMode.color,
                             ),
                           ),
                         ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const CusineEnfantParent(),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          alignment: Alignment.bottomCenter,
-                          width: containerWidth / 2,
-                          // height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Colors.blue,
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg',
-                              ),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Color(0xFF548235),
-                                BlendMode.color,
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            'Cuisine enfants et parents',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
-                            ),
+                        child: const Text(
+                          'Alimentation durable',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 7, 7, 7),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CusineEnfantParent(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.bottomCenter,
+                        width: containerWidth / 2,
+                        height: containerHeight,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg',
+                            ),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Color(0xFF548235),
+                              BlendMode.color,
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'Cuisine enfants et parents',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 7, 7, 7),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  height: sizedBoxHeight / 2,
+                Container(
+                  alignment: Alignment.bottomCenter,
                   child: Row(
                     children: [
                       GestureDetector(
@@ -231,7 +226,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                         child: Container(
                           alignment: Alignment.bottomCenter,
                           width: containerWidth / 2,
-                          // height: containerHeight,
+                          height: containerHeight,
                           decoration: const BoxDecoration(
                             color: Colors.blue,
                             image: DecorationImage(
@@ -267,7 +262,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                         child: Container(
                           alignment: Alignment.bottomCenter,
                           width: containerWidth / 2,
-                          //   height: containerHeight,
+                          height: containerHeight,
                           decoration: const BoxDecoration(
                             color: Colors.blue,
                             image: DecorationImage(
