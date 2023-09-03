@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../bottom_navigation.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: InfosNutrition(),
+  ));
+}
 
 class InfosNutrition extends StatefulWidget {
   const InfosNutrition({Key? key}) : super(key: key);
@@ -11,22 +18,26 @@ class InfosNutrition extends StatefulWidget {
 }
 
 class InfosNutritionState extends State<InfosNutrition> {
+  int numberOfItems = 0; // Variable pour stocker le nombre d'éléments JSON
+
   List<Widget> buildCardsFromJson() {
     List<Widget> cards = [];
 
-    for (var jsonValue in jsonValues) {
+    for (var i = 0; i < jsonValues.length; i++) {
+      String jsonValue = jsonValues[i];
       int colonIndex = jsonValue.indexOf(':');
 
       if (colonIndex != -1) {
         String title = jsonValue.substring(0, colonIndex).trim();
         String subtitle = jsonValue.substring(colonIndex + 1).trim();
+        String imageUrl =
+            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/infos_nutrition/$i.jpg';
 
         cards.add(
           CustomCard(
             title: title,
             subtitle: subtitle,
-            imageUrl:
-                'URL_IMAGE', // Remplacez 'URL_IMAGE' par l'URL de votre image en ligne
+            imageUrl: imageUrl,
           ),
         );
       }
@@ -54,7 +65,8 @@ class InfosNutritionState extends State<InfosNutrition> {
 
     fetchData().then((_) {
       setState(() {
-        //_tabController = TabController(length: 7, vsync: this);
+        // Récupérer le nombre d'éléments JSON
+        numberOfItems = jsonValues.length;
       });
     });
   }
@@ -102,20 +114,13 @@ class InfosNutritionState extends State<InfosNutrition> {
                 ),
               ),
             ),
-            child: const Text(
-              'Déroulement',
-              style: TextStyle(
+            child: Text(
+              'Les $numberOfItems principaux', // Utilisez numberOfItems ici
+              style: const TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
-          ),
-          const Text(
-            'les 7 points principaux',
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 7, 7, 7)),
           ),
           Expanded(
             child: ListView(
@@ -147,53 +152,70 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 400,
-        height: 200,
         padding: const EdgeInsets.all(10.0),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: Colors.orange,
           elevation: 10,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+          child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 5),
-                child: Image.network(
-                  imageUrl,
+              ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                  Colors.blue.withOpacity(0.3),
+                  BlendMode.srcATop,
+                ),
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
                   fit: BoxFit.cover,
-                  width: 50,
-                  height: 56,
+                  placeholder: (context, url) => const PlaceholderImage(),
+                  errorWidget: (context, url, error) => const ErrorIndicator(),
                 ),
               ),
-              ListTile(
-                leading: Icon(
-                  Icons.book,
-                  color: Colors.green,
-                  size: 60.0,
-                ),
-                title: Text(
-                  title,
-                  style: const TextStyle(fontSize: 30.0),
-                ),
-                subtitle: Text(
-                  subtitle,
-                  style: const TextStyle(fontSize: 14.0),
-                ),
-              ),
-              ButtonBar(
+              Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  ElevatedButton(
-                    child: const Text('Se connecter'),
-                    onPressed: () {/* ... */},
+                  ListTile(
+                    title: Text(
+                      title,
+                      style: const TextStyle(fontSize: 30.0),
+                    ),
+                    subtitle: Text(
+                      subtitle,
+                      style: const TextStyle(fontSize: 14.0),
+                    ),
                   ),
                 ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PlaceholderImage extends StatelessWidget {
+  const PlaceholderImage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.grey.withOpacity(0.2),
+    );
+  }
+}
+
+class ErrorIndicator extends StatelessWidget {
+  const ErrorIndicator({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Icon(
+        Icons.error_outline,
+        color: Colors.red,
+        size: 48.0,
       ),
     );
   }
