@@ -93,7 +93,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                   List<String> dataList = snapshot.data ?? [];
                   return SingleChildScrollView(
                     child: Container(
-                      color: Color(0xFF84A66F),
+                      color: const Color(0xFF84A66F),
                       child: Column(
                         children: dataList.map((item) {
                           List<String> separatedText = item.split(':');
