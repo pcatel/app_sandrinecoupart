@@ -6,11 +6,11 @@ import 'ecrans/recettes.dart';
 import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
-import 'ecrans/test.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
+
   Future<void> _launchAppOrBrowser(String url) async {
     final Uri uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -22,6 +22,7 @@ class MyDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double containerHeight = MediaQuery.of(context).size.height * 0.1;
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.5,
       child: Container(
@@ -30,7 +31,7 @@ class MyDrawerWidget extends StatelessWidget {
           children: [
             // En-tête avec 20% de l'espace
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.3,
+              //height: MediaQuery.of(context).size.height * 0.1,
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -46,9 +47,6 @@ class MyDrawerWidget extends StatelessWidget {
                   child: UserAccountsDrawerHeader(
                     decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
                     accountName: Row(
-                 
-                    //crossAxisAlignment: CrossAxisAlignment.center,
-                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
                           "Sandrine COUPART",
@@ -60,7 +58,6 @@ class MyDrawerWidget extends StatelessWidget {
                       ],
                     ),
                     accountEmail: Row(
-                 
                       children: [
                         Text(
                           "Diététicienne - Nutritionniste",
@@ -82,9 +79,8 @@ class MyDrawerWidget extends StatelessWidget {
               ),
             ),
             // Liste des éléments ListTile avec 60% de l'espace
-
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
@@ -92,229 +88,247 @@ class MyDrawerWidget extends StatelessWidget {
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFDE8C07),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Consultations",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Consultations()),
-                            );
-                          },
+                                  builder: (context) => const Consultations()));
+                        },
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                          //height: containerHeight,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
+                              fit: BoxFit.cover,
+                              colorFilter: ColorFilter.mode(
+                                Color(0xFFDE8C07),
+                                BlendMode.color,
+                              ),
+                            ),
+                          ),
+                          child: const Text(
+                            'Consultations',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFFF9800),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Ateliers prévention",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const AtelierPrevention()),
-                            );
-                          },
+                                      const AtelierPrevention()));
+                        },
+                        child: Container(
+                       alignment: Alignment.topLeft,
+                          //height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention.jpg'),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFF548235),
+                                  BlendMode.color,
+                                ),
+                              )),
+                          child: const Text(
+                            'Ateliers prévention',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF2196F3),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Infos nutrition",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const InfosNutrition()),
-                            );
-                          },
+                                  builder: (context) =>
+                                      const InfosNutrition()));
+                        },
+                        child: Container(
+                        alignment: Alignment.topLeft,
+                          //height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/infos_nutrition.jpg'),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFF2196F3),
+                                  BlendMode.color,
+                                ),
+                              )),
+                          child: const Text(
+                            'Infos nutrition',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF9C27B0),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Recettes",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Recettes()),
-                            );
-                          },
+                                  builder: (context) => const Recettes()));
+                        },
+                        child: Container(
+                    alignment: Alignment.topLeft,
+                          //height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFF9C27B0),
+                                  BlendMode.color,
+                                ),
+                              )),
+                          child: const Text(
+                            'Recettes',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFF795548),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Témoignages",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Temoignages()),
-                            );
-                          },
+                                  builder: (context) => const Temoignages()));
+                        },
+                        child: Container(
+                         alignment: Alignment.topLeft,
+                          //height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/temoignages.jpg'),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFF795548),
+                                  BlendMode.color,
+                                ),
+                              )),
+                          child: const Text(
+                            'Temoignages',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
                         ),
                       ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFE91E63),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Contacts",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
-                          ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Contacts()),
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Color(0xFFE91E63),
-                        ),
-                        child: ListTile(
-                          dense: true,
-                          visualDensity: const VisualDensity(vertical: -4),
-                          title: const Text(
-                            "Test",
+                                  builder: (context) => const Contacts()));
+                        },
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                        //  height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/contact.jpg'),
+                                fit: BoxFit.cover,
+                                colorFilter: ColorFilter.mode(
+                                  Color(0xFFE91E63),
+                                  BlendMode.color,
+                                ),
+                              )),
+                          child: const Text(
+                            'Me Contacter',
                             style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF1e1e1e),
-                                fontWeight: FontWeight.bold),
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 255, 255, 255)),
                           ),
-                          onTap: () {
-                            Navigator.pop(context);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => MyList()),
-                            );
-                          },
                         ),
                       ),
                     ],
                   ),
                 ),
 
+                //const Spacer(), // Ajout d'un Spacer pour pousser les éléments suivants vers le bas
+
                 // Ligne des réseaux sociaux avec 20% de l'espace
                 Container(
-                  //height: MediaQuery.of(context).size.height * 0.1,
                   padding: const EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          _launchAppOrBrowser(
-                              "https://www.facebook.com/pascal.catel.18/");
-                        },
-                        child: Image.asset('assets/Reseaux/facebook.png'),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              _launchAppOrBrowser(
+                                  "https://www.facebook.com/pascal.catel.18/");
+                            },
+                            child: Image.asset('assets/Reseaux/facebook.png'),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _launchAppOrBrowser(
+                                  "https://www.instagram.com/pascal.catel.18/");
+                            },
+                            child: Image.asset('assets/Reseaux/instagram.png'),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _launchAppOrBrowser(
+                                  "https://www.tiktok.com/@pascalcatel");
+                            },
+                            child: Image.asset('assets/Reseaux/tiktok.png'),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              _launchAppOrBrowser(
+                                  "https://www.linkedin.com/in/pascal-catel-2215a043/");
+                            },
+                            child: Image.asset('assets/Reseaux/linkedin.png'),
+                          ),
+                        ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          _launchAppOrBrowser(
-                              "https://www.instagram.com/pascal.catel.18/");
-                        },
-                        child: Image.asset('assets/Reseaux/instagram.png'),
+                      const SizedBox(
+                        height: 20,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          _launchAppOrBrowser(
-                              "https://www.tiktok.com/@pascalcatel");
-                        },
-                        child: Image.asset('assets/Reseaux/tiktok.png'),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          _launchAppOrBrowser(
-                              "https://www.linkedin.com/in/pascal-catel-2215a043/");
-                        },
-                        child: Image.asset('assets/Reseaux/linkedin.png'),
+                      const Text(
+                        'Powered by : Pascal CATEL',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 7, 7, 7),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  child: const Text(
-                    'Powered by : Pascal CATEL', // Utilisez numberOfItems ici
-                    style: TextStyle(
-                        fontSize: 14,
-                        //fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 7, 7, 7)),
-                  ),
-                ),
               ],
             ),
-            // Ligne des réseaux sociaux avec 20% de l'espace
           ],
         ),
       ),
