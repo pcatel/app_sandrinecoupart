@@ -114,13 +114,20 @@ class InfosNutritionState extends State<InfosNutrition> {
                 ),
               ),
             ),
-            child: Text(
-              'Les $numberOfItems principaux', // Utilisez numberOfItems ici
-              style: const TextStyle(
+            child: const Text(
+              'Infos nutrition', // Utilisez numberOfItems ici
+              style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
+          ),
+          Text(
+            'Les $numberOfItems principes fondamenteaux', // Utilisez numberOfItems ici
+            style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 7, 7, 7)),
           ),
           Expanded(
             child: ListView(
@@ -152,10 +159,11 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+      height: 300,
         padding: const EdgeInsets.all(10.0),
         child: Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+            borderRadius: BorderRadius.circular(25.0),
           ),
           elevation: 10,
           child: Stack(
@@ -167,7 +175,9 @@ class CustomCard extends StatelessWidget {
                 ),
                 child: CachedNetworkImage(
                   imageUrl: imageUrl,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.cover, // Utilisez BoxFit.cover pour remplir entièrement la carte
+                  width: double.infinity, // Ajustez la largeur pour remplir la carte
+                  height: double.infinity, 
                   placeholder: (context, url) => const PlaceholderImage(),
                   errorWidget: (context, url, error) => const ErrorIndicator(),
                 ),
@@ -175,14 +185,23 @@ class CustomCard extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ListTile(
-                    title: Text(
-                      title,
-                      style: const TextStyle(fontSize: 30.0),
+                  Container(
+                    decoration: const BoxDecoration(
+                   //  color: Color.fromRGBO(52, 145, 238, 0.498),
+                     color:Colors.blue,
                     ),
-                    subtitle: Text(
-                      subtitle,
-                      style: const TextStyle(fontSize: 14.0),
+                    child: ListTile(
+                      title: Text(
+                        title,
+                        style: const TextStyle(fontSize: 30.0,
+                        color: Colors.white,
+                        ),
+                      ),
+                      subtitle: Text(
+                        subtitle,
+                        style: const TextStyle(fontSize: 14.0,
+                        color: Colors.black,fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],
