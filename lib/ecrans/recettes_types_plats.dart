@@ -4,17 +4,15 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 import 'login.dart';
-import 'recettes_allergies.dart';
-import 'recettes_types_plats.dart';
 
-class Recettes extends StatefulWidget {
-  const Recettes({super.key});
+class RecettesTypesPlats extends StatefulWidget {
+  const RecettesTypesPlats({super.key});
 
   @override
-  RecettesState createState() => RecettesState();
+  RecettesTypesPlatsState createState() => RecettesTypesPlatsState();
 }
 
-class RecettesState extends State<Recettes> {
+class RecettesTypesPlatsState extends State<RecettesTypesPlats> {
   Future<List<String>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_recettes.php'));
@@ -66,7 +64,7 @@ class RecettesState extends State<Recettes> {
               ),
             ),
             child: const Text(
-              'Recettes',
+              'RecettesTypesPlats',
               style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
@@ -119,16 +117,13 @@ class RecettesState extends State<Recettes> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Logique de navigation pour "Voir les recettes" à implémenter ici
-                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RecettesAllergies()));
+                      Navigator.pushNamed(context, '/voirRecettesTypesPlats');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           const Color(0xFF9C27B0), // Couleur du bouton
                     ),
-                    child: const Text('Recettes par types d\'allergies'),
+                    child: const Text('RecettesTypesPlats par types d\'allergies'),
                   ),
                 ),
                 const SizedBox(
@@ -143,16 +138,13 @@ class RecettesState extends State<Recettes> {
                   child: ElevatedButton(
                     onPressed: () {
                       // Logique de navigation pour "Voir les recettes" à implémenter ici
-                      Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RecettesTypesPlats()));
+                      Navigator.pushNamed(context, '/voirRecettesTypesPlats');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           const Color(0xFF9C27B0), // Couleur du bouton
                     ),
-                    child: const Text('Recettes par types de plats'),
+                    child: const Text('RecettesTypesPlats par types de plats'),
                   ),
                 ),
                 const SizedBox(
