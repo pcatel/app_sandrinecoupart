@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,8 +31,7 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
       List<dynamic> jsonData = json.decode(response.body);
       List<Map<String, String>> data = [];
       for (var item in jsonData) {
-        data.add(
-            {"nom": item['nom'], "Id": item['Id']});
+        data.add({"nom": item['nom'], "Id": item['Id']});
       }
       return data;
     } else {
@@ -109,58 +107,55 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: FutureBuilder<List<Map<String, String>>>(
-                future: fetchCommentairesData(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
-                  } else if (snapshot.hasError) {
-                    return const Text('Erreur de chargement des données');
-                  } else if (!snapshot.hasData) {
-                    return const Text('Aucune donnée disponible');
-                  } else {
-                    List<Map<String, String>> dataList = snapshot.data ?? [];
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: SingleChildScrollView(
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: DataTable(
-                            headingRowColor: MaterialStateColor.resolveWith(
-                                (states) => const Color(0xFF9C27B0)),
-                            columns: const [
-                              DataColumn(label: Text('nom')),
-                              DataColumn(label: Text('Id')),
-                            ],
-                            rows: dataList.map((data) {
-                              return DataRow(cells: [
-                                DataCell(SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.2,
-                                  child: Text(data['nom'] ?? ''),
-                                )),
-                                DataCell(SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.7,
-                                  child: Text(data['Id'] ?? ''),
-                                )),
-                              ]);
-                            }).toList(),
-                          ),
+            child: FutureBuilder<List<Map<String, String>>>(
+              future: fetchCommentairesData(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return const Text('Erreur de chargement des données');
+                } else if (!snapshot.hasData) {
+                  return const Text('Aucune donnée disponible');
+                } else {
+                  List<Map<String, String>> dataList = snapshot.data ?? [];
+                  return GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // Deux éléments par ligne
+                    ),
+                    itemCount: dataList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        elevation: 3,
+                        margin: const EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.network(
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${dataList[index]['Id']}.jpg',
+                              width: 100, // Largeur de l'image
+                              height: 100, // Hauteur de l'image
+                              fit: BoxFit.cover,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              dataList[index]['nom'] ?? '',
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    );
-                  }
-                },
-              ),
+                      );
+                    },
+                  );
+                }
+              },
             ),
           ),
         ],
       ),
-      bottomNavigationBar:
-          const BottomNavigationBarScreen(backgroundColor: Color(0xFF9C27B0)),
     );
   }
 }
