@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
+import 'liste_recettes.dart';
 
 class RecettesAllergies extends StatefulWidget {
   const RecettesAllergies({Key? key}) : super(key: key);
@@ -31,7 +32,11 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
       List<dynamic> jsonData = json.decode(response.body);
       List<Map<String, String>> data = [];
       for (var item in jsonData) {
-        data.add({"nom": item['nom'], "Id": item['Id']});
+        data.add({
+          "NomAllergie": item['NomAllergie'],
+          "IdAllergie": item['IdAllergie'],
+          "NbreRecettes": item['NbreRecettes']
+        });
       }
       return data;
     } else {
@@ -120,32 +125,51 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
                   List<Map<String, String>> dataList = snapshot.data ?? [];
                   return GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, // Deux éléments par ligne
+                      crossAxisCount: 3,
                     ),
                     itemCount: dataList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        elevation: 3,
-                        margin: const EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.network(
-                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${dataList[index]['Id']}.jpg',
-                              width: 100, // Largeur de l'image
-                              height: 100, // Hauteur de l'image
-                              fit: BoxFit.cover,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              dataList[index]['nom'] ?? '',
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
+                      String nomAllergie = dataList[index]['NomAllergie'] ?? '';
+                      String nbreRecettes = dataList[index]['NbreRecettes'] ?? '';
+
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ListeRecettes(
+                                IdAllergie: dataList[index]['IdAllergie']!,
+                                NomAllergie: dataList[index]['NomAllergie']!, // Passez le nom de l'allergie sélectionnée
                               ),
                             ),
-                          ],
+                          );
+                        },
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          color: const Color(0xFFDA93E7),
+                          elevation: 3,
+                          margin: const EdgeInsets.all(10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.network(
+                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${dataList[index]['IdAllergie']}.jpg',
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                '$nomAllergie ($nbreRecettes)',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
