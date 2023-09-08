@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 import 'liste_recettes.dart';
+import '../bottom_navigation.dart';
 
 class RecettesAllergies extends StatefulWidget {
   const RecettesAllergies({Key? key}) : super(key: key);
@@ -124,13 +125,15 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
                 } else {
                   List<Map<String, String>> dataList = snapshot.data ?? [];
                   return GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                     ),
                     itemCount: dataList.length,
                     itemBuilder: (BuildContext context, int index) {
                       String nomAllergie = dataList[index]['NomAllergie'] ?? '';
-                      String nbreRecettes = dataList[index]['NbreRecettes'] ?? '';
+                      String nbreRecettes =
+                          dataList[index]['NbreRecettes'] ?? '';
 
                       return GestureDetector(
                         onTap: () {
@@ -138,7 +141,8 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
                             MaterialPageRoute(
                               builder: (context) => ListeRecettes(
                                 IdAllergie: dataList[index]['IdAllergie']!,
-                                NomAllergie: dataList[index]['NomAllergie']!, // Passez le nom de l'allergie sélectionnée
+                                NomAllergie: dataList[index][
+                                    'NomAllergie']!, // Passez le nom de l'allergie sélectionnée
                               ),
                             ),
                           );
@@ -179,6 +183,9 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
             ),
           ),
         ],
+      ),
+       bottomNavigationBar: const BottomNavigationBarScreen(
+        backgroundColor: Color(0xFF9C27B0),
       ),
     );
   }

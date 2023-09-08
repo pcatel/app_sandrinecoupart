@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'fiche_recette.dart';
 
 class ListeRecettes extends StatefulWidget {
   final String IdAllergie;
   final String NomAllergie;
 
-  const ListeRecettes({required this.IdAllergie, required this.NomAllergie});
+  const ListeRecettes({super.key, required this.IdAllergie, required this.NomAllergie});
 
   @override
   ListeRecettesState createState() => ListeRecettesState();
@@ -38,7 +39,11 @@ class ListeRecettesState extends State<ListeRecettes> {
         List<Recette> loadedRecettes = [];
         for (var item in jsonData) {
           loadedRecettes.add(
-              Recette(nom: item['NomRecette'], idRecette: item['IdRecette']));
+            Recette(
+              nom: item['NomRecette'],
+              idRecette: item['IdRecette'],
+            ),
+          );
         }
         // Mettez à jour l'état avec les données chargées
         setState(() {
@@ -105,17 +110,15 @@ class ListeRecettesState extends State<ListeRecettes> {
                       ),
                     ),
                     Container(
-alignment: Alignment.center,
+                      alignment: Alignment.center,
                       height: containerHeight,
                       width: containerWidth,
-
-
                       child: Image.network(
-                      'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${widget.IdAllergie}.jpg',
-                      width: 60,
-                      height: 60,
-                      fit: BoxFit.cover,
-                    ),
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${widget.IdAllergie}.jpg',
+                        width: 60,
+                        height: 60,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Text(
                       widget.NomAllergie,
@@ -138,7 +141,22 @@ alignment: Alignment.center,
                                 (recette) => DataRow(
                                   cells: [
                                     DataCell(Text(recette.idRecette)),
-                                    DataCell(Text(recette.nom)),
+                                    DataCell(
+                                      GestureDetector(
+                                        onTap: () {
+                                          // Naviguer vers la page FicheRecette
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => FicheRecette(
+                                                idRecette: recette.idRecette,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(recette.nom),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )
@@ -149,7 +167,7 @@ alignment: Alignment.center,
                   ],
                 ),
       bottomNavigationBar: const BottomNavigationBarScreen(
-        backgroundColor: Color(0xFF795548),
+        backgroundColor: Color(0xFF9C27B0),
       ),
     );
   }

@@ -22,7 +22,7 @@ class MyDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double containerHeight = MediaQuery.of(context).size.height * 0.1;
+    //double containerHeight = MediaQuery.of(context).size.height * 0.1;
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.5,
       child: Container(
