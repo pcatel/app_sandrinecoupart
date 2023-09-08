@@ -37,7 +37,8 @@ class ListeRecettesState extends State<ListeRecettes> {
         final jsonData = json.decode(response.body);
         List<Recette> loadedRecettes = [];
         for (var item in jsonData) {
-          loadedRecettes.add(Recette(nom: item['NomRecette']));
+          loadedRecettes.add(
+              Recette(nom: item['NomRecette'], idRecette: item['IdRecette']));
         }
         // Mettez à jour l'état avec les données chargées
         setState(() {
@@ -60,7 +61,6 @@ class ListeRecettesState extends State<ListeRecettes> {
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height * 0.15;
-
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
@@ -78,69 +78,80 @@ class ListeRecettesState extends State<ListeRecettes> {
           ? _buildLoadingIndicator()
           : error != null
               ? _buildErrorWidget()
-              : SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.center,
-                        height: containerHeight,
-                        width: containerWidth,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Color(0xFF9C27B0),
-                              BlendMode.color,
-                            ),
+              : Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      height: containerHeight,
+                      width: containerWidth,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                            Color(0xFF9C27B0),
+                            BlendMode.color,
                           ),
                         ),
-                        child: const Text(
-                          'Recettes',
-                          style: TextStyle(
-                              fontSize: 36,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7)),
+                      ),
+                      child: const Text(
+                        'Recettes',
+                        style: TextStyle(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 7, 7, 7)),
+                      ),
+                    ),
+                    Container(
+alignment: Alignment.center,
+                      height: containerHeight,
+                      width: containerWidth,
+
+
+                      child: Image.network(
+                      'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${widget.IdAllergie}.jpg',
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),
+                    ),
+                    Text(
+                      widget.NomAllergie,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: DataTable(
+                          columns: const [
+                            DataColumn(label: Text('Id')),
+                            DataColumn(label: Text('Recette')),
+                          ],
+                          rows: recettes
+                              .map(
+                                (recette) => DataRow(
+                                  cells: [
+                                    DataCell(Text(recette.idRecette)),
+                                    DataCell(Text(recette.nom)),
+                                  ],
+                                ),
+                              )
+                              .toList(),
                         ),
                       ),
-                      Text(
-                        widget.NomAllergie,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                      ),
-                      _buildRecettesList(),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
       bottomNavigationBar: const BottomNavigationBarScreen(
         backgroundColor: Color(0xFF795548),
       ),
     );
-  }
-
-  Widget _buildRecettesList() {
-    if (recettes.isEmpty) {
-      return const Center(
-        child: Text('Aucune recette disponible'),
-      );
-    } else {
-      return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: recettes.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(recettes[index].nom),
-            //subtitle: Text(recettes[index].message),
-          );
-        },
-      );
-    }
   }
 
   Widget _buildLoadingIndicator() {
@@ -158,6 +169,7 @@ class ListeRecettesState extends State<ListeRecettes> {
 
 class Recette {
   final String nom;
+  final String idRecette;
 
-  Recette({required this.nom});
+  Recette({required this.nom, required this.idRecette});
 }
