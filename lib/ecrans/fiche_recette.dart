@@ -35,7 +35,8 @@ class FicheRecetteState extends State<FicheRecette> {
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
         setState(() {
-          recetteData = jsonData[0]; // Prendre le premier élément du tableau JSON
+          recetteData =
+              jsonData[0]; // Prendre le premier élément du tableau JSON
           isLoading = false; // Le chargement est terminé
         });
       } else {
@@ -86,17 +87,18 @@ class FicheRecetteState extends State<FicheRecette> {
     double containerWidth = MediaQuery.of(context).size.width;
 
     // Construisez l'URL de la première image basée sur IdRecette.jpg
-    final imageUrl =
+    const imageUrl =
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg';
 
     return Container(
       alignment: Alignment.center,
       height: containerHeight,
       width: containerWidth,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         image: DecorationImage(
-          image: NetworkImage(imageUrl), // Chargez la première image depuis l'URL
+          image:
+              NetworkImage(imageUrl), // Chargez la première image depuis l'URL
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Color(0xFF9C27B0),
@@ -109,7 +111,7 @@ class FicheRecetteState extends State<FicheRecette> {
         style: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 7, 7, 7)),
+            color: Color(0xFFFFFEFE)),
       ),
     );
   }
@@ -121,33 +123,139 @@ class FicheRecetteState extends State<FicheRecette> {
         _buildRecetteImage(),
 
         // Les détails de la recette
-        Text(
-          'Titre : ${recetteData?['titre']}',
-          style: const TextStyle(fontSize: 18),
+        Container(
+          //width: containerWidth,
+          decoration: const BoxDecoration(
+            color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            '${recetteData?['titre']}',
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
-        Text(
-          'Description : ${recetteData?['description']}',
-          style: const TextStyle(fontSize: 18),
+
+        Container(
+          width: 600,
+          decoration: const BoxDecoration(
+            color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            'Temps de préparation : ${recetteData?['temps_preparation']} minutes',
+            style: const TextStyle(
+              fontSize: 14,
+                color: Colors.white,
+            ),
+            textAlign: TextAlign.left,
+          ),
         ),
-        Text(
-          'Temps de préparation : ${recetteData?['temps_preparation']} minutes',
-          style: const TextStyle(fontSize: 18),
+
+        Container(
+          width: 600,
+          decoration: const BoxDecoration(
+            color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            'Temps de repos : ${recetteData?['temps_repos']} minutes',
+            style: const TextStyle(
+              fontSize: 14,
+                color: Colors.white,
+            ),
+            textAlign: TextAlign.left,
+          ),
         ),
-        Text(
-          'Temps de repos : ${recetteData?['temps_repos']} minutes',
-          style: const TextStyle(fontSize: 18),
+
+        Container(
+          width: 600,
+          decoration: const BoxDecoration(
+            color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            'Temps de cuisson : ${recetteData?['temps_cuisson']} minutes',
+            style: const TextStyle(
+              fontSize: 14,
+                color: Colors.white,
+            ),
+            textAlign: TextAlign.left,
+          ),
         ),
-        Text(
-          'Temps de cuisson : ${recetteData?['temps_cuisson']} minutes',
-          style: const TextStyle(fontSize: 18),
+
+        Container(
+        
+          child:Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Image.network(
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes/ingredients.png',
+                  width: 25.0, // Ajustez la largeur de l'image selon vos besoins
+                  height: 25.0, // Ajustez la hauteur de l'image selon vos besoins
+                ),
+              ),
+              SizedBox(width: 16.0), // Espacement entre l'image et le texte
+              Expanded(
+                flex: 2,
+                child: Text(
+                  'Ingrédients',
+                  style: TextStyle(fontSize: 18.0), // Ajustez la taille de police selon vos besoins
+                ),
+              ),
+            ],
+          ),
         ),
-        Text(
-          'Ingrédients : ${recetteData?['ingredients']}',
-          style: const TextStyle(fontSize: 18),
+        Container(
+          width: 600,
+          decoration: const BoxDecoration(
+             color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            '${recetteData?['ingredients']}',
+            style: const TextStyle(
+              fontSize: 14,
+               color: Colors.white,
+            ),
+            textAlign: TextAlign.left,
+          ),
         ),
-        Text(
-          'Étapes : ${recetteData?['etapes']}',
-          style: const TextStyle(fontSize: 18),
+        Container(
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Image.network(
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes/etapes.png',
+                  width: 25.0, // Ajustez la largeur de l'image selon vos besoins
+                  height: 25.0, // Ajustez la hauteur de l'image selon vos besoins
+                ),
+              ),
+              SizedBox(width: 16.0), // Espacement entre l'image et le texte
+              Expanded(
+                flex: 2,
+                child: Text(
+                  'Etapes',
+                  style: TextStyle(fontSize: 18.0), // Ajustez la taille de police selon vos besoins
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: 600,
+          decoration: const BoxDecoration(
+              color: Color(0xFF9C27B0),
+          ),
+          child: Text(
+            ' ${recetteData?['etapes']}',
+            style: const TextStyle(
+              fontSize: 14,
+               color: Colors.white,
+            ),
+            textAlign: TextAlign.left,
+          ),
         ),
       ],
     );
@@ -163,7 +271,8 @@ class FicheRecetteState extends State<FicheRecette> {
       width: double.infinity, // Prend toute la largeur disponible
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(imageUrl), // Chargez la deuxième image depuis l'URL
+          image:
+              NetworkImage(imageUrl), // Chargez la deuxième image depuis l'URL
           fit: BoxFit.cover,
         ),
       ),
