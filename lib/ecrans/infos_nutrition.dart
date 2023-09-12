@@ -170,7 +170,7 @@ class CustomCard extends StatelessWidget {
             children: [
               ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  Color(0xFF2196F3).withOpacity(0.3),
+                  const Color(0xFF2196F3).withOpacity(0.3),
                   BlendMode.srcATop,
                 ),
                 child: CachedNetworkImage(

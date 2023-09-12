@@ -49,7 +49,7 @@ class PresentationState extends State<Presentation> {
               return Text('Error: ${snapshot.error}');
             } else {
               return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -57,8 +57,8 @@ class PresentationState extends State<Presentation> {
                     margin: const EdgeInsets.only(top: 1),
                     child: ClipOval(
                       child: Container(
-                        width: 150, // Largeur de l'image
-                        height: 150, // Hauteur de l'image
+                        width: 300, // Largeur de l'image
+                        height: 300, // Hauteur de l'image
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black, // Couleur de la bordure
