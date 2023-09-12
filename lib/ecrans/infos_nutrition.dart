@@ -88,13 +88,13 @@ class InfosNutritionState extends State<InfosNutrition> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF2196F3),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -170,7 +170,7 @@ class CustomCard extends StatelessWidget {
             children: [
               ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  Colors.blue.withOpacity(0.3),
+                  Color(0xFF2196F3).withOpacity(0.3),
                   BlendMode.srcATop,
                 ),
                 child: CachedNetworkImage(

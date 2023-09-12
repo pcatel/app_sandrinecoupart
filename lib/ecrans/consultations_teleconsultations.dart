@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_consultations.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -44,11 +44,11 @@ class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsulta
     return Scaffold(
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFFDE8C07),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 1, 1, 1)),
         ),

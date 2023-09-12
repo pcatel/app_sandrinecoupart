@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
-import 'liste_recettes.dart';
+import 'liste_recettes_allergies.dart';
 import '../bottom_navigation.dart';
 
 class RecettesAllergies extends StatefulWidget {
@@ -49,13 +49,13 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 1, 1, 1),
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
         ),
       ),
@@ -70,7 +70,7 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
               color: Colors.white,
               image: DecorationImage(
                 image: NetworkImage(
-                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg',
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg',
                 ),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
@@ -84,7 +84,7 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 7, 7, 7),
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
           ),
@@ -125,59 +125,64 @@ class RecettesAllergiesState extends State<RecettesAllergies> {
                 } else {
                   List<Map<String, String>> dataList = snapshot.data ?? [];
                   return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                    ),
-                    itemCount: dataList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      String nomAllergie = dataList[index]['NomAllergie'] ?? '';
-                      String nbreRecettes =
-                          dataList[index]['NbreRecettes'] ?? '';
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+  ),
+  itemCount: dataList.length,
+  itemBuilder: (BuildContext context, int index) {
+    String nomAllergie = dataList[index]['NomAllergie'] ?? '';
+    String nbreRecettes = dataList[index]['NbreRecettes'] ?? '';
 
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => ListeRecettes(
-                                IdAllergie: dataList[index]['IdAllergie']!,
-                                NomAllergie: dataList[index][
-                                    'NomAllergie']!, // Passez le nom de l'allergie sélectionnée
-                              ),
-                            ),
-                          );
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          color: const Color(0xFFDA93E7),
-                          elevation: 3,
-                          margin: const EdgeInsets.all(10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.network(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${dataList[index]['IdAllergie']}.jpg',
-                                width: 60,
-                                height: 60,
-                                fit: BoxFit.cover,
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                '$nomAllergie ($nbreRecettes)',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ListeRecettesAllergies(
+              idAllergie: dataList[index]['IdAllergie']!,
+              nomAllergie: dataList[index]['NomAllergie']!,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: const Color(0xFFDA93E7),
+        elevation: 3,
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: Image.network(
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${dataList[index]['IdAllergie']}.jpg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                '$nomAllergie ($nbreRecettes)',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  },
+);
+
+
                 }
               },
             ),

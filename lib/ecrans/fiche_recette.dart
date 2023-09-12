@@ -55,13 +55,13 @@ class FicheRecetteState extends State<FicheRecette> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: isLoading
@@ -111,7 +111,7 @@ class FicheRecetteState extends State<FicheRecette> {
         style: TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 0, 0, 0)),
+            color: Color.fromARGB(255, 252, 251, 251)),
       ),
     );
   }
@@ -166,7 +166,7 @@ class FicheRecetteState extends State<FicheRecette> {
             color: Color(0xFF45114E),
           ),
           child: Text(
-            '${recetteData?['titre']}',
+            '${recetteData?['categorie']} ==> ${recetteData?['titre']}',
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -179,7 +179,9 @@ class FicheRecetteState extends State<FicheRecette> {
         Container(
           // les temps
           height: containerHeight * 0.05,
-          decoration: const BoxDecoration(),
+          decoration: const BoxDecoration(
+                  color: Color(0xFF9C27B0),
+                ),
           child: Column(
             children: [
               Container(
@@ -228,7 +230,7 @@ class FicheRecetteState extends State<FicheRecette> {
           ),
         ),
         Container(
-          height: 20,
+          height: 1,
         ),
         Container(
           // les ingredients
@@ -269,7 +271,7 @@ class FicheRecetteState extends State<FicheRecette> {
           ),
         ),
         Container(
-          height: 20,
+          height: 1,
         ),
         Container(
           width: containerWidth,
@@ -342,7 +344,7 @@ class FicheRecetteState extends State<FicheRecette> {
           alignment: Alignment.bottomCenter,
           child: Container(
             padding: const EdgeInsets.all(8.0),
-            color: Color(0xFF9C27B0)
+            color: const Color(0xFF9C27B0)
                 .withOpacity(0.5), // Couleur d'arrière-plan du texte
             child: const Text(
               'Zoomer',

@@ -14,13 +14,13 @@ class Contacts extends StatelessWidget {
     return Scaffold(
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFFE91E63),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Container(
@@ -43,7 +43,7 @@ class Contacts extends StatelessWidget {
           style: TextStyle(
               fontSize: 36,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 7, 7, 7)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       bottomNavigationBar: const BottomNavigationBarScreen(

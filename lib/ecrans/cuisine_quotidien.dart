@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_atelier_prevention.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -36,13 +36,13 @@ class CusineQuotidienState extends State<CusineQuotidien> {
     return Scaffold(
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF548235),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(

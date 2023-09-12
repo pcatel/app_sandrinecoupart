@@ -37,13 +37,13 @@ class RecettesState extends State<Recettes> {
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -70,7 +70,7 @@ class RecettesState extends State<Recettes> {
               style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 7, 7, 7)),
+                  color: Color.fromARGB(255, 255, 255, 255)),
             ),
           ),
           FittedBox(

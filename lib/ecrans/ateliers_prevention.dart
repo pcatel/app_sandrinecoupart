@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_atelier_prevention.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'alimentation_durable.dart';
@@ -7,6 +7,7 @@ import 'cuisine_enfant_parent.dart';
 import 'cuisine_quotidien.dart';
 import 'alimentation_travail.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../drawer.dart';
 
 class AtelierPrevention extends StatefulWidget {
   const AtelierPrevention({super.key});
@@ -35,16 +36,17 @@ class AtelierPreventionState extends State<AtelierPrevention> {
     double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-     backgroundColor: const Color(0xFF84A66F),
-   
+     //backgroundColor: const Color(0xFF84A66F),
+    drawer: const MyDrawerWidget(),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+      
+        backgroundColor: const Color(0xFF548235),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 1, 1, 1),
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
         ),
       ),
@@ -93,7 +95,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                   List<String> dataList = snapshot.data ?? [];
                   return SingleChildScrollView(
                     child: Container(
-                      color: const Color(0xFF84A66F),
+                      //color: const Color(0xFF84A66F),
                       child: Column(
                         children: dataList.map((item) {
                           List<String> separatedText = item.split(':');

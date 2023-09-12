@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_consultations.dart';
 
 class ConsultationsDeroulement extends StatefulWidget {
   const ConsultationsDeroulement({Key? key}) : super(key: key);
