@@ -13,12 +13,13 @@ class Consultations extends StatefulWidget {
   const Consultations({super.key});
 
   @override
- ConsultationsState createState() => ConsultationsState();
+  ConsultationsState createState() => ConsultationsState();
 }
 
 class ConsultationsState extends State<Consultations> {
   Future<List<String>> fetchData() async {
-    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
+    final response = await http.get(Uri.parse(
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation.php'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
@@ -76,51 +77,54 @@ class ConsultationsState extends State<Consultations> {
             ),
           ),
           FittedBox(
-          fit: BoxFit.scaleDown,
+            fit: BoxFit.scaleDown,
             child: SizedBox(
               height: textContainerHeight,
               width: containerWidth,
               //color: Colors.red, // Couleur du container rouge
-             child: FutureBuilder<List<String>>(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return const Text('Erreur de chargement des données');
-              } else if (!snapshot.hasData) {
-                return const Text('Aucune donnée disponible');
-              } else {
-                List<String> dataList = snapshot.data ?? []; // Add this line to handle null data
-                String queryResult = dataList.join('\n');
-                return SingleChildScrollView(
-                  child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              queryResult,
-               style: GoogleFonts.nanumPenScript(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-                  ),
-                );
-              }
-            },
-          ),
-          
+              child: FutureBuilder<List<String>>(
+                future: fetchData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return const Text('Erreur de chargement des données');
+                  } else if (!snapshot.hasData) {
+                    return const Text('Aucune donnée disponible');
+                  } else {
+                    List<String> dataList = snapshot.data ??
+                        []; // Add this line to handle null data
+                    String queryResult = dataList.join('\n');
+                    return SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          queryResult,
+                          style: GoogleFonts.nanumPenScript(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
             ),
           ),
           Row(
             children: [
               GestureDetector(
                 onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConsultationsConsultations()));
-              },
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ConsultationsConsultations()));
+                },
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   width: containerWidth / 2,
                   height: containerHeight,
                   decoration: const BoxDecoration(
-                  
                     color: Colors.blue,
                     image: DecorationImage(
                       image: NetworkImage(
@@ -141,15 +145,16 @@ class ConsultationsState extends State<Consultations> {
                   ),
                 ),
               ),
-
-
-               GestureDetector(
+              GestureDetector(
                 onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConsultationsDeroulement()));
-              },
-                 child: Container(
-                    alignment: Alignment.bottomCenter,
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ConsultationsDeroulement()));
+                },
+                child: Container(
+                  alignment: Alignment.bottomCenter,
                   width: containerWidth / 2,
                   height: containerHeight,
                   decoration: const BoxDecoration(
@@ -171,19 +176,22 @@ class ConsultationsState extends State<Consultations> {
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 7, 7, 7)),
                   ),
-                             ),
-               ),
+                ),
+              ),
             ],
           ),
           Row(
             children: [
-               GestureDetector(
+              GestureDetector(
                 onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConsultationsTeleconsultation()));
-              },
-                 child: Container(
-                 alignment: Alignment.bottomCenter,
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const ConsultationsTeleconsultation()));
+                },
+                child: Container(
+                  alignment: Alignment.bottomCenter,
                   width: containerWidth / 2,
                   height: containerHeight,
                   decoration: const BoxDecoration(
@@ -205,15 +213,17 @@ class ConsultationsState extends State<Consultations> {
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 7, 7, 7)),
                   ),
-                             ),
-               ),
+                ),
+              ),
               GestureDetector(
                 onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const ConsultationsMutuelle()));
-              },
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ConsultationsMutuelle()));
+                },
                 child: Container(
-                   alignment: Alignment.bottomCenter,
+                  alignment: Alignment.bottomCenter,
                   width: containerWidth / 2,
                   height: containerHeight,
                   decoration: const BoxDecoration(
@@ -246,4 +256,3 @@ class ConsultationsState extends State<Consultations> {
     );
   }
 }
-

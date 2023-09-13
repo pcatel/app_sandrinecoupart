@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
 import 'package:mailer/mailer.dart';
-import 'package:mailer/smtp_server/gmail.dart'; // Utilisez un serveur SMTP approprié
+import 'package:mailer/smtp_server/gmail.dart';
+import '../bottom_navigation.dart';
 import '../home_screen.dart';
 
 class Contacts extends StatefulWidget {
@@ -104,16 +104,15 @@ class ContactsState extends State<Contacts> {
       ..subject = 'Demande de renseignement'
       ..text =
           'Vous avez un message de : ${_nomController.text} ${_prenomController.text}\n'
-          'Pour une demande concernant : $_selectedService\n'
-          '${_demandeController.text}\n\n'
-          'Email : ${_emailController.text}\n\n'
-          'Bonne journée.';
+              'Pour une demande concernant : $_selectedService\n'
+              '${_demandeController.text}\n\n'
+              'Email : ${_emailController.text}\n\n'
+              'Bonne journée.';
 
     try {
       await send(message, smtpServer);
-      _showEmailSentDialog(); // Afficher le dialogue de succès!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      _showEmailSentDialog();
     } catch (error) {
-      //print('Erreur lors de l\'envoi de l\'e-mail: $error');
       _scaffoldKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Erreur lors de l\'envoi de l\'e-mail'),
@@ -124,6 +123,9 @@ class ContactsState extends State<Contacts> {
 
   @override
   Widget build(BuildContext context) {
+    double containerHeight = MediaQuery.of(context).size.height;
+    double containerWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFFE91E63),
@@ -136,89 +138,366 @@ class ContactsState extends State<Contacts> {
           ),
         ),
       ),
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: <Widget>[
-            TextFormField(
-              controller: _nomController,
-              decoration: const InputDecoration(labelText: 'Nom'),
-              validator: (value) {
-                if (value?.isEmpty ?? true) {
-                  return 'Veuillez entrer votre nom';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _prenomController,
-              decoration: const InputDecoration(labelText: 'Prénom'),
-              validator: (value) {
-                if (value?.isEmpty ?? true) {
-                  return 'Veuillez entrer votre prénom';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(labelText: 'Email'),
-              validator: (value) {
-                if (value?.isEmpty ?? true || !value!.contains('@')) {
-                  return 'Veuillez entrer une adresse e-mail valide';
-                }
-                return null;
-              },
-            ),
-            DropdownButtonFormField<String>(
-              value: _selectedService,
-              onChanged: (value) {
-                setState(() {
-                  _selectedService = value!;
-                });
-              },
-              items: [
-                'Consultation',
-                'Ateliers prévention',
-                'Infos nutrition',
-                'Autre demande'
-              ]
-                  .map<DropdownMenuItem<String>>(
-                    (String value) => DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    ),
-                  )
-                  .toList(),
-              decoration:
-                  const InputDecoration(labelText: 'Choisir un service'),
-            ),
-            TextFormField(
-              controller: _demandeController,
-              maxLines: 4,
-              decoration:
-                  const InputDecoration(labelText: 'Préciser votre demande'),
-              validator: (value) {
-                if (value?.isEmpty ?? true) {
-                  return 'Veuillez préciser votre demande';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  _showSummaryDialog(); // Afficher le récapitulatif
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFE91E63),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [Container(
+            alignment: Alignment.center,
+             height: containerHeight * 0.08,
+      width: containerWidth,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/contact.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Color(0xFFE91E63),
+                  BlendMode.color,
+                ),
               ),
-              child: const Text('Envoyer'),
             ),
+            child: const Text(
+              'Contacts',
+              style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 7, 7, 7)),
+            ),
+          ),
+            // Container 1
+            Container(
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Container(
+                color: Color.fromARGB(255, 255, 244, 247),
+                  height: containerHeight * 0.08,
+      width: containerWidth,
+                  child: Row(
+                    mainAxisAlignment:
+                        MainAxisAlignment.start, // Aligne les éléments à gauche
+                    crossAxisAlignment: CrossAxisAlignment
+                        .center, // Centre les éléments verticalement
+                    children: [
+                      // Partie 1 de la première row
+                      Container(
+                      
+                        height: 100,
+                        width: 100,
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.network(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/phone.png'),
+                      ),
+                      // Partie 2 de la première row
+                      Expanded(
+                        child: Center(
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment
+                                  .center, // Centre les éléments horizontalement dans la colonne
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .center, // Centre les éléments verticalement dans la colonne
+                              children: [
+                                Text(
+                                  'Téléphone',
+                                  style: TextStyle(
+                                      fontSize: 26,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                                Text(
+                                  '+33123456789',
+                                  style: TextStyle(
+                                      fontSize: 26,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
+            Container(
+             height: containerHeight * 0.08,
+      width: containerWidth,
+                color: const Color.fromARGB(255, 255, 255, 255),
+                child: Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.start, // Aligne les éléments à gauche
+                  crossAxisAlignment: CrossAxisAlignment
+                      .center, // Centre les éléments verticalement
+                  children: [
+                    // Partie 1 de la première row
+                    Container(
+                      height: 100,
+                      width: 100,
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.network(
+                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/email.png'),
+                    ),
+                    // Partie 2 de la première row
+                    Expanded(
+                      child: Center(
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment
+                                .center, // Centre les éléments horizontalement dans la colonne
+                            crossAxisAlignment: CrossAxisAlignment
+                                .center, // Centre les éléments verticalement dans la colonne
+                            children: [
+                              Text(
+                                'Formulaire de contact',
+                                style: TextStyle(
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 7, 7, 7)),
+                              ),
+                              Text(
+                                'Merci de remplir tous les champs du formulaire, je répondrais dans les plus brefs délais',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 7, 7, 7)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
+
+            // Container 2 avec le formulaire
+            Container(
+              color: Color.fromARGB(255, 255, 244, 247),
+              padding: const EdgeInsets.all(16.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _nomController,
+                      decoration: const InputDecoration(labelText: 'Nom'),
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Veuillez entrer votre nom';
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      controller: _prenomController,
+                      decoration: const InputDecoration(labelText: 'Prénom'),
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Veuillez entrer votre prénom';
+                        }
+                        return null;
+                      },
+                    ),
+                    TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(labelText: 'Email'),
+                      validator: (value) {
+                        if (value?.isEmpty ?? true || !value!.contains('@')) {
+                          return 'Veuillez entrer une adresse e-mail valide';
+                        }
+                        return null;
+                      },
+                    ),
+                    DropdownButtonFormField<String>(
+                      value: _selectedService,
+                      onChanged: (value) {
+                        setState(() {
+                          _selectedService = value!;
+                        });
+                      },
+                      items: [
+                        'Consultation',
+                        'Ateliers prévention',
+                        'Infos nutrition',
+                        'Autre demande'
+                      ]
+                          .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            ),
+                          )
+                          .toList(),
+                      decoration: const InputDecoration(
+                          labelText: 'Choisir un service'),
+                    ),
+                    TextFormField(
+                      controller: _demandeController,
+                      maxLines: 4,
+                      decoration: const InputDecoration(
+                          labelText: 'Préciser votre demande'),
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Veuillez préciser votre demande';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _showSummaryDialog();
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFE91E63),
+                      ),
+                      child: const Text('Envoyer'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Container 3
+            Container(
+             height: containerHeight * 0.15,
+      width: containerWidth,
+                child: Row(
+              mainAxisAlignment:
+                  MainAxisAlignment.start, // Aligne les éléments à gauche
+              crossAxisAlignment: CrossAxisAlignment
+                  .center, // Centre les éléments verticalement
+              children: [
+                // Partie 1 de la première row
+                Container(
+                  height: 100,
+                  width: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(
+                      'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/horaires.png'),
+                ),
+                // Partie 2 de la première row
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment
+                            .center, // Centre les éléments horizontalement dans la colonne
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, // Centre les éléments verticalement dans la colonne
+                        children: [
+                          Text(
+                            'Horaires',
+                            style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            'Lundi - Vendredi',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            '09:00 - 12:00 14:00 - 18:00',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            'Samedi',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            '09:00 - 12:00',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )),
+
+            // Container 3
+            Container(
+            color: Color.fromARGB(255, 255, 244, 247),
+             height: containerHeight * 0.1,
+      width: containerWidth,
+                child: Row(
+              mainAxisAlignment:
+                  MainAxisAlignment.start, // Aligne les éléments à gauche
+              crossAxisAlignment: CrossAxisAlignment
+                  .center, // Centre les éléments verticalement
+              children: [
+                // Partie 1 de la première row
+                Container(
+                  height: 100,
+                  width: 100,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.network(
+                      'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/localisation.png'),
+                ),
+                // Partie 2 de la première row
+                Expanded(
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment
+                            .center, // Centre les éléments horizontalement dans la colonne
+                        crossAxisAlignment: CrossAxisAlignment
+                            .center, // Centre les éléments verticalement dans la colonne
+                        children: [
+                          Text(
+                            'Se rendre au cabinet',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            '97 rue des bouvreuils',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            '45770 SARAN',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                          Text(
+                            'Parking privé',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7)),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )),
           ],
         ),
       ),
