@@ -103,7 +103,7 @@ class ListeRecettesAllergiesState extends State<ListeRecettesAllergies> {
                         ),
                       ),
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                         width:double.infinity,
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
