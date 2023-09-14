@@ -109,14 +109,14 @@ class ListeRecettesTypesPlatsState extends State<ListeRecettesTypesPlats> {
                             scrollDirection: Axis.vertical,
                             child: DataTable(
                               columns: const [
-                                DataColumn(label: Text('categorie',style: TextStyle(fontSize: 24),)),
-                                 DataColumn(label: Text('recette',style: TextStyle(fontSize: 24),)),
+                                DataColumn(label: Text('categorie',style: TextStyle(fontSize: 18),)),
+                                 DataColumn(label: Text('recette',style: TextStyle(fontSize: 18),)),
                               ],
                               rows: recettes
                                   .map(
                                     (recette) => DataRow(
                                       cells: [
-                                        DataCell(Text(recette.categorie,style: const TextStyle(fontSize: 20))),
+                                        DataCell(Text(recette.categorie,style: const TextStyle(fontSize: 18))),
                                         DataCell(
                                           GestureDetector(
                                             onTap: () {
@@ -131,7 +131,7 @@ class ListeRecettesTypesPlatsState extends State<ListeRecettesTypesPlats> {
                                                 ),
                                               );
                                             },
-                                            child: Text(recette.nom,style: const TextStyle(fontSize: 20)),
+                                            child: Text(recette.nom,style: const TextStyle(fontSize: 18)),
                                           ),
                                         ),
                                       ],
