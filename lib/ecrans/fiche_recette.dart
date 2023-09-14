@@ -168,7 +168,7 @@ class FicheRecetteState extends State<FicheRecette> {
           child: Text(
             '${recetteData?['categorie']} ==> ${recetteData?['titre']}',
             style: const TextStyle(
-              fontSize: 24,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
@@ -192,7 +192,7 @@ class FicheRecetteState extends State<FicheRecette> {
                 child: Text(
                   'Temps de préparation : ${recetteData?['temps_preparation']} minutes',
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.left,
@@ -206,7 +206,7 @@ class FicheRecetteState extends State<FicheRecette> {
                 child: Text(
                   'Temps de repos : ${recetteData?['temps_repos']} minutes',
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 12,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.left,

@@ -8,6 +8,7 @@ import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
 
@@ -52,7 +53,7 @@ class MyDrawerWidget extends StatelessWidget {
                           "Sandrine COUPART",
                           style: TextStyle(
                               color: Color(0xFF00353F),
-                              fontSize: 16,
+                              fontSize: 12,
                               fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -99,16 +100,8 @@ class MyDrawerWidget extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                            color: Colors.white,
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
-                              fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Color(0xFFDE8C07),
-                                BlendMode.color,
-                              ),
-                            ),
+                            color: Color(0xFFDE8C07),
+                           
                           ),
                           child: const Text(
                             'Consultations',
@@ -131,16 +124,8 @@ class MyDrawerWidget extends StatelessWidget {
                        alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention.jpg'),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Color(0xFF548235),
-                                  BlendMode.color,
-                                ),
-                              )),
+                              color: Color(0xFF548235),
+                              ),
                           child: const Text(
                             'Ateliers prévention',
                             style: TextStyle(
@@ -162,16 +147,8 @@ class MyDrawerWidget extends StatelessWidget {
                         alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/infos_nutrition.jpg'),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Color(0xFF2196F3),
-                                  BlendMode.color,
-                                ),
-                              )),
+                              color: Color(0xFF2196F3),
+                             ),
                           child: const Text(
                             'Infos nutrition',
                             style: TextStyle(
@@ -192,16 +169,8 @@ class MyDrawerWidget extends StatelessWidget {
                     alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Color(0xFF9C27B0),
-                                  BlendMode.color,
-                                ),
-                              )),
+                              color: Color(0xFF9C27B0),
+                             ),
                           child: const Text(
                             'Recettes',
                             style: TextStyle(
@@ -222,16 +191,8 @@ class MyDrawerWidget extends StatelessWidget {
                          alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/temoignages.jpg'),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Color(0xFF795548),
-                                  BlendMode.color,
-                                ),
-                              )),
+                              color: Color(0xFF795548),
+                            ),
                           child: const Text(
                             'Temoignages',
                             style: TextStyle(
@@ -252,18 +213,10 @@ class MyDrawerWidget extends StatelessWidget {
                           alignment: Alignment.topLeft,
                         //  height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Colors.white,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/contact.jpg'),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                  Color(0xFFE91E63),
-                                  BlendMode.color,
-                                ),
-                              )),
+                              color: Color(0xFFE91E63),
+                              ),
                           child: const Text(
-                            'Me Contacter',
+                            'Me contacter',
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -271,6 +224,7 @@ class MyDrawerWidget extends StatelessWidget {
                           ),
                         ),
                       ),
+                      
                     ],
                   ),
                 ),

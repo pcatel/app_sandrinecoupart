@@ -49,7 +49,7 @@ class PresentationState extends State<Presentation> {
               return Text('Error: ${snapshot.error}');
             } else {
               return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
@@ -57,8 +57,8 @@ class PresentationState extends State<Presentation> {
                     margin: const EdgeInsets.only(top: 1),
                     child: ClipOval(
                       child: Container(
-                        width: 300, // Largeur de l'image
-                        height: 300, // Hauteur de l'image
+                        width: 150, // Largeur de l'image
+                        height: 150, // Hauteur de l'image
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black, // Couleur de la bordure
@@ -82,8 +82,8 @@ class PresentationState extends State<Presentation> {
                     child: ListTile(
                       title: Text(
                         snapshot.data?[0] ?? '',
-                        style: GoogleFonts.nanumPenScript(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.lato(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       // Appliquez ici les styles que vous souhaitez
                     ),
@@ -94,8 +94,8 @@ class PresentationState extends State<Presentation> {
                     child: ListTile(
                       title: Text(
                         snapshot.data?[1] ?? '',
-                        style: GoogleFonts.nanumPenScript(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.lato(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       // Appliquez ici les styles que vous souhaitez
                     ),
@@ -106,8 +106,8 @@ class PresentationState extends State<Presentation> {
                     child: ListTile(
                       title: Text(
                         snapshot.data?[2] ?? '',
-                        style: GoogleFonts.nanumPenScript(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.lato(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       // Appliquez ici les styles que vous souhaitez
                     ),
@@ -118,8 +118,8 @@ class PresentationState extends State<Presentation> {
                     child: ListTile(
                       title: Text(
                         snapshot.data?[3] ?? '',
-                        style: GoogleFonts.nanumPenScript(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.lato(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       // Appliquez ici les styles que vous souhaitez
                     ),

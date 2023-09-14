@@ -95,8 +95,8 @@ class RecettesState extends State<Recettes> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           queryResult,
-                          style: GoogleFonts.nanumPenScript(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.lato(
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                       ),
                     );

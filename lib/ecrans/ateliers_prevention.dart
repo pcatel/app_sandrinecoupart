@@ -116,7 +116,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                                 padding: const EdgeInsets.all(2.0),
                                 child: Text(
                                   description,
-                                  style: GoogleFonts.nanumPenScript(
+                                  style: GoogleFonts.lato(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),
