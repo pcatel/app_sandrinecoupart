@@ -48,7 +48,7 @@ class Localisation extends StatelessWidget {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-          Expanded(
+          const Expanded(
             child: WebView(
               initialUrl: 'https://goo.gl/maps/Eks4KR67PkjwQ2d48',
               javascriptMode: JavascriptMode.unrestricted,

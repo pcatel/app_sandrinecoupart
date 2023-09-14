@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
-import 'login.dart';
+import 'liste_recettes_types_plats.dart';
+import '../bottom_navigation.dart';
 
 class RecettesTypesPlats extends StatefulWidget {
-  const RecettesTypesPlats({super.key});
+  const RecettesTypesPlats({Key? key}) : super(key: key);
 
   @override
   RecettesTypesPlatsState createState() => RecettesTypesPlatsState();
 }
 
 class RecettesTypesPlatsState extends State<RecettesTypesPlats> {
-  Future<List<String>> fetchData() async {
+  Future<List<String>> fetchMutuelleData() async {
     final response = await http.get(Uri.parse(
-        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_recettes.php'));
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_recettes_types_plats.php'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
@@ -25,23 +25,38 @@ class RecettesTypesPlatsState extends State<RecettesTypesPlats> {
     }
   }
 
+  Future<List<Map<String, String>>> fetchCommentairesData() async {
+    final response = await http.get(Uri.parse(
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_categories.php'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonData = json.decode(response.body);
+      List<Map<String, String>> data = [];
+      for (var item in jsonData) {
+        data.add({
+          "NomCategorie": item['NomCategorie'],
+          "IdCategorie": item['IdCategorie'],
+          "NbreRecettes": item['NbreRecettes']
+        });
+      }
+      return data;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    int numberOfContainers = 6;
-    double containerHeight =
-        MediaQuery.of(context).size.height / numberOfContainers;
-    double textContainerHeight = containerHeight * 1.5;
-
-    double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF609a7d),
+        backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color.fromARGB(255, 255, 255, 255),
+          ),
         ),
       ),
       body: Column(
@@ -49,13 +64,14 @@ class RecettesTypesPlatsState extends State<RecettesTypesPlats> {
         children: [
           Container(
             alignment: Alignment.center,
-            height: containerHeight,
-            width: containerWidth,
+            height: 200,
+            width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
               color: Colors.white,
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg',
+                ),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Color(0xFF9C27B0),
@@ -64,119 +80,118 @@ class RecettesTypesPlatsState extends State<RecettesTypesPlats> {
               ),
             ),
             child: const Text(
-              'RecettesTypesPlats',
+              'Recettes par types de plats',
               style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 7, 7, 7)),
-            ),
-          ),
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: SizedBox(
-              height: textContainerHeight,
-              width: containerWidth,
-              child: FutureBuilder<List<String>>(
-                future: fetchData(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
-                  } else if (snapshot.hasError) {
-                    return const Text('Erreur de chargement des données');
-                  } else if (!snapshot.hasData) {
-                    return const Text('Aucune donnée disponible');
-                  } else {
-                    List<String> dataList = snapshot.data ?? [];
-                    String queryResult = dataList.join('\n');
-                    return SingleChildScrollView(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          queryResult,
-                          style: GoogleFonts.lato(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    );
-                  }
-                },
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
             ),
           ),
-          Container(
-            height: containerHeight,
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      50, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Voir les recettes" à implémenter ici
-                      Navigator.pushNamed(context, '/voirRecettesTypesPlats');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
-                    ),
-                    child: const Text('RecettesTypesPlats par types d\'allergies'),
+          FutureBuilder<List<String>>(
+            future: fetchMutuelleData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return const Text('Erreur de chargement des données');
+              } else if (!snapshot.hasData) {
+                return const Text('Aucune donnée disponible');
+              } else {
+                List<String> dataList = snapshot.data ?? [];
+                String queryResult = dataList.join('\n');
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    queryResult,
+                    style: GoogleFonts.lato(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
+                );
+              }
+            },
+          ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: FutureBuilder<List<Map<String, String>>>(
+              future: fetchCommentairesData(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return const Text('Erreur de chargement des données');
+                } else if (!snapshot.hasData) {
+                  return const Text('Aucune donnée disponible');
+                } else {
+                  List<Map<String, String>> dataList = snapshot.data ?? [];
+                  return GridView.builder(
+  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+  ),
+  itemCount: dataList.length,
+  itemBuilder: (BuildContext context, int index) {
+    String nomCategorie = dataList[index]['NomCategorie'] ?? '';
+    String nbreRecettes = dataList[index]['NbreRecettes'] ?? '';
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => ListeRecettesTypesPlats(
+              idCategorie: dataList[index]['IdCategorie']!,
+              nomCategorie: dataList[index]['NomCategorie']!,
+            ),
+          ),
+        );
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: const Color(0xFFDA93E7),
+        elevation: 3,
+        margin: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: Image.network(
+                  'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/types_plats/${dataList[index]['IdCategorie']}.jpg',
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(
-                  height: 16, // Espace vertical entre les boutons
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                '$nomCategorie ($nbreRecettes)',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
-               
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      60, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Voir les recettes" à implémenter ici
-                      Navigator.pushNamed(context, '/voirRecettesTypesPlats');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
-                    ),
-                    child: const Text('RecettesTypesPlats par types de plats'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 50, // Espace vertical entre les boutons
-                ),
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      50, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Me connecter" à implémenter ici
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Login()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
-                    ),
-                    child: const Text('Me connecter'),
-                  ),
-                ),
-              ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  },
+);
+
+
+                }
+              },
             ),
           ),
         ],
       ),
-      bottomNavigationBar:
-          const BottomNavigationBarScreen(backgroundColor: Color(0xFF9C27B0)),
+       bottomNavigationBar: const BottomNavigationBarScreen(
+        backgroundColor: Color(0xFF9C27B0),
+      ),
     );
   }
 }

@@ -363,7 +363,7 @@ class ContactsState extends State<Contacts> {
             ),
 
             // Container 3
-            Container(
+            SizedBox(
                 height: containerHeight * 0.15,
                 width: containerWidth,
                 child: Row(
@@ -452,7 +452,7 @@ class ContactsState extends State<Contacts> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  Localisation()), // Remplacez 'ecran7()' par le nom de votre écran.
+                                  const Localisation()), // Remplacez 'ecran7()' par le nom de votre écran.
                         );
                       },
                       child: Container(
