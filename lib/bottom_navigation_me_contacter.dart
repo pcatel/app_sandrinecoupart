@@ -53,7 +53,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
             '0761886820'); // Remplacez le numéro par le numéro que vous souhaitez composer
         break;
       case 2:
-        // Naviguer vers l'écran correspondant
+        _showEmailDialog();
         break;
       case 3:
         Navigator.push(
@@ -100,17 +100,57 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
     );
   }
 
-void _launchPhone(String phoneNumber) async {
-  final String uri = 'tel:$phoneNumber';
+  void _launchPhone(String phoneNumber) async {
+    final String uri = 'tel:$phoneNumber';
 
-  if (await canLaunch(uri)) {
-    await launch(uri);
-  } else {
-    throw 'Impossible de lancer $phoneNumber';
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      throw 'Impossible de lancer $phoneNumber';
+    }
   }
-}
 
+  void _showEmailDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirmation"),
+          content:
+              Text("Vous allez ouvrir l'application de messagerie. Continuer ?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Annuler"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Ouvrir"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _launchEmail('destinataire@example.com');
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
+  void _launchEmail(String email) async {
+    final Uri uri = Uri(
+      scheme: 'mailto',
+      path: email,
+      queryParameters: {'subject': 'demande de renseignement'},
+    );
+
+    if (await canLaunch(uri.toString())) {
+      await launch(uri.toString());
+    } else {
+      throw 'Impossible de lancer l\'application de messagerie';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
