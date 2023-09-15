@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
-import '../bottom_navigation.dart';
-import 'menus_semaine.dart'; // Importer le fichier semaine1.dart
+import '../bottom_navigation_recettes.dart';
+import 'menus_semaine.dart';
 
 class Menus extends StatefulWidget {
   const Menus({super.key});

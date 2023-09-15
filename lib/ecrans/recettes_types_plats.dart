@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 import 'liste_recettes_types_plats.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_recettes.dart';
 
 class RecettesTypesPlats extends StatefulWidget {
   const RecettesTypesPlats({Key? key}) : super(key: key);

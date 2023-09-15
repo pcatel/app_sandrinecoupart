@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'fiche_recette.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_recettes.dart';
 
 class ListeRecettesAllergies extends StatefulWidget {
   final String idAllergie;

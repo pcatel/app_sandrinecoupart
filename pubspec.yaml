@@ -38,11 +38,13 @@ dependencies:
   mysql1: ^0.20.0
   http: ^1.1.0
   cached_network_image: ^3.2.3
-  url_launcher: ^6.0.12
+   #url_launcher: ^6.1.14
+  url_launcher: ^5.7.10
   mailer: ^6.0.1
   google_maps_flutter: ^2.0.10
   webview_flutter: ^2.0.13
-  vertical_card_pager: ^1.0.0
+  vertical_card_pager: ^1.4.0
+
   
 
 dev_dependencies:

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_recettes.dart';
 import 'menu_model.dart';
 
 class MenuSemaine extends StatefulWidget {
@@ -65,49 +65,65 @@ class MenuSemaineState extends State<MenuSemaine> {
     final List<Widget> images = List.generate(
       titles.length,
       (index) => Card(
-        margin: const EdgeInsets.only(left: 2, right: 2),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25.0),
+  margin: const EdgeInsets.only(left: 2, right: 2),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(25.0),
+  ),
+  color: const Color(0xFF9C27B0),
+  child: Padding(
+    padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
+          child: Text(
+            'Petit déjeuner: \n  ${menus[index].petitDejeuner}',
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
         ),
-        color: const Color(0xFF9C27B0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Petit déjeuner: \n  ${menus[index].petitDejeuner}',
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+        Padding(
+          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
+          child: Text(
+            'Déjeuner: \n ${menus[index].dejeuner}',
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
-            Text(
-              'Déjeuner: \n ${menus[index].dejeuner}',
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-            ),
-            Text(
-              'Collation: \n  ${menus[index].collation}',
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-            ),
-            Text(
-              'Dîner: \n ${menus[index].diner}',
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
+          child: Text(
+            'Collation: \n  ${menus[index].collation}',
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
+          child: Text(
+            'Dîner: \n ${menus[index].diner}',
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
     );
 
     double containerHeight =

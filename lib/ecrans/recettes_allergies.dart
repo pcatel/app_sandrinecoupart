@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
 import 'liste_recettes_allergies.dart';
-import '../bottom_navigation.dart';
+import '../bottom_navigation_recettes.dart';
 
 class RecettesAllergies extends StatefulWidget {
   const RecettesAllergies({Key? key}) : super(key: key);

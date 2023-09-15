@@ -1,27 +1,23 @@
-
+//import 'package:app_sandrinecoupart/ecrans/menus_semaine.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
 
-
-import 'ecrans/consultations_deroulement.dart';
-import 'ecrans/consultations_teleconsultations.dart';
-import 'ecrans/consultations_relations_mutuelle.dart';
-import 'ecrans/consultations_consultations.dart';
+import 'ecrans/recettes_allergies.dart';
+import 'ecrans/recettes_types_plats.dart';
+import 'ecrans/menus.dart';
 import 'ecrans/contacts.dart';
 
-
-
 class BottomNavigationBarScreen extends StatefulWidget {
- final Color backgroundColor; // Nouveau paramètre
+  final Color backgroundColor; // Nouveau paramètre
 
   const BottomNavigationBarScreen({
     Key? key,
     required this.backgroundColor,
   }) : super(key: key);
 
-
   @override
-  State<BottomNavigationBarScreen> createState() => _BottomNavigationBarScreenState();
+  State<BottomNavigationBarScreen> createState() =>
+      _BottomNavigationBarScreenState();
 }
 
 class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
@@ -29,19 +25,17 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
 
   static const List<IconData> _icons = [
     Icons.home,
-    Icons.airline_seat_recline_normal,
-    Icons.api_sharp,
-    Icons.assignment_ind,
-    Icons.bakery_dining_sharp,
-    Icons.contact_page
+    Icons.list,
+    Icons.list,
+    Icons.event_note,
+    Icons.contact_page,
   ];
 
   static const List<String> _labels = [
     'Accueil',
-    'Consultations',
-    'Déroulement',
-    'Téléconsultations',
-    'Relations Mutuelles',
+    'Allergies',
+    'Types de plats',
+    'Menus',
     'Me contacter',
   ];
 
@@ -58,36 +52,31 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         );
         break;
       case 1:
-         Navigator.push(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ConsultationsConsultations()),
+          MaterialPageRoute(builder: (context) => const RecettesAllergies()),
         );
         break;
       case 2:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ConsultationsDeroulement()),
+          MaterialPageRoute(builder: (context) => const RecettesTypesPlats()),
         );
         break;
       case 3:
-         Navigator.push(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ConsultationsTeleconsultation()),
+          MaterialPageRoute(builder: (context) => const Menus()),
         );
         break;
       case 4:
-         Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ConsultationsMutuelle()),
-        );// Naviguer vers l'écran correspondant
-        break;
-      case 5:
-         Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const Contacts()),
-        );// Naviguer vers l'écran correspondant
-        break;// Naviguer vers l'écran correspondant
-       
+        ); // Naviguer vers l'écran correspondant
+        break;
+      // Naviguer vers l'écran correspondant
+
       default:
         break;
     }

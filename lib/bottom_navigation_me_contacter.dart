@@ -1,27 +1,20 @@
-
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-
-
-import 'ecrans/consultations_deroulement.dart';
-import 'ecrans/consultations_teleconsultations.dart';
-import 'ecrans/consultations_relations_mutuelle.dart';
-import 'ecrans/consultations_consultations.dart';
 import 'ecrans/contacts.dart';
-
-
+import 'ecrans/localisation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BottomNavigationBarScreen extends StatefulWidget {
- final Color backgroundColor; // Nouveau paramètre
+  final Color backgroundColor;
 
   const BottomNavigationBarScreen({
     Key? key,
     required this.backgroundColor,
   }) : super(key: key);
 
-
   @override
-  State<BottomNavigationBarScreen> createState() => _BottomNavigationBarScreenState();
+  State<BottomNavigationBarScreen> createState() =>
+      _BottomNavigationBarScreenState();
 }
 
 class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
@@ -29,20 +22,18 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
 
   static const List<IconData> _icons = [
     Icons.home,
-    Icons.airline_seat_recline_normal,
-    Icons.api_sharp,
-    Icons.assignment_ind,
-    Icons.bakery_dining_sharp,
-    Icons.contact_page
+    Icons.phone,
+    Icons.mail,
+    Icons.location_on,
+    Icons.contact_page,
   ];
 
   static const List<String> _labels = [
     'Accueil',
-    'Consultations',
-    'Déroulement',
-    'Téléconsultations',
-    'Relations Mutuelles',
-    'Me contacter',
+    'Appeler',
+    'Email',
+    'Localisation',
+    'Contacter',
   ];
 
   void _onItemTapped(int index) {
@@ -58,40 +49,68 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         );
         break;
       case 1:
-         Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ConsultationsConsultations()),
-        );
+        _showConfirmationDialog(
+            '0761886820'); // Remplacez le numéro par le numéro que vous souhaitez composer
         break;
       case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ConsultationsDeroulement()),
-        );
+        // Naviguer vers l'écran correspondant
         break;
       case 3:
-         Navigator.push(
+        Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ConsultationsTeleconsultation()),
+          MaterialPageRoute(builder: (context) => const Localisation()),
         );
         break;
       case 4:
-         Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ConsultationsMutuelle()),
-        );// Naviguer vers l'écran correspondant
-        break;
-      case 5:
-         Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const Contacts()),
-        );// Naviguer vers l'écran correspondant
-        break;// Naviguer vers l'écran correspondant
-       
+        );
+        break;
       default:
         break;
     }
   }
+
+  void _showConfirmationDialog(String phoneNumber) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Confirmation"),
+          content:
+              Text("Vous allez appeler le numéro $phoneNumber. Continuer ?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Annuler"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text("Appeler"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                _launchPhone(phoneNumber);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+void _launchPhone(String phoneNumber) async {
+  final String uri = 'tel:$phoneNumber';
+
+  if (await canLaunch(uri)) {
+    await launch(uri);
+  } else {
+    throw 'Impossible de lancer $phoneNumber';
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
