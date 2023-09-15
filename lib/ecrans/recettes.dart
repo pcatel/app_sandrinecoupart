@@ -3,7 +3,7 @@ import '../bottom_navigation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
-import 'login.dart';
+import 'menus.dart';
 import 'recettes_allergies.dart';
 import 'recettes_types_plats.dart';
 
@@ -106,7 +106,7 @@ class RecettesState extends State<Recettes> {
             ),
           ),
           Container(
-            height: containerHeight,
+            //height: containerHeight,
             alignment: Alignment.center,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -139,7 +139,7 @@ class RecettesState extends State<Recettes> {
                   width:
                       300, // Définissez la largeur souhaitée pour les boutons
                   height:
-                      60, // Définissez la hauteur souhaitée pour les boutons
+                      50, // Définissez la hauteur souhaitée pour les boutons
                   child: ElevatedButton(
                     onPressed: () {
                       // Logique de navigation pour "Voir les recettes" à implémenter ici
@@ -169,13 +169,13 @@ class RecettesState extends State<Recettes> {
                     Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const Login()));
+                        builder: (context) => const Menus()));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           const Color(0xFF9C27B0), // Couleur du bouton
                     ),
-                    child: const Text('Me connecter'),
+                    child: const Text('Idées menus'),
                   ),
                 ),
               ],

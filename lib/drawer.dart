@@ -7,6 +7,7 @@ import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'ecrans/menus_semaine.dart';
 
 
 class MyDrawerWidget extends StatelessWidget {
@@ -217,6 +218,28 @@ class MyDrawerWidget extends StatelessWidget {
                               ),
                           child: const Text(
                             'Me contacter',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 255, 255, 255)),
+                          ),
+                        ),
+                      ),
+                            GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MenuSemaine("1")));
+                        },
+                        child: Container(
+                          alignment: Alignment.topLeft,
+                        //  height: containerHeight,
+                          decoration: const BoxDecoration(
+                              color: Color(0xFFE91E63),
+                              ),
+                          child: const Text(
+                            'Test',
                             style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
