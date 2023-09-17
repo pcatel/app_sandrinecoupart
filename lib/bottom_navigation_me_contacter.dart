@@ -36,6 +36,25 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
     'Contacter',
   ];
 
+  // Ajoutez une variable pour stocker le BuildContext
+  late BuildContext _context;
+
+  @override
+  void initState() {
+    super.initState();
+    // Obtenez le BuildContext dans initState
+    _context = context;
+  }
+
+  void _launchPhone(String phoneNumber) async {
+    Uri phoneno = Uri.parse('tel:0761886820');
+    if (await launchUrl(phoneno)) {
+      //dialer opened
+    } else {
+      //dailer is not opened
+    }
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -44,26 +63,25 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
     switch (index) {
       case 0:
         Navigator.push(
-          context,
+          _context, // Utilisez le BuildContext stocké
           MaterialPageRoute(builder: (context) => const HomeScreen()),
         );
         break;
       case 1:
-        _showConfirmationDialog(
-            '0761886820'); // Remplacez le numéro par le numéro que vous souhaitez composer
-        break;
+        _launchPhone('+97798345348734');
+
       case 2:
         _showEmailDialog();
         break;
       case 3:
         Navigator.push(
-          context,
+          _context, // Utilisez le BuildContext stocké
           MaterialPageRoute(builder: (context) => const Localisation()),
         );
         break;
       case 4:
         Navigator.push(
-          context,
+          _context, // Utilisez le BuildContext stocké
           MaterialPageRoute(builder: (context) => const Contacts()),
         );
         break;
@@ -72,52 +90,14 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
     }
   }
 
-  void _showConfirmationDialog(String phoneNumber) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Confirmation"),
-          content:
-              Text("Vous allez appeler le numéro $phoneNumber. Continuer ?"),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("Annuler"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text("Appeler"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                _launchPhone(phoneNumber);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _launchPhone(String phoneNumber) async {
-    final String uri = 'tel:$phoneNumber';
-
-    if (await canLaunch(uri)) {
-      await launch(uri);
-    } else {
-      throw 'Impossible de lancer $phoneNumber';
-    }
-  }
-
   void _showEmailDialog() {
     showDialog(
-      context: context,
+      context: _context, // Utilisez le BuildContext stocké
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("Confirmation"),
-          content:
-              Text("Vous allez ouvrir l'application de messagerie. Continuer ?"),
+          content: const Text(
+              "Vous allez ouvrir l'application de messagerie. Continuer ?"),
           actions: <Widget>[
             TextButton(
               child: const Text("Annuler"),
@@ -145,8 +125,8 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
       queryParameters: {'subject': 'demande de renseignement'},
     );
 
-    if (await canLaunch(uri.toString())) {
-      await launch(uri.toString());
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Impossible de lancer l\'application de messagerie';
     }

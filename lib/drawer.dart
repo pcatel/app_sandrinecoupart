@@ -230,7 +230,7 @@ class MyDrawerWidget extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MenuSemaine("1")));
+                                  builder: (context) => const MenuSemaine("1")));
                         },
                         child: Container(
                           alignment: Alignment.topLeft,

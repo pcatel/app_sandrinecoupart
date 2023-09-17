@@ -4,6 +4,7 @@ import 'package:mailer/smtp_server/gmail.dart';
 import '../bottom_navigation_me_contacter.dart';
 import '../home_screen.dart';
 import 'localisation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -29,6 +30,15 @@ class ContactsState extends State<Contacts> {
     _prenomController.dispose();
     _demandeController.dispose();
     super.dispose();
+  }
+
+  void _launchPhone(String phoneNumber) async {
+    Uri phoneno = Uri.parse('tel:0761886820');
+    if (await launchUrl(phoneno)) {
+      //dialer opened
+    } else {
+      //dailer is not opened
+    }
   }
 
   void _showEmailSentDialog() {
@@ -180,39 +190,49 @@ class ContactsState extends State<Contacts> {
                         .center, // Centre les éléments verticalement
                     children: [
                       // Partie 1 de la première row
-                      Container(
-                        height: 50,
-                        width: 50,
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.network(
-                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/phone.png'),
+                      GestureDetector(
+                      onTap: () {
+      _launchPhone('0761886820'); // Remplacez le numéro de téléphone par le numéro souhaité.
+    },
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.network(
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/phone.png'),
+                        ),
                       ),
                       // Partie 2 de la première row
                       Expanded(
                         child: Center(
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment
-                                  .center, // Centre les éléments horizontalement dans la colonne
-                              crossAxisAlignment: CrossAxisAlignment
-                                  .center, // Centre les éléments verticalement dans la colonne
-                              children: [
-                                Text(
-                                  'Téléphone',
-                                  style: TextStyle(
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 7, 7, 7)),
-                                ),
-                                Text(
-                                  '+33123456789',
-                                  style: TextStyle(
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 7, 7, 7)),
-                                ),
-                              ],
+                          child: GestureDetector(
+                           onTap: () {
+      _launchPhone('0761886820'); // Remplacez le numéro de téléphone par le numéro souhaité.
+    },
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              child: const Column(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .center, // Centre les éléments horizontalement dans la colonne
+                                crossAxisAlignment: CrossAxisAlignment
+                                    .center, // Centre les éléments verticalement dans la colonne
+                                children: [
+                                  Text(
+                                    'Téléphone',
+                                    style: TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 7, 7, 7)),
+                                  ),
+                                  Text(
+                                    '+33123456789',
+                                    style: TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 7, 7, 7)),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -466,43 +486,53 @@ class ContactsState extends State<Contacts> {
                     // Partie 2 de la première row
                     Expanded(
                       child: Center(
-                        child: Container(
-                          padding: const EdgeInsets.all(8.0),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment
-                                .center, // Centre les éléments horizontalement dans la colonne
-                            crossAxisAlignment: CrossAxisAlignment
-                                .center, // Centre les éléments verticalement dans la colonne
-                            children: [
-                              Text(
-                                'Se rendre au cabinet',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 7, 7, 7)),
-                              ),
-                              Text(
-                                '97 rue des bouvreuils',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 7, 7, 7)),
-                              ),
-                              Text(
-                                '45770 SARAN',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 7, 7, 7)),
-                              ),
-                              Text(
-                                'Parking privé',
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 7, 7, 7)),
-                              ),
-                            ],
+                        child: GestureDetector(
+                         onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const Localisation()), // Remplacez 'ecran7()' par le nom de votre écran.
+                        );
+                      },
+                          child: Container(
+                            padding: const EdgeInsets.all(8.0),
+                            child: const Column(
+                              mainAxisAlignment: MainAxisAlignment
+                                  .center, // Centre les éléments horizontalement dans la colonne
+                              crossAxisAlignment: CrossAxisAlignment
+                                  .center, // Centre les éléments verticalement dans la colonne
+                              children: [
+                                Text(
+                                  'Se rendre au cabinet',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                                Text(
+                                  '97 rue des bouvreuils',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                                Text(
+                                  '45770 SARAN',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                                Text(
+                                  'Parking privé',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 7, 7, 7)),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

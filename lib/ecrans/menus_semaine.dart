@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vertical_card_pager/vertical_card_pager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../bottom_navigation_recettes.dart';
@@ -16,12 +15,18 @@ class MenuSemaine extends StatefulWidget {
 
 class MenuSemaineState extends State<MenuSemaine> {
   List<MenuModel> menus = [];
+  final PageController _pageController = PageController();
 
   @override
   void initState() {
     super.initState();
-    fetchMenuData(
-        widget.semaine); // Appel de la fonction pour récupérer les données JSON
+    fetchMenuData(widget.semaine);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   Future<void> fetchMenuData(String semaine) async {
@@ -45,16 +50,12 @@ class MenuSemaineState extends State<MenuSemaine> {
           );
         }).toList();
 
-        setState(() {
-          // Mettez à jour l'interface utilisateur avec les données JSON
-        });
+        setState(() {});
       } else {
         // Gérer les erreurs de requête HTTP
-        //print('Erreur de requête HTTP : ${response.statusCode}');
       }
     } catch (e) {
       // Gérer les erreurs de connexion ou de traitement JSON
-      // print('Erreur : $e');
     }
   }
 
@@ -62,74 +63,7 @@ class MenuSemaineState extends State<MenuSemaine> {
   Widget build(BuildContext context) {
     final List<String> titles =
         menus.map((menu) => "Jour ${menu.jour}").toList();
-    final List<Widget> images = List.generate(
-      titles.length,
-      (index) => Card(
-  margin: const EdgeInsets.only(left: 2, right: 2),
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(25.0),
-  ),
-  color: const Color(0xFF9C27B0),
-  child: Padding(
-    padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
-          child: Text(
-            'Petit déjeuner: \n  ${menus[index].petitDejeuner}',
-            style: const TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
-          child: Text(
-            'Déjeuner: \n ${menus[index].dejeuner}',
-            style: const TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
-          child: Text(
-            'Collation: \n  ${menus[index].collation}',
-            style: const TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0), // Ajoutez le padding ici
-          child: Text(
-            'Dîner: \n ${menus[index].diner}',
-            style: const TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-          ),
-        ),
-      ],
-    ),
-  ),
-),
 
-    );
-
-    double containerHeight =
-        800; // Définissez la hauteur souhaitée du conteneur
-    //double containerWidth = double.infinity; // Vous pouvez ajuster la largeur comme vous le souhaitez
-    double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF9C27B0),
@@ -147,8 +81,8 @@ class MenuSemaineState extends State<MenuSemaine> {
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              height: containerHeight * 0.2,
-              width: containerWidth,
+              height: 200,
+              width: double.infinity,
               decoration: const BoxDecoration(
                 color: Colors.white,
                 image: DecorationImage(
@@ -172,36 +106,183 @@ class MenuSemaineState extends State<MenuSemaine> {
               ),
             ),
             Text(
-              'Semaine ${widget.semaine}', // Ajoutez le texte avec la semaine
+              'Semaine ${widget.semaine}',
               style: const TextStyle(
-                fontSize: 24,
+                fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF9C27B0),
               ),
             ),
             Expanded(
-              child: Card(
-                child: VerticalCardPager(
-                  textStyle: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  titles: titles,
-                  images: images,
-                  onPageChanged: (page) {
-                    // print(page);
-                  },
-                  onSelectedItem: (index) {
-                    // Gérer la sélection d'une carte
-                  },
-                ),
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: menus.length,
+                itemBuilder: (context, index) {
+                  return Row(
+                    children: [
+                      Container(
+                        color: Colors.white, // Fond blanc
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_back),
+                          onPressed: () {
+                            if (_pageController.hasClients) {
+                              _pageController.previousPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: 100, // Ajustez la largeur selon vos préférences
+                          child: Card(
+                            margin: const EdgeInsets.all(4.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            ),
+                            color: const Color(0xFF9C27B0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  height: 200,
+                                  width: double.infinity,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/jour.png',
+                                      ),
+                                      colorFilter: ColorFilter.mode(
+                                        Color(0xFF9C27B0),
+                                        BlendMode.color,
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    titles[index],
+                                    style: const TextStyle(
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  children: [
+                                    const Text(
+                                      'Petit déjeuner',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Text(
+                                      menus[index].petitDejeuner,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    const Text(
+                                      'Déjeuner',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      menus[index].dejeuner,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 255, 255, 255),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    const Text(
+                                      'Collation',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      menus[index].collation,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 255, 255, 255),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    const Text(
+                                      'Dîner',
+                                      style: TextStyle(
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Text(
+                                      menus[index].diner,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 255, 255, 255),
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        color: Colors.white, // Fond blanc
+                        child: IconButton(
+                          icon: const Icon(Icons.arrow_forward),
+                          onPressed: () {
+                            if (_pageController.hasClients) {
+                              _pageController.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar:
-          const BottomNavigationBarScreen(backgroundColor: Color(0xFF9C27B0)),
+      bottomNavigationBar: const BottomNavigationBarScreen(backgroundColor: Color(0xFF9C27B0)),
     );
   }
 }
