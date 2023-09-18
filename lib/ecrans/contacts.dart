@@ -5,6 +5,7 @@ import '../bottom_navigation_me_contacter.dart';
 import '../home_screen.dart';
 import 'localisation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../drawer.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({Key? key}) : super(key: key);
@@ -138,6 +139,7 @@ class ContactsState extends State<Contacts> {
     double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+    drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFFE91E63),
         title: const Text(

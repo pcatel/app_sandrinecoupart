@@ -9,7 +9,6 @@ import 'ecrans/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'ecrans/menus_semaine.dart';
 
-
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
 
@@ -24,57 +23,51 @@ class MyDrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //double containerHeight = MediaQuery.of(context).size.height * 0.1;
+    double containerHeight = MediaQuery.of(context).size.height;
     return Drawer(
-      width: MediaQuery.of(context).size.width * 0.5,
+      width: MediaQuery.of(context).size.width * 0.5, // largeur du drawer
       child: Container(
         color: const Color(0xFF609a7d),
         child: Column(
           children: [
             // En-tête avec 20% de l'espace
-            SizedBox(
-              //height: MediaQuery.of(context).size.height * 0.1,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Presentation()),
-                  );
-                },
-                child: const DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Color(0xFFdc9a7d),
-                  ),
-                  child: UserAccountsDrawerHeader(
-                    decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
-                    accountName: Row(
-                      children: [
-                        Text(
-                          "Sandrine COUPART",
-                          style: TextStyle(
-                              color: Color(0xFF00353F),
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Presentation()),
+                );
+              },
+              child: Align(
+              alignment: Alignment.topCenter,
+                child: Container( // header drawer
+                  height: containerHeight * 0.3,
+                  child: const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Color(0xFFdc9a7d),
                     ),
-                    accountEmail: Row(
-                      children: [
-                        Text(
-                          "Diététicienne - Nutritionniste",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF430C05),
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    currentAccountPictureSize: Size.square(120),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'),
-                      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                    child: UserAccountsDrawerHeader(
+                      decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
+                      accountName: Text(
+                        "Sandrine COUPART",
+                        style: TextStyle(
+                            color: Color(0xFF00353F),
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      accountEmail: Text(
+                        "Diététicienne - Nutritionniste",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF430C05),
+                            fontWeight: FontWeight.bold),
+                      ),
+                      currentAccountPictureSize: Size.square(200),
+                      currentAccountPicture: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/nutritionniste.jpg'),
+                        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                      ),
                     ),
                   ),
                 ),
@@ -86,7 +79,7 @@ class MyDrawerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.6,
+                   height: containerHeight * 0.6,
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
@@ -102,7 +95,6 @@ class MyDrawerWidget extends StatelessWidget {
                           //height: containerHeight,
                           decoration: const BoxDecoration(
                             color: Color(0xFFDE8C07),
-                           
                           ),
                           child: const Text(
                             'Consultations',
@@ -122,11 +114,11 @@ class MyDrawerWidget extends StatelessWidget {
                                       const AtelierPrevention()));
                         },
                         child: Container(
-                       alignment: Alignment.topLeft,
+                          alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFF548235),
-                              ),
+                            color: Color(0xFF548235),
+                          ),
                           child: const Text(
                             'Ateliers prévention',
                             style: TextStyle(
@@ -145,11 +137,11 @@ class MyDrawerWidget extends StatelessWidget {
                                       const InfosNutrition()));
                         },
                         child: Container(
-                        alignment: Alignment.topLeft,
+                          alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFF2196F3),
-                             ),
+                            color: Color(0xFF2196F3),
+                          ),
                           child: const Text(
                             'Infos nutrition',
                             style: TextStyle(
@@ -167,11 +159,11 @@ class MyDrawerWidget extends StatelessWidget {
                                   builder: (context) => const Recettes()));
                         },
                         child: Container(
-                    alignment: Alignment.topLeft,
+                          alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFF9C27B0),
-                             ),
+                            color: Color(0xFF9C27B0),
+                          ),
                           child: const Text(
                             'Recettes',
                             style: TextStyle(
@@ -189,11 +181,11 @@ class MyDrawerWidget extends StatelessWidget {
                                   builder: (context) => const Temoignages()));
                         },
                         child: Container(
-                         alignment: Alignment.topLeft,
+                          alignment: Alignment.topLeft,
                           //height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFF795548),
-                            ),
+                            color: Color(0xFF795548),
+                          ),
                           child: const Text(
                             'Temoignages',
                             style: TextStyle(
@@ -212,10 +204,10 @@ class MyDrawerWidget extends StatelessWidget {
                         },
                         child: Container(
                           alignment: Alignment.topLeft,
-                        //  height: containerHeight,
+                          //  height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFFE91E63),
-                              ),
+                            color: Color(0xFFE91E63),
+                          ),
                           child: const Text(
                             'Me contacter',
                             style: TextStyle(
@@ -225,19 +217,20 @@ class MyDrawerWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                            GestureDetector(
+                      GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const MenuSemaine("1")));
+                                  builder: (context) =>
+                                      const MenuSemaine("1")));
                         },
                         child: Container(
                           alignment: Alignment.topLeft,
-                        //  height: containerHeight,
+                          //  height: containerHeight,
                           decoration: const BoxDecoration(
-                              color: Color(0xFFE91E63),
-                              ),
+                            color: Color(0xFFE91E63),
+                          ),
                           child: const Text(
                             'Test',
                             style: TextStyle(
@@ -247,7 +240,6 @@ class MyDrawerWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      
                     ],
                   ),
                 ),

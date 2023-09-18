@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../bottom_navigation.dart';
+import '../drawer.dart';
 
 //import '../drawer.dart';
 class Temoignages extends StatelessWidget {
@@ -12,7 +13,7 @@ class Temoignages extends StatelessWidget {
         MediaQuery.of(context).size.height / numberOfContainers;
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      //drawer: const MyDrawerWidget(),
+      drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF795548),
         title: const Text(

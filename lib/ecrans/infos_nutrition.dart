@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../bottom_navigation.dart';
+import '../drawer.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -87,6 +88,7 @@ class InfosNutritionState extends State<InfosNutrition> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF2196F3),
         title: const Text(

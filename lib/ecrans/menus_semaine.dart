@@ -135,7 +135,7 @@ class MenuSemaineState extends State<MenuSemaine> {
                         ),
                       ),
                       Expanded(
-                        child: Container(
+                        child: SizedBox(
                           width: 100, // Ajustez la largeur selon vos préférences
                           child: Card(
                             margin: const EdgeInsets.all(4.0),

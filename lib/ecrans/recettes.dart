@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'menus.dart';
 import 'recettes_allergies.dart';
 import 'recettes_types_plats.dart';
+import '../drawer.dart';
 
 class Recettes extends StatefulWidget {
   const Recettes({super.key});
@@ -36,6 +37,7 @@ class RecettesState extends State<Recettes> {
 
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+    drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
