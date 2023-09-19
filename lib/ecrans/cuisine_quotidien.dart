@@ -10,12 +10,13 @@ class CusineQuotidien extends StatefulWidget {
   const CusineQuotidien({super.key});
 
   @override
- CusineQuotidienState createState() => CusineQuotidienState();
+  CusineQuotidienState createState() => CusineQuotidienState();
 }
 
 class CusineQuotidienState extends State<CusineQuotidien> {
   Future<List<String>> fetchData() async {
-    final response = await http.get(Uri.parse('https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_cuisine_quotidien.php'));
+    final response = await http.get(Uri.parse(
+        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_cuisine_quotidien.php'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonData = json.decode(response.body);
@@ -71,42 +72,58 @@ class CusineQuotidienState extends State<CusineQuotidien> {
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
+          ),const SizedBox(height: 16.0),
+          Container(
+            // alignment: Alignment.center,
+            //height: containerHeight,
+            width: containerWidth,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/cuisine_au_quotidien.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: const AspectRatio(
+              aspectRatio: 16 / 9,
+            ),
           ),
+          const SizedBox(height: 16.0),
           FittedBox(
-          fit: BoxFit.scaleDown,
+            fit: BoxFit.scaleDown,
             child: SizedBox(
               //height: textContainerHeight,
               width: containerWidth,
               //color: Colors.red, // Couleur du container rouge
-             child: FutureBuilder<List<String>>(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else if (snapshot.hasError) {
-                return const Text('Erreur de chargement des données');
-              } else if (!snapshot.hasData) {
-                return const Text('Aucune donnée disponible');
-              } else {
-                List<String> dataList = snapshot.data ?? []; // Add this line to handle null data
-                String queryResult = dataList.join('\n');
-                return SingleChildScrollView(
-                  child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              queryResult,
-               style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.bold),
+              child: FutureBuilder<List<String>>(
+                future: fetchData(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return const Text('Erreur de chargement des données');
+                  } else if (!snapshot.hasData) {
+                    return const Text('Aucune donnée disponible');
+                  } else {
+                    List<String> dataList = snapshot.data ??
+                        []; // Add this line to handle null data
+                    String queryResult = dataList.join('\n');
+                    return SingleChildScrollView(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          queryResult,
+                          style: GoogleFonts.lato(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
             ),
-                  ),
-                );
-              }
-            },
           ),
-          
-            ),
-          ),
-          
-          
         ],
       ),
       bottomNavigationBar:
@@ -114,4 +131,3 @@ class CusineQuotidienState extends State<CusineQuotidien> {
     );
   }
 }
-

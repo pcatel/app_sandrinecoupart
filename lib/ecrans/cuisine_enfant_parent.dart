@@ -71,6 +71,22 @@ class CusineEnfantParentState extends State<CusineEnfantParent> {
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
+          ),const SizedBox(height: 16.0),
+          Container(
+            // alignment: Alignment.center,
+            //height: containerHeight,
+            width: containerWidth,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/cuisine_enfants_parents.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: const AspectRatio(
+              aspectRatio: 16 / 9,
+            ),
           ),
           FittedBox(
           fit: BoxFit.scaleDown,
