@@ -76,6 +76,9 @@ class ConsultationsState extends State<Consultations> {
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
+
+
+          
           FittedBox(
             fit: BoxFit.scaleDown,
             child: SizedBox(
@@ -130,18 +133,20 @@ class ConsultationsState extends State<Consultations> {
                       image: NetworkImage(
                           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg'),
                       fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFFDE8C07),
-                        BlendMode.color,
-                      ),
+                      //colorFilter: ColorFilter.mode(
+                       // Color(0xFFDE8C07),
+                     //   BlendMode.color,
+                     // ),
                     ),
                   ),
                   child: const Text(
                     'Consultations',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 7, 7, 7)),
+                style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                   ),
                 ),
               ),
@@ -163,18 +168,20 @@ class ConsultationsState extends State<Consultations> {
                       image: NetworkImage(
                           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg'),
                       fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFFDE8C07),
-                        BlendMode.color,
-                      ),
+                      //colorFilter: ColorFilter.mode(
+                       // Color(0xFFDE8C07),
+                     //   BlendMode.color,
+                     // ),
                     ),
                   ),
                   child: const Text(
                     'Déroulement',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 7, 7, 7)),
+                   style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                   ),
                 ),
               ),
@@ -200,18 +207,20 @@ class ConsultationsState extends State<Consultations> {
                       image: NetworkImage(
                           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-3.jpg'),
                       fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFFDE8C07),
-                        BlendMode.color,
-                      ),
+                      //colorFilter: ColorFilter.mode(
+                       // Color(0xFFDE8C07),
+                     //   BlendMode.color,
+                     // ),
                     ),
                   ),
                   child: const Text(
                     'Téléconsultations',
                     style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 7, 7, 7)),
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                   ),
                 ),
               ),
@@ -232,18 +241,20 @@ class ConsultationsState extends State<Consultations> {
                       image: NetworkImage(
                           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-4.jpg'),
                       fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFFDE8C07),
-                        BlendMode.color,
-                      ),
+                       //colorFilter: ColorFilter.mode(
+                       // Color(0xFFDE8C07),
+                     //   BlendMode.color,
+                     // ),
                     ),
                   ),
                   child: const Text(
                     'Relations Mutuelle',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 7, 7, 7)),
+                 style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                   ),
                 ),
               ),

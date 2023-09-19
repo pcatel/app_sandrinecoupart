@@ -36,10 +36,9 @@ class AtelierPreventionState extends State<AtelierPrevention> {
     double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-     //backgroundColor: const Color(0xFF84A66F),
-    drawer: const MyDrawerWidget(),
+      //backgroundColor: const Color(0xFF84A66F),
+      drawer: const MyDrawerWidget(),
       appBar: AppBar(
-      
         backgroundColor: const Color(0xFF548235),
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
@@ -55,7 +54,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            alignment: Alignment.center,// Alignez en haut de l'écran
+            alignment: Alignment.center, // Alignez en haut de l'écran
             height: containerHeight,
             width: containerWidth,
             decoration: const BoxDecoration(
@@ -77,6 +76,21 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 7, 7, 7),
+              ),
+            ),
+          ),
+          const SizedBox(height: 16.0),
+          Container(
+            alignment: Alignment.center,
+            width: containerWidth,
+            child: ClipPath(
+              clipper: WaveClipper(), // Utilisation du clipper personnalisé
+              child: Image.network(
+                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/ateliers_prevention.jpg',
+                width: containerWidth,
+                height: 300, // Hauteur de l'image
+                fit: BoxFit.cover,
+                
               ),
             ),
           ),
@@ -155,22 +169,23 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                           color: Colors.blue,
                           image: DecorationImage(
                             image: NetworkImage(
-                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-1.jpg',
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/alimentation_durable.jpg',
                             ),
                             fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Color(0xFF548235),
-                              BlendMode.color,
-                            ),
+                            // colorFilter: ColorFilter.mode(
+                            //  Color(0xFF548235),
+                            //  BlendMode.color,
+                            // ),
                           ),
                         ),
                         child: const Text(
                           'Alimentation durable',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 7, 7, 7),
-                          ),
+                         style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                         ),
                       ),
                     ),
@@ -191,22 +206,20 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                           color: Colors.blue,
                           image: DecorationImage(
                             image: NetworkImage(
-                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-2.jpg',
+                              'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/cuisine_enfants_parents.jpg',
                             ),
                             fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Color(0xFF548235),
-                              BlendMode.color,
-                            ),
+                           
                           ),
                         ),
                         child: const Text(
                           'Cuisine enfants et parents',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 7, 7, 7),
-                          ),
+                         style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
+                            ),
                         ),
                       ),
                     ),
@@ -233,21 +246,19 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             color: Colors.blue,
                             image: DecorationImage(
                               image: NetworkImage(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-3.jpg',
+                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/cuisine_au_quotidien.jpg',
                               ),
                               fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Color(0xFF548235),
-                                BlendMode.color,
-                              ),
+                             
                             ),
                           ),
                           child: const Text(
                             'Cuisine au quotidien',
-                            style: TextStyle(
-                              fontSize: 18,
+                           style: TextStyle(
+                              fontSize: 26,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
                             ),
                           ),
                         ),
@@ -269,21 +280,22 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             color: Colors.blue,
                             image: DecorationImage(
                               image: NetworkImage(
-                                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/service-4.jpg',
+                                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/alimentation_au_travail.jpg',
                               ),
                               fit: BoxFit.cover,
-                              colorFilter: ColorFilter.mode(
-                                Color(0xFF548235),
-                                BlendMode.color,
-                              ),
+                             // colorFilter: ColorFilter.mode(
+                            //    Color(0xFF548235),
+                            //    BlendMode.color,
+                            //  ),
                             ),
                           ),
                           child: const Text(
                             'L\'alimentation au travail',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 26,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 7, 7, 7),
+                              backgroundColor:Colors.white,
                             ),
                           ),
                         ),
@@ -300,5 +312,24 @@ class AtelierPreventionState extends State<AtelierPrevention> {
         backgroundColor: Color(0xFF548235),
       ),
     );
+  }
+}
+
+class WaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(0, size.height * 0.8); // Début du chemin
+    path.quadraticBezierTo(
+        size.width / 4, size.height * 0.9, size.width / 2, size.height * 0.8);
+    path.quadraticBezierTo(
+        size.width * 3 / 4, size.height * 0.7, size.width, size.height * 0.8);
+    path.lineTo(size.width, 0); // Fin du chemin
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

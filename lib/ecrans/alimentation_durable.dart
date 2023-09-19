@@ -75,19 +75,16 @@ class AlimentationDurableState extends State<AlimentationDurable> {
           ),
           const SizedBox(height: 16.0),
           Container(
-            // alignment: Alignment.center,
-            //height: containerHeight,
+            alignment: Alignment.center,
             width: containerWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              image: DecorationImage(
-                image: NetworkImage(
-                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/alimentation_durable.jpg'),
+            child: ClipPath(
+              clipper: WaveClipper(), // Utilisation du clipper personnalisé
+              child: Image.network(
+                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/ateliers_prevention.jpg',
+                width: containerWidth,
+                height: 300, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
-            ),
-            child: const AspectRatio(
-              aspectRatio: 16 / 9,
             ),
           ),
           FittedBox(
@@ -129,5 +126,23 @@ class AlimentationDurableState extends State<AlimentationDurable> {
       bottomNavigationBar:
           const BottomNavigationBarScreen(backgroundColor: Color(0xFF548235)),
     );
+  }
+}
+class WaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(0, size.height * 0.8); // Début du chemin
+    path.quadraticBezierTo(
+        size.width / 4, size.height * 0.9, size.width / 2, size.height * 0.8);
+    path.quadraticBezierTo(
+        size.width * 3 / 4, size.height * 0.7, size.width, size.height * 0.8);
+    path.lineTo(size.width, 0); // Fin du chemin
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
