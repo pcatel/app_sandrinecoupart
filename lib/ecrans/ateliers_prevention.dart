@@ -178,14 +178,20 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             // ),
                           ),
                         ),
-                        child: const Text(
-                          'Alimentation durable',
-                         style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
-                              backgroundColor:Colors.white,
-                            ),
+                        child: Container(
+                        alignment: Alignment.center,
+                  height: 30,
+                  width:double.infinity,
+                  color: const Color.fromARGB(255, 214, 246, 193),
+                          child: const Text(
+                            'Alimentation durable',
+                           style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7),
+                               
+                              ),
+                          ),
                         ),
                       ),
                     ),
@@ -212,14 +218,20 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                            
                           ),
                         ),
-                        child: const Text(
-                          'Cuisine enfants et parents',
-                         style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
-                              backgroundColor:Colors.white,
-                            ),
+                        child: Container(
+                          alignment: Alignment.center,
+                  height: 30,
+                  width:double.infinity,
+                  color: const Color.fromARGB(255, 214, 246, 193),
+                          child: const Text(
+                            'Cuisine enfants et parents',
+                           style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7),
+                             
+                              ),
+                          ),
                         ),
                       ),
                     ),
@@ -252,13 +264,19 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                              
                             ),
                           ),
-                          child: const Text(
-                            'Cuisine au quotidien',
-                           style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
-                              backgroundColor:Colors.white,
+                          child: Container(
+                            alignment: Alignment.center,
+                  height: 30,
+                  width:double.infinity,
+                  color: const Color.fromARGB(255, 214, 246, 193),
+                            child: const Text(
+                              'Cuisine au quotidien',
+                             style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7),
+                               
+                              ),
                             ),
                           ),
                         ),
@@ -289,13 +307,19 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             //  ),
                             ),
                           ),
-                          child: const Text(
-                            'L\'alimentation au travail',
-                            style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 7, 7, 7),
-                              backgroundColor:Colors.white,
+                          child: Container(
+                            alignment: Alignment.center,
+                  height: 30,
+                  width:double.infinity,
+                  color: const Color.fromARGB(255, 214, 246, 193),
+                            child: const Text(
+                              'L\'alimentation au travail',
+                              style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 7, 7, 7),
+                               
+                              ),
                             ),
                           ),
                         ),

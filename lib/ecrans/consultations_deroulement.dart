@@ -91,6 +91,7 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
 
   @override
   Widget build(BuildContext context) {
+   double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
@@ -125,6 +126,20 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
+            ),
+          ),
+           const SizedBox(height: 16.0),
+          Container(
+            alignment: Alignment.center,
+            width: containerWidth,
+            child: ClipPath(
+              clipper: WaveClipper(), // Utilisation du clipper personnalisé
+              child: Image.network(
+                'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/deroulement.jpg',
+                width: containerWidth,
+                height: 300, // Hauteur de l'image
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const Text(
@@ -179,5 +194,23 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
         backgroundColor: Color(0xFFDE8C07),
       ),
     );
+  }
+}
+class WaveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    final path = Path();
+    path.lineTo(0, size.height * 0.8); // Début du chemin
+    path.quadraticBezierTo(
+        size.width / 4, size.height * 0.9, size.width / 2, size.height * 0.8);
+    path.quadraticBezierTo(
+        size.width * 3 / 4, size.height * 0.7, size.width, size.height * 0.8);
+    path.lineTo(size.width, 0); // Fin du chemin
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
