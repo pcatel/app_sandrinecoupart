@@ -7,7 +7,7 @@ import 'ecrans/temoignages.dart';
 import 'ecrans/contacts.dart';
 import 'ecrans/presentation.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'ecrans/menus_semaine.dart';
+import 'ecrans/pascal_catel.dart';
 
 class MyDrawerWidget extends StatelessWidget {
   const MyDrawerWidget({Key? key}) : super(key: key);
@@ -24,6 +24,7 @@ class MyDrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height;
+    //double hauteurEntreModule = 10;
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.5, // largeur du drawer
       child: Container(
@@ -39,8 +40,9 @@ class MyDrawerWidget extends StatelessWidget {
                 );
               },
               child: Align(
-              alignment: Alignment.topCenter,
-                child: Container( // header drawer
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                  // header drawer
                   height: containerHeight * 0.3,
                   child: const DrawerHeader(
                     decoration: BoxDecoration(
@@ -79,7 +81,7 @@ class MyDrawerWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                   height: containerHeight * 0.6,
+                  height: containerHeight * 0.6,
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
@@ -90,20 +92,28 @@ class MyDrawerWidget extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const Consultations()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFDE8C07),
-                          ),
-                          child: const Text(
-                            'Consultations',
-                            style: TextStyle(
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Consultations',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 7, 7, 7)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -113,20 +123,28 @@ class MyDrawerWidget extends StatelessWidget {
                                   builder: (context) =>
                                       const AtelierPrevention()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF548235),
-                          ),
-                          child: const Text(
-                            'Ateliers prévention',
-                            style: TextStyle(
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Ateliers prévention',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -136,20 +154,28 @@ class MyDrawerWidget extends StatelessWidget {
                                   builder: (context) =>
                                       const InfosNutrition()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF2196F3),
-                          ),
-                          child: const Text(
-                            'Infos nutrition',
-                            style: TextStyle(
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Infos nutrition',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 7, 7, 7)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -158,20 +184,28 @@ class MyDrawerWidget extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const Recettes()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF9C27B0),
-                          ),
-                          child: const Text(
-                            'Recettes',
-                            style: TextStyle(
+                         child: const Row(
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Recettes',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 7, 7, 7)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -180,20 +214,28 @@ class MyDrawerWidget extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const Temoignages()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFF795548),
-                          ),
-                          child: const Text(
-                            'Temoignages',
-                            style: TextStyle(
+                        child: const Row(
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Témoignages',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
+                      ),
+                      const SizedBox(
+                        height: 10,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -202,42 +244,25 @@ class MyDrawerWidget extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const Contacts()));
                         },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //  height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFE91E63),
-                          ),
-                          child: const Text(
-                            'Me contacter',
-                            style: TextStyle(
+                        child: const Row(
+                        
+                          children: [
+                            Icon(
+                              Icons
+                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                              color: Colors.white, // Couleur de l'icône
+                            ),
+                            SizedBox(
+                                width: 8.0), // Espace entre l'icône et le texte
+                            Text(
+                              'Contacts',
+                              style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MenuSemaine("1")));
-                        },
-                        child: Container(
-                          alignment: Alignment.topLeft,
-                          //  height: containerHeight,
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFE91E63),
-                          ),
-                          child: const Text(
-                            'Test',
-                            style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255)),
-                          ),
+                                color: Color(0xFFFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -248,10 +273,12 @@ class MyDrawerWidget extends StatelessWidget {
 
                 // Ligne des réseaux sociaux avec 20% de l'espace
                 Container(
+                
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Column(
                     children: [
                       Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -286,11 +313,19 @@ class MyDrawerWidget extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Text(
-                        'Powered by : Pascal CATEL',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color.fromARGB(255, 7, 7, 7),
+                      GestureDetector(
+                       onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const PascalCatel()));
+                        },
+                        child: const Text(
+                          'Powered by : Pascal CATEL',
+                          style: TextStyle(
+                            fontSize: 26,
+                            color: Color(0xFFFFFFFF),
+                          ),
                         ),
                       ),
                     ],

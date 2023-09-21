@@ -143,6 +143,41 @@ class MenusState extends State<Menus> {
               ),
             ],
           ),
+           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MenuSemaine("3")));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        const Color(0xFF9C27B0), // Couleur du bouton
+                  ),
+                  child: const Text('Semaine 3'),
+                ),
+              ),
+              Container(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MenuSemaine("4")));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:
+                        const Color(0xFF9C27B0), // Couleur du bouton
+                  ),
+                  child: const Text('Semaine 4'),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
       bottomNavigationBar:

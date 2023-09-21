@@ -32,7 +32,7 @@ class ConsultationsState extends State<Consultations> {
   @override
   Widget build(BuildContext context) {
     double containerHeight = MediaQuery.of(context).size.height * 0.10;
-    double textContainerHeight = containerHeight * 1.5;
+    //double textContainerHeight = containerHeight * 1.5;
 
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -109,6 +109,7 @@ class ConsultationsState extends State<Consultations> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         queryResult,
+                        
                         style: GoogleFonts.lato(
                             fontSize: 16, fontWeight: FontWeight.bold),
                       ),

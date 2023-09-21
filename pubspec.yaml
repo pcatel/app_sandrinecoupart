@@ -76,6 +76,9 @@ flutter:
     - assets/Reseaux/instagram.png
     - assets/Reseaux/tiktok.png
     - assets/Reseaux/linkedin.png
+    - assets/Reseaux/github.jpg
+    - assets/Reseaux/site_web.jpg
+
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

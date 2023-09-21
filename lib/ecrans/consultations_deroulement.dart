@@ -7,10 +7,12 @@ class ConsultationsDeroulement extends StatefulWidget {
   const ConsultationsDeroulement({Key? key}) : super(key: key);
 
   @override
-  ConsultationsDeroulementState createState() => ConsultationsDeroulementState();
+  ConsultationsDeroulementState createState() =>
+      ConsultationsDeroulementState();
 }
 
-class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with SingleTickerProviderStateMixin {
+class ConsultationsDeroulementState extends State<ConsultationsDeroulement>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   Widget processJson(String jsonValue) {
     int colonIndex = jsonValue.indexOf(':');
@@ -24,16 +26,20 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
         children: [
           Text(
             boldText,
+           
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 26,
               color: Colors.black,
               fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+           fontStyle: FontStyle.italic,
             ),
           ),
           Text(
             remainingText,
+             textAlign: TextAlign.justify,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 26,
               color: Colors.black,
             ),
           ),
@@ -91,8 +97,10 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
 
   @override
   Widget build(BuildContext context) {
-   double containerWidth = MediaQuery.of(context).size.width;
+    double containerWidth = MediaQuery.of(context).size.width;
+    //double containerHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+    backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
         title: const Text(
@@ -128,7 +136,7 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
           ),
-           const SizedBox(height: 16.0),
+          const SizedBox(height: 16.0),
           Container(
             alignment: Alignment.center,
             width: containerWidth,
@@ -145,13 +153,15 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
           const Text(
             'les 7 points principaux',
             style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 7, 7, 7)),
           ),
           Container(
+          width: containerWidth * 0.8,
             color: const Color.fromARGB(255, 249, 223, 181),
             child: TabBar(
+            
               controller: _tabController,
               indicator: const BoxDecoration(
                 color: Color(0xFFDE8C07),
@@ -165,9 +175,14 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
               ),
             ),
           ),
+          const SizedBox(
+          height: 10,
+          ),
           Expanded(
             child: Container(
-              color: Colors.grey[300],
+                 width: containerWidth*0.8,
+                height: 200,
+              color: Colors.white,
               child: TabBarView(
                 controller: _tabController,
                 children: List.generate(
@@ -178,8 +193,8 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
 
                     return Center(
                       child: Container(
-                        alignment: Alignment.center,
-                        color: tabColors[index],
+                       // alignment: Alignment.bottomCenter,
+                       // color: tabColors[index],
                         child: processJson(jsonValue),
                       ),
                     );
@@ -196,6 +211,7 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement> with
     );
   }
 }
+
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
