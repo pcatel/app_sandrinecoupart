@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Calcul du nombre de conteneurs
     int numberOfContainers = 6;
-// Calcul de la hauteur des conteneurs en fonction de l'espace disponible
+    // Calcul de la hauteur des conteneurs en fonction de l'espace disponible
     double containerHeight =
         MediaQuery.of(context).size.height / numberOfContainers;
     double containerWidth = MediaQuery.of(context).size.width;
@@ -36,16 +36,15 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Consultations()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Consultations(),
+                  ),
+                );
               },
               child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFDE8C07),
                   image: DecorationImage(
                     image: NetworkImage(
                         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
@@ -56,12 +55,22 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Text(
-                  'Consultations',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    //padding: const EdgeInsets.all(16.0),
+                width: containerWidth,
+                  color: const Color(0xFFDE8C07),
+                    child: const Text(
+                      'Consultations',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                       // backgroundColor: Color(0xFFDE8C07),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -70,31 +79,41 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AtelierPrevention()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AtelierPrevention(),
+                  ),
+                );
               },
               child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
                 decoration: const BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFF548235),
-                        BlendMode.color,
+                  color: Color(0xFF548235),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF548235),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                  width: containerWidth,
+                  color: const Color(0xFF548235),
+                    //padding: const EdgeInsets.all(16.0),
+                    child: const Text(
+                      'Ateliers prévention',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                         //backgroundColor: Color(0xFF548235),
                       ),
-                    )),
-                child: const Text(
-                  'Ateliers prévention',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -103,62 +122,41 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const InfosNutrition()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InfosNutrition(),
+                  ),
+                );
               },
               child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
                 decoration: const BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/infos_nutrition.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFF2196F3),
-                        BlendMode.color,
-                      ),
-                    )),
-                child: const Text(
-                  'Infos nutrition',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
+                  color: Color(0xFF2196F3),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/infos_nutrition.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF2196F3),
+                      BlendMode.color,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Recettes()));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFF9C27B0),
-                        BlendMode.color,
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    //padding: const EdgeInsets.all(16.0),
+                     width: containerWidth,
+                  color: const Color(0xFF2196F3),
+                    child: const Text(
+                      'Infos nutrition',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        // backgroundColor: Color(0xFF2196F3),
                       ),
-                    )),
-                child: const Text(
-                  'Recettes',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 7, 7, 7)),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -167,31 +165,41 @@ class HomeScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Temoignages()));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Recettes(),
+                  ),
+                );
               },
               child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
                 decoration: const BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/temoignages.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFF795548),
-                        BlendMode.color,
+                  color: Color(0xFF9C27B0),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF9C27B0),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    //padding: const EdgeInsets.all(16.0),
+                      width: containerWidth,
+                  color: const Color(0xFF9C27B0),
+                    child: const Text(
+                      'Recettes',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                       //  backgroundColor: Color(0xFF9C27B0),
                       ),
-                    )),
-                child: const Text(
-                  'Temoignages',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -199,30 +207,85 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Contacts()));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Temoignages(),
+                  ),
+                );
               },
               child: Container(
-                alignment: Alignment.center,
-                height: containerHeight,
-                width: containerWidth,
                 decoration: const BoxDecoration(
-                    color: Colors.white,
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/contact.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Color(0xFFE91E63),
-                        BlendMode.color,
+                  color: Color(0xFF795548),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/temoignages.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF795548),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    //padding: const EdgeInsets.all(16.0),
+                      width: containerWidth,
+                  color: const Color(0xFF795548),
+                    child: const Text(
+                      'Temoignages',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        //  backgroundColor: Color(0xFF795548),
                       ),
-                    )),
-                child: const Text(
-                  'Me Contacter',
-                  style: TextStyle(
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 255, 255, 255)),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Contacts(),
+                  ),
+                );
+              },
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xFFE91E63),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/contact.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFFE91E63),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    //padding: const EdgeInsets.all(16.0),
+                      width: containerWidth,
+                  color: const Color(0xFFE91E63),
+                    child: const Text(
+                      'Me Contacter',
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                         //backgroundColor: Color(0xFFE91E63),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
