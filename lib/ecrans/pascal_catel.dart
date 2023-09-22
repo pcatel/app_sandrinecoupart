@@ -29,7 +29,7 @@ class PascalCatelState extends State<PascalCatel> {
   @override
   Widget build(BuildContext context) {
    double containerHeight = MediaQuery.of(context).size.height;
-   double containerWidth = MediaQuery.of(context).size.width;
+   //double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
      // drawer: const MyDrawerWidget(),

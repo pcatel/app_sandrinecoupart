@@ -193,7 +193,7 @@ class MenusState extends State<Menus> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
           height: 25,
           ),
           Row(

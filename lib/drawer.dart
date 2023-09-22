@@ -81,7 +81,7 @@ class MyDrawerWidget extends StatelessWidget {
          
 
             ),
-            SizedBox(
+            const SizedBox(
             height: 20,
             ),
             // Liste des éléments ListTile avec 60% de l'espace
@@ -91,7 +91,7 @@ class MyDrawerWidget extends StatelessWidget {
               children: [
               
                 SizedBox(
-                  height: containerHeight * 0.6,
+                  height: containerHeight * 0.5,
                   child: ListView(
                   
                     padding: EdgeInsets.zero,

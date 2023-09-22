@@ -139,7 +139,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Recettes par types d\'allergies',
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
@@ -183,7 +183,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Recettes par types de plats',
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                          color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
@@ -227,7 +227,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Menus minceurs',
                       style: TextStyle(
-                        fontSize: 26,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                          color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
