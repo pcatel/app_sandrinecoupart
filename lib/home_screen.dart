@@ -58,16 +58,29 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+                     
+                    ),
+
                     //padding: const EdgeInsets.all(16.0),
-                width: containerWidth,
-                  color: const Color(0xFFDE8C07),
+                    width: containerWidth*0.7,
                     child: const Text(
                       'Consultations',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                       // backgroundColor: Color(0xFFDE8C07),
+                        color: Color(0xFFDE8C07),
+                        // backgroundColor: Color(0xFFDE8C07),
                       ),
                     ),
                   ),
@@ -101,16 +114,28 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                  width: containerWidth,
-                  color: const Color(0xFF548235),
-                    //padding: const EdgeInsets.all(16.0),
+                   decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+                     boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+        
+                    ),
+                    width: containerWidth*0.7,
+                
                     child: const Text(
                       'Ateliers prévention',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                         //backgroundColor: Color(0xFF548235),
+                        color: Color(0xFF548235),
+                        //backgroundColor: Color(0xFF548235),
                       ),
                     ),
                   ),
@@ -144,15 +169,27 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                    //padding: const EdgeInsets.all(16.0),
-                     width: containerWidth,
-                  color: const Color(0xFF2196F3),
+                   decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+                     boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+        
+                    ),
+                    width: containerWidth*0.7,
+                   
                     child: const Text(
                       'Infos nutrition',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xFF2196F3),
                         // backgroundColor: Color(0xFF2196F3),
                       ),
                     ),
@@ -187,16 +224,28 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                    //padding: const EdgeInsets.all(16.0),
-                      width: containerWidth,
-                  color: const Color(0xFF9C27B0),
+                    decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+                     boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+        
+                    ),
+                    width: containerWidth*0.7,
+                  
                     child: const Text(
                       'Recettes',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                       //  backgroundColor: Color(0xFF9C27B0),
+                        color: Color(0xFF9C27B0),
+                        //  backgroundColor: Color(0xFF9C27B0),
                       ),
                     ),
                   ),
@@ -230,15 +279,27 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                    //padding: const EdgeInsets.all(16.0),
-                      width: containerWidth,
-                  color: const Color(0xFF795548),
+                      decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+                     boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+        
+                    ),
+                    width: containerWidth*0.7,
+                   
                     child: const Text(
                       'Temoignages',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Color(0xFF795548),
                         //  backgroundColor: Color(0xFF795548),
                       ),
                     ),
@@ -273,16 +334,27 @@ class HomeScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                    //padding: const EdgeInsets.all(16.0),
-                      width: containerWidth,
-                  color: const Color(0xFFE91E63),
+                     decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
+                     boxShadow: [
+      BoxShadow(
+        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
+        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
+        blurRadius: 4, // Flou de l'ombre
+        spreadRadius: 0, // Écart de l'ombre
+      ),
+    ],
+        
+                    ),
+                    width: containerWidth*0.7,
                     child: const Text(
                       'Me Contacter',
                       style: TextStyle(
-                        fontSize: 48,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                         //backgroundColor: Color(0xFFE91E63),
+                        color: Color(0xFFE91E63),
+                        //backgroundColor: Color(0xFFE91E63),
                       ),
                     ),
                   ),
