@@ -59,27 +59,30 @@ class HomeScreen extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-                     
+                      color: Color(0xFFDE8C07),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
 
                     //padding: const EdgeInsets.all(16.0),
-                    width: containerWidth*0.7,
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Consultations',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFDE8C07),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         // backgroundColor: Color(0xFFDE8C07),
                       ),
                     ),
@@ -114,27 +117,29 @@ boxShadow: [
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                   decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-                     boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-        
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF548235),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
-                    width: containerWidth*0.7,
-                
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Ateliers prévention',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF548235),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         //backgroundColor: Color(0xFF548235),
                       ),
                     ),
@@ -169,27 +174,29 @@ boxShadow: [
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                   decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-                     boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-        
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF2196F3),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
-                    width: containerWidth*0.7,
-                   
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Infos nutrition',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2196F3),
+                        color: Color.fromARGB(255, 252, 252, 252),
                         // backgroundColor: Color(0xFF2196F3),
                       ),
                     ),
@@ -225,26 +232,28 @@ boxShadow: [
                   alignment: Alignment.bottomLeft,
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-                     boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-        
+                      color: Color(0xFF9C27B0),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
-                    width: containerWidth*0.7,
-                  
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Recettes',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF9C27B0),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         //  backgroundColor: Color(0xFF9C27B0),
                       ),
                     ),
@@ -279,27 +288,29 @@ boxShadow: [
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                      decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-                     boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-        
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF795548),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
-                    width: containerWidth*0.7,
-                   
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Temoignages',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF795548),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         //  backgroundColor: Color(0xFF795548),
                       ),
                     ),
@@ -334,26 +345,29 @@ boxShadow: [
                 child: Align(
                   alignment: Alignment.bottomLeft,
                   child: Container(
-                     decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                     borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0), topRight: Radius.circular(300.0)),
-                     boxShadow: [
-      BoxShadow(
-        color: Color.fromARGB(255, 5, 5, 5), // Couleur de l'ombre
-        offset: Offset(2, -2), // Décalage vertical négatif pour l'ombre en haut
-        blurRadius: 4, // Flou de l'ombre
-        spreadRadius: 0, // Écart de l'ombre
-      ),
-    ],
-        
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFE91E63),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10.0),
+                          topRight: Radius.circular(300.0)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromARGB(
+                              255, 5, 5, 5), // Couleur de l'ombre
+                          offset: Offset(2,
+                              -2), // Décalage vertical négatif pour l'ombre en haut
+                          blurRadius: 4, // Flou de l'ombre
+                          spreadRadius: 0, // Écart de l'ombre
+                        ),
+                      ],
                     ),
-                    width: containerWidth*0.7,
+                   width: containerWidth * 0.4,
                     child: const Text(
                       'Me Contacter',
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFE91E63),
+                        color: Color.fromARGB(255, 255, 255, 255),
                         //backgroundColor: Color(0xFFE91E63),
                       ),
                     ),

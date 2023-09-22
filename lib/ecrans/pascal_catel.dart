@@ -45,13 +45,16 @@ class PascalCatelState extends State<PascalCatel> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 16.0),
+          SizedBox(
+          height: 20),
           Container(
-            width: 500, // Ajustez la largeur du conteneur selon vos besoins
-            height: 500, 
+          
+            width: 300, // Ajustez la largeur du conteneur selon vos besoins
+            height: 300, 
             // Ajustez la hauteur du conteneur selon vos besoins
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
@@ -64,8 +67,8 @@ class PascalCatelState extends State<PascalCatel> {
             child: ClipOval(
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/matete.png',
-                width: 500, // Ajustez la largeur de l'image selon vos besoins
-                height: 500, // Ajustez la hauteur de l'image selon vos besoins
+                width: 300, // Ajustez la largeur de l'image selon vos besoins
+                height: 300, // Ajustez la hauteur de l'image selon vos besoins
                 fit: BoxFit.cover,
               ),
             ),
@@ -85,16 +88,21 @@ class PascalCatelState extends State<PascalCatel> {
                       snapshot.data ?? []; // Add this line to handle null data
                   String queryResult =
                       dataList.isNotEmpty ? dataList.join('\n') : '';
-                  return SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        queryResult,
-                        style: GoogleFonts.lato(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                             textAlign: TextAlign.justify,
+                  return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: Text(
+                            queryResult,
+                            style: GoogleFonts.lato(
+                                fontSize: 16, fontWeight: FontWeight.bold),
+                                 textAlign: TextAlign.justify,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   );
                 }
               },
@@ -111,6 +119,9 @@ class PascalCatelState extends State<PascalCatel> {
           Container(
             padding: const EdgeInsets.symmetric(vertical: 5),
             child: Column(
+         
+
+
               children: [
                 Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

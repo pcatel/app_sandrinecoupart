@@ -323,7 +323,7 @@ class MyDrawerWidget extends StatelessWidget {
                         child: const Text(
                           'Powered by : Pascal CATEL',
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 20,
                             color: Color(0xFFFFFFFF),
                           ),
                         ),
