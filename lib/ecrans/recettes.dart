@@ -37,7 +37,7 @@ class RecettesState extends State<Recettes> {
 
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-    drawer: const MyDrawerWidget(),
+      drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF9C27B0),
         title: const Text(
@@ -75,6 +75,7 @@ class RecettesState extends State<Recettes> {
                   color: Color.fromARGB(255, 255, 255, 255)),
             ),
           ),
+          const SizedBox(),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: SizedBox(
@@ -99,6 +100,7 @@ class RecettesState extends State<Recettes> {
                           queryResult,
                           style: GoogleFonts.lato(
                               fontSize: 16, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     );
@@ -107,80 +109,142 @@ class RecettesState extends State<Recettes> {
               ),
             ),
           ),
-          Container(
-            //height: containerHeight,
+          Align(
             alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      50, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Voir les recettes" à implémenter ici
-                   Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RecettesAllergies()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecettesAllergies(),
+                  ),
+                );
+              },
+              child: Container(
+                width: containerWidth * 0.5,
+                height: containerHeight * 0.6,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF9C27B0),
+                  borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF9C27B0),
+                      BlendMode.color,
                     ),
-                    child: const Text('Recettes par types d\'allergies'),
                   ),
                 ),
-                const SizedBox(
-                  height: 16, // Espace vertical entre les boutons
-                ),
-               
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      50, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Voir les recettes" à implémenter ici
-                      Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RecettesTypesPlats()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    child: const Text(
+                      'Recettes par types d\'allergies',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        //  backgroundColor: Color(0xFF9C27B0),
+                      ),
                     ),
-                    child: const Text('Recettes par types de plats'),
                   ),
                 ),
-                const SizedBox(
-                  height: 50, // Espace vertical entre les boutons
-                ),
-                SizedBox(
-                  width:
-                      300, // Définissez la largeur souhaitée pour les boutons
-                  height:
-                      50, // Définissez la hauteur souhaitée pour les boutons
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // Logique de navigation pour "Me connecter" à implémenter ici
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Menus()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          const Color(0xFF9C27B0), // Couleur du bouton
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+            Align(
+            alignment: Alignment.center,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RecettesTypesPlats(),
+                  ),
+                );
+              },
+              child: Container(
+                width: containerWidth * 0.5,
+                height: containerHeight * 0.6,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF9C27B0),
+                  borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF9C27B0),
+                      BlendMode.color,
                     ),
-                    child: const Text('Idées menus'),
                   ),
                 ),
-              ],
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    child: const Text(
+                      'Recettes par types de plats',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        //  backgroundColor: Color(0xFF9C27B0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+         const SizedBox(
+            height: 20,
+          ),
+            Align(
+            alignment: Alignment.center,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Menus(),
+                  ),
+                );
+              },
+              child: Container(
+                width: containerWidth * 0.5,
+                height: containerHeight * 0.6,
+                decoration: const BoxDecoration(
+                  color: Color(0xFF9C27B0),
+                  borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: ColorFilter.mode(
+                      Color(0xFF9C27B0),
+                      BlendMode.color,
+                    ),
+                  ),
+                ),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Container(
+                    child: const Text(
+                      'Menus minceurs',
+                      style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        //  backgroundColor: Color(0xFF9C27B0),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ),
         ],

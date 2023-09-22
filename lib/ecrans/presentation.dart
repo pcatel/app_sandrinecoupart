@@ -52,13 +52,16 @@ class PresentationState extends State<Presentation> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                SizedBox(
+                height: 20,
+                ),
                   Container(
                     // Votre code pour l'image ici
                     margin: const EdgeInsets.only(top: 1),
                     child: ClipOval(
                       child: Container(
-                        width: 150, // Largeur de l'image
-                        height: 150, // Hauteur de l'image
+                        width: 300, // Largeur de l'image
+                        height: 300, // Hauteur de l'image
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black, // Couleur de la bordure

@@ -96,7 +96,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -127,7 +127,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                     .arrow_circle_right,// R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -158,7 +158,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                     .arrow_circle_right, // Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -188,7 +188,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -218,7 +218,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -249,7 +249,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                  .arrow_circle_down, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(

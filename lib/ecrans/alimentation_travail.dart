@@ -91,7 +91,7 @@ class AlimentationTravailState extends State<AlimentationTravail> {
               fit: BoxFit.scaleDown,
               child: SizedBox(
                 height: textContainerHeight,
-                width: containerWidth,
+                width: containerWidth*0.8,
                 child: FutureBuilder<List<String>>(
                   future: fetchData(),
                   builder: (context, snapshot) {
@@ -112,6 +112,7 @@ class AlimentationTravailState extends State<AlimentationTravail> {
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
+                           textAlign: TextAlign.justify,
                         ),
                       );
                     }

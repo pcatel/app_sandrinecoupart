@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Consultations',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         // backgroundColor: Color(0xFFDE8C07),
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Ateliers prévention',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         //backgroundColor: Color(0xFF548235),
@@ -194,7 +194,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Infos nutrition',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 252, 252, 252),
                         // backgroundColor: Color(0xFF2196F3),
@@ -251,7 +251,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Recettes',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         //  backgroundColor: Color(0xFF9C27B0),
@@ -308,7 +308,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Temoignages',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         //  backgroundColor: Color(0xFF795548),
@@ -365,7 +365,7 @@ class HomeScreen extends StatelessWidget {
                     child: const Text(
                       'Me Contacter',
                       style: TextStyle(
-                        fontSize: 36,
+                      fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         //backgroundColor: Color(0xFFE91E63),

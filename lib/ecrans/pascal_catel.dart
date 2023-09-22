@@ -28,8 +28,8 @@ class PascalCatelState extends State<PascalCatel> {
 
   @override
   Widget build(BuildContext context) {
-    double containerHeight = MediaQuery.of(context).size.height * 0.10;
-    double containerWidth = MediaQuery.of(context).size.width;
+   double containerHeight = MediaQuery.of(context).size.height;
+   double containerWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
      // drawer: const MyDrawerWidget(),
@@ -53,8 +53,8 @@ class PascalCatelState extends State<PascalCatel> {
           height: 20),
           Container(
           
-            width: 300, // Ajustez la largeur du conteneur selon vos besoins
-            height: 300, 
+            width: containerHeight*0.3,//Ajustez la largeur du conteneur selon vos besoins
+            height: containerHeight*0.3,
             // Ajustez la hauteur du conteneur selon vos besoins
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
@@ -91,14 +91,17 @@ class PascalCatelState extends State<PascalCatel> {
                   return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: Text(
-                            queryResult,
-                            style: GoogleFonts.lato(
-                                fontSize: 16, fontWeight: FontWeight.bold),
-                                 textAlign: TextAlign.justify,
+                      Container(
+                      height: containerHeight*0.5,
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.all(32.0),
+                            child: Text(
+                              queryResult,
+                              style: GoogleFonts.lato(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                                   textAlign: TextAlign.justify,
+                            ),
                           ),
                         ),
                       ),

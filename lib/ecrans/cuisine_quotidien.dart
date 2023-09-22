@@ -91,7 +91,7 @@ class CusineQuotidienState extends State<CusineQuotidien> {
             fit: BoxFit.scaleDown,
             child: SizedBox(
               //height: textContainerHeight,
-              width: containerWidth,
+              width: containerWidth*0.8,
               //color: Colors.red, // Couleur du container rouge
               child: FutureBuilder<List<String>>(
                 future: fetchData(),
@@ -113,6 +113,7 @@ class CusineQuotidienState extends State<CusineQuotidien> {
                           queryResult,
                           style: GoogleFonts.lato(
                               fontSize: 16, fontWeight: FontWeight.bold),
+                               textAlign: TextAlign.justify,
                         ),
                       ),
                     );

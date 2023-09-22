@@ -59,7 +59,7 @@ class ConsultationsState extends State<Consultations> {
               color: Colors.white,
               image: DecorationImage(
                 image: NetworkImage(
-                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/consultation.jpg'),
+                    'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/consultation.jpg'),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Color(0xFFDE8C07),
@@ -112,6 +112,7 @@ class ConsultationsState extends State<Consultations> {
                         
                         style: GoogleFonts.lato(
                             fontSize: 16, fontWeight: FontWeight.bold),
+                             textAlign: TextAlign.justify,
                       ),
                     ),
                   );
