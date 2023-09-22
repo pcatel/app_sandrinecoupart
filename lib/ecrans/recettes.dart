@@ -99,7 +99,7 @@ class RecettesState extends State<Recettes> {
                         child: Text(
                           queryResult,
                           style: GoogleFonts.lato(
-                              fontSize: 16, fontWeight: FontWeight.bold),
+                              fontSize: 20, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -128,16 +128,13 @@ class RecettesState extends State<Recettes> {
                   borderRadius: BorderRadius.all(Radius.circular(36.0)),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/allergies.jpg'),
                     fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF9C27B0),
-                      BlendMode.color,
-                    ),
+                  
                   ),
                 ),
                 child: Align(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.bottomCenter,
                   child: Container(
                     child: const Text(
                       'Recettes par types d\'allergies',
@@ -145,7 +142,7 @@ class RecettesState extends State<Recettes> {
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
-                        //  backgroundColor: Color(0xFF9C27B0),
+                        backgroundColor: Color(0xFF9C27B0),
                       ),
                     ),
                   ),
@@ -175,24 +172,21 @@ class RecettesState extends State<Recettes> {
                   borderRadius: BorderRadius.all(Radius.circular(36.0)),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/plats.jpg'),
                     fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF9C27B0),
-                      BlendMode.color,
-                    ),
+                    
                   ),
                 ),
                 child: Align(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.bottomCenter,
                   child: Container(
                     child: const Text(
                       'Recettes par types de plats',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        //  backgroundColor: Color(0xFF9C27B0),
+                         color: Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Color(0xFF9C27B0),
                       ),
                     ),
                   ),
@@ -222,24 +216,21 @@ class RecettesState extends State<Recettes> {
                   borderRadius: BorderRadius.all(Radius.circular(36.0)),
                   image: DecorationImage(
                     image: NetworkImage(
-                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/recettes.jpg'),
+                        'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/menus.jpg'),
                     fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Color(0xFF9C27B0),
-                      BlendMode.color,
-                    ),
+                    
                   ),
                 ),
                 child: Align(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.bottomCenter,
                   child: Container(
                     child: const Text(
                       'Menus minceurs',
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        //  backgroundColor: Color(0xFF9C27B0),
+                         color: Color.fromARGB(255, 255, 255, 255),
+                        backgroundColor: Color(0xFF9C27B0),
                       ),
                     ),
                   ),

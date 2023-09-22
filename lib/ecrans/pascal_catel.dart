@@ -49,7 +49,7 @@ class PascalCatelState extends State<PascalCatel> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 16.0),
-          SizedBox(
+          const SizedBox(
           height: 20),
           Container(
           
@@ -92,7 +92,7 @@ class PascalCatelState extends State<PascalCatel> {
                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                      height: containerHeight*0.5,
+                      height: containerHeight*0.4,
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.all(32.0),

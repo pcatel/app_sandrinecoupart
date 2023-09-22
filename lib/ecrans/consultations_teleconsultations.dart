@@ -14,10 +14,12 @@ class ConsultationsTeleconsultation extends StatefulWidget {
   const ConsultationsTeleconsultation({super.key});
 
   @override
-  ConsultationsTeleconsultationState createState() => ConsultationsTeleconsultationState();
+  ConsultationsTeleconsultationState createState() =>
+      ConsultationsTeleconsultationState();
 }
 
-class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsultation> {
+class ConsultationsTeleconsultationState
+    extends State<ConsultationsTeleconsultation> {
   Future<List<Step>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/php/read_consultation_teleconsultation.php'));
@@ -79,7 +81,8 @@ class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsulta
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 7, 7, 7)),
             ),
-          ), const SizedBox(height: 16.0),
+          ),
+          const SizedBox(height: 16.0),
           Container(
             alignment: Alignment.center,
             width: containerWidth,
@@ -93,99 +96,107 @@ class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsulta
               ),
             ),
           ),
-    FutureBuilder<List<Step>>(
-  future: fetchData(),
-  builder: (context, snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const CircularProgressIndicator();
-    } else if (snapshot.hasError) {
-      return const Text('Erreur de chargement des données');
-    } else if (!snapshot.hasData) {
-      return const Text('Aucune donnée disponible');
-    } else {
-      List<Step> steps = snapshot.data ?? [];
-      return Column(
-        children: steps.map((step) {
-          List<String> parts = step.title.split(':'); // Diviser le texte en parties
-          if (parts.length == 2) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: [
-                  Container(
-               
-                    width: 30,
-                    height: 30,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xFFDE8C07),
-                    ),
-                    child: Center(
-                      child: Text(
-                        step.number.toString(),
-                        style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Flexible(
-                    child: RichText(
-                      overflow: TextOverflow.visible,
-                      text: TextSpan(
-                        style: DefaultTextStyle.of(context).style,
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: '${parts[0]}:', // Partie avant le ":"
-                            style: const TextStyle(
-                              color: Color.fromARGB(255, 138, 86, 3), // Style en rouge
-                              fontWeight: FontWeight.bold, // Texte en gras
-                            ),
+          FutureBuilder<List<Step>>(
+            future: fetchData(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              } else if (snapshot.hasError) {
+                return const Text('Erreur de chargement des données');
+              } else if (!snapshot.hasData) {
+                return const Text('Aucune donnée disponible');
+              } else {
+                List<Step> steps = snapshot.data ?? [];
+                return SingleChildScrollView(
+                  child: Column(
+                    children: steps.map((step) {
+                      List<String> parts =
+                          step.title.split(':'); // Diviser le texte en parties
+                      if (parts.length == 2) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFFDE8C07),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    step.number.toString(),
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 0, 0, 0)),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Flexible(
+                                child: RichText(
+                                  overflow: TextOverflow.visible,
+                                  text: TextSpan(
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                        text:
+                                            '${parts[0]}:', // Partie avant le ":"
+                                        style: const TextStyle(
+                                          color: Color.fromARGB(
+                                              255, 138, 86, 3), // Style en rouge
+                                          fontWeight:
+                                              FontWeight.bold, // Texte en gras
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: parts[1], // Partie après le ":"
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          TextSpan(
-                            text: parts[1], // Partie après le ":"
+                        );
+                      } else {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 30,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFFDE8C07),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    step.number.toString(),
+                                    style: const TextStyle(
+                                        color: Color.fromARGB(255, 0, 0, 0)),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Flexible(
+                                child: Text(
+                                  step.title,
+                                  overflow: TextOverflow
+                                      .visible, // Texte dépassant le conteneur sera visible
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
+                        );
+                      }
+                    }).toList(),
                   ),
-                ],
-              ),
-            );
-          } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: [
-                  Container(
-                    width: 30,
-                    height: 30,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xFFDE8C07),
-                    ),
-                    child: Center(
-                      child: Text(
-                        step.number.toString(),
-                        style: const TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Flexible(
-                    child: Text(
-                      step.title,
-                      overflow: TextOverflow.visible, // Texte dépassant le conteneur sera visible
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-        }).toList(),
-      );
-    }
-  },
-),
+                );
+              }
+            },
+          ),
         ],
       ),
       bottomNavigationBar:
@@ -193,6 +204,7 @@ class ConsultationsTeleconsultationState extends State<ConsultationsTeleconsulta
     );
   }
 }
+
 class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {

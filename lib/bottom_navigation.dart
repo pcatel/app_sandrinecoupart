@@ -1,7 +1,10 @@
+import 'package:app_sandrinecoupart/ecrans/contacts.dart';
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
-import 'ecrans/login.dart';
-
+import 'ecrans/consultations.dart';
+import 'ecrans/ateliers_prevention.dart';
+import 'ecrans/recettes.dart';
+import 'ecrans/temoignages.dart';
 class BottomNavigationBarScreen extends StatefulWidget {
  final Color backgroundColor; // Nouveau paramètre
 
@@ -21,19 +24,19 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   static const List<IconData> _icons = [
     Icons.home,
     Icons.book,
-    Icons.category,
-    Icons.person,
-    Icons.location_on,
-    Icons.search,
+    Icons.book,
+    Icons.book,
+    Icons.book,
+     Icons.contact_page
   ];
 
   static const List<String> _labels = [
     'Accueil',
-    'A définir',
-    'A définir',
-    'login',
-    'A définir',
-    'A définir',
+    'Consultations',
+    'Ateliers prévention',
+    'Recettes',
+    'Témoignages',
+    'Contacts',
   ];
 
   void _onItemTapped(int index) {
@@ -49,22 +52,34 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
         );
         break;
       case 1:
-        // Naviguer vers l'écran correspondant
+         Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Consultations()),
+        ); // Naviguer vers l'écran correspondant
         break;
       case 2:
-        // Naviguer vers l'écran correspondant
+         Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AtelierPrevention()),
+        );// Naviguer vers l'écran correspondant
         break;
       case 3:
          Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const Login()),
+          MaterialPageRoute(builder: (context) => const Recettes()),
         );
         break;
       case 4:
-        // Naviguer vers l'écran correspondant
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Temoignages()),
+        );// Naviguer vers l'écran correspondant
         break;
       case 5:
-        // Naviguer vers l'écran correspondant
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Contacts()),
+        );// Naviguer vers l'écran correspondant
         break;
       default:
         break;

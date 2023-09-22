@@ -46,22 +46,22 @@ class MyDrawerWidget extends StatelessWidget {
                   height: containerHeight * 0.3,
                   child: const DrawerHeader(
                     decoration: BoxDecoration(
-                      color: Color(0xFFdc9a7d),
+                      color: Color(0xFF04311A),
                     ),
                     child: UserAccountsDrawerHeader(
-                      decoration: BoxDecoration(color: Color(0xFFdc9a7d)),
+                      decoration: BoxDecoration(color: Color(0xFF04311A)),
                       accountName: Text(
                         "Sandrine COUPART",
                         style: TextStyle(
-                            color: Color(0xFF00353F),
-                            fontSize: 12,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 16,
                             fontWeight: FontWeight.bold),
                       ),
                       accountEmail: Text(
                         "Diététicienne - Nutritionniste",
                         style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF430C05),
+                            fontSize: 18,
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontWeight: FontWeight.bold),
                       ),
                       currentAccountPictureSize: Size.square(200),
@@ -75,14 +75,25 @@ class MyDrawerWidget extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+            height: 2,
+            color: Colors.white,
+         
+
+            ),
+            SizedBox(
+            height: 20,
+            ),
             // Liste des éléments ListTile avec 60% de l'espace
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+              
                 SizedBox(
                   height: containerHeight * 0.6,
                   child: ListView(
+                  
                     padding: EdgeInsets.zero,
                     children: [
                       GestureDetector(

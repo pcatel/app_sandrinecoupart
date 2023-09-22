@@ -111,69 +111,172 @@ class MenusState extends State<Menus> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
+              Align(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MenuSemaine("1")));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MenuSemaine("1"),
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        const Color(0xFF9C27B0), // Couleur du bouton
+                  child: Container(
+                    width: containerWidth * 0.3,
+                    height: containerHeight * 0.6,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9C27B0),
+                      borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/semaine.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: const Text(
+                          'Semaine 1',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Color(0xFF9C27B0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: const Text('Semaine 1'),
                 ),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
+              Align(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MenuSemaine("2")));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MenuSemaine("2"),
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        const Color(0xFF9C27B0), // Couleur du bouton
+                  child: Container(
+                    width: containerWidth * 0.3,
+                    height: containerHeight * 0.6,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9C27B0),
+                      borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/semaine.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: const Text(
+                          'Semaine 2',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Color(0xFF9C27B0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: const Text('Semaine 2'),
                 ),
               ),
             ],
           ),
-           Row(
+          SizedBox(
+          height: 25,
+          ),
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
+             Align(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MenuSemaine("3")));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MenuSemaine("3"),
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        const Color(0xFF9C27B0), // Couleur du bouton
+                  child: Container(
+                    width: containerWidth * 0.3,
+                    height: containerHeight * 0.6,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9C27B0),
+                      borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/semaine.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: const Text(
+                          'Semaine 3',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Color(0xFF9C27B0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: const Text('Semaine 3'),
                 ),
               ),
-              Container(
-                child: ElevatedButton(
-                  onPressed: () {
+             Align(
+                alignment: Alignment.center,
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const MenuSemaine("4")));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MenuSemaine("4"),
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        const Color(0xFF9C27B0), // Couleur du bouton
+                  child: Container(
+                    width: containerWidth * 0.3,
+                    height: containerHeight * 0.6,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFF9C27B0),
+                      borderRadius: BorderRadius.all(Radius.circular(36.0)),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/les_recettes/semaine.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        child: const Text(
+                          'Semaine 4',
+                          style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            backgroundColor: Color(0xFF9C27B0),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                  child: const Text('Semaine 4'),
                 ),
               ),
             ],
