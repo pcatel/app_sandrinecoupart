@@ -45,15 +45,15 @@ class ConsultationsMutuelleState extends State<ConsultationsMutuelle> {
   Widget build(BuildContext context) {
    double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
+     appBar: AppBar(
         backgroundColor: const Color(0xFFDE8C07),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 1, 1, 1),
-          ),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -94,7 +94,7 @@ class ConsultationsMutuelleState extends State<ConsultationsMutuelle> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/relation_mutuelle.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),

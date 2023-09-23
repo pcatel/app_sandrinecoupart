@@ -161,7 +161,7 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-      height: 300,
+      height: 200,
         padding: const EdgeInsets.all(10.0),
         child: Card(
           shape: RoundedRectangleBorder(

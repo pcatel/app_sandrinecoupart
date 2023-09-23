@@ -37,12 +37,13 @@ class ConsultationsConsultationsState extends State<ConsultationsConsultations> 
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFFDE8C07),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -82,7 +83,7 @@ class ConsultationsConsultationsState extends State<ConsultationsConsultations> 
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/consultation.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),
@@ -108,11 +109,12 @@ class ConsultationsConsultationsState extends State<ConsultationsConsultations> 
                     String queryResult = dataList.join('\n');
                     return SingleChildScrollView(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(48.0),
                         child: Text(
                           queryResult,
                           style: GoogleFonts.lato(
                               fontSize: 16, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.justify,
                         ),
                       ),
                     );

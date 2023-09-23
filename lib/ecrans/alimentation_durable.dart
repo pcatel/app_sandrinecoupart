@@ -38,6 +38,7 @@ class AlimentationDurableState extends State<AlimentationDurable> {
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF548235),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
@@ -82,7 +83,7 @@ class AlimentationDurableState extends State<AlimentationDurable> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/ateliers_prevention.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),

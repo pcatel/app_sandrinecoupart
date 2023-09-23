@@ -36,6 +36,7 @@ class AlimentationTravailState extends State<AlimentationTravail> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF548235),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
@@ -82,7 +83,7 @@ class AlimentationTravailState extends State<AlimentationTravail> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/alimentation_au_travail.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),

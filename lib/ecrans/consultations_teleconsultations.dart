@@ -38,21 +38,19 @@ class ConsultationsTeleconsultationState
 
   @override
   Widget build(BuildContext context) {
-    int numberOfContainers = 6;
-    double containerHeight =
-        MediaQuery.of(context).size.height / numberOfContainers;
-
     double containerWidth = MediaQuery.of(context).size.width;
+    double containerHeight = MediaQuery.of(context).size.height / 6; // Hauteur du conteneur en fonction de la taille de l'écran
+
     return Scaffold(
-      // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFFDE8C07),
+        centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -87,11 +85,11 @@ class ConsultationsTeleconsultationState
             alignment: Alignment.center,
             width: containerWidth,
             child: ClipPath(
-              clipper: WaveClipper(), // Utilisation du clipper personnalisé
+              clipper: WaveClipper(),
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/teleconsultation.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200,
                 fit: BoxFit.cover,
               ),
             ),
@@ -107,56 +105,60 @@ class ConsultationsTeleconsultationState
                 return const Text('Aucune donnée disponible');
               } else {
                 List<Step> steps = snapshot.data ?? [];
-                return SingleChildScrollView(
-                  child: Column(
+                return Expanded(
+                  child: ListView(
                     children: steps.map((step) {
-                      List<String> parts =
-                          step.title.split(':'); // Diviser le texte en parties
+                      List<String> parts = step.title.split(':');
                       if (parts.length == 2) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 30,
-                                height: 30,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFFDE8C07),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    step.number.toString(),
-                                    style: const TextStyle(
-                                        color: Color.fromARGB(255, 0, 0, 0)),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 10),
-                              Flexible(
-                                child: RichText(
-                                  overflow: TextOverflow.visible,
-                                  text: TextSpan(
-                                    style: DefaultTextStyle.of(context).style,
-                                    children: <TextSpan>[
-                                      TextSpan(
-                                        text:
-                                            '${parts[0]}:', // Partie avant le ":"
+                          child: Align(
+                            child: Container(
+                              width: containerWidth * 0.8,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Color(0xFFDE8C07),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        step.number.toString(),
                                         style: const TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 138, 86, 3), // Style en rouge
-                                          fontWeight:
-                                              FontWeight.bold, // Texte en gras
-                                        ),
+                                            color:
+                                                Color.fromARGB(255, 0, 0, 0)),
+                                        textAlign: TextAlign.justify,
                                       ),
-                                      TextSpan(
-                                        text: parts[1], // Partie après le ":"
-                                      ),
-                                    ],
+                                    ),
                                   ),
-                                ),
+                                  const SizedBox(width: 10),
+                                  Flexible(
+                                    child: RichText(
+                                      overflow: TextOverflow.visible,
+                                      text: TextSpan(
+                                        style: DefaultTextStyle.of(context).style,
+                                        children: <TextSpan>[
+                                          TextSpan(
+                                            text: '${parts[0]}:',
+                                            style: const TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 138, 86, 3),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: parts[1],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         );
                       } else {
@@ -183,8 +185,7 @@ class ConsultationsTeleconsultationState
                               Flexible(
                                 child: Text(
                                   step.title,
-                                  overflow: TextOverflow
-                                      .visible, // Texte dépassant le conteneur sera visible
+                                  overflow: TextOverflow.visible,
                                 ),
                               ),
                             ],
@@ -209,12 +210,12 @@ class WaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(0, size.height * 0.8); // Début du chemin
+    path.lineTo(0, size.height * 0.8);
     path.quadraticBezierTo(
         size.width / 4, size.height * 0.9, size.width / 2, size.height * 0.8);
     path.quadraticBezierTo(
         size.width * 3 / 4, size.height * 0.7, size.width, size.height * 0.8);
-    path.lineTo(size.width, 0); // Fin du chemin
+    path.lineTo(size.width, 0);
     return path;
   }
 

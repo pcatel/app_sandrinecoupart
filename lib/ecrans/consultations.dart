@@ -39,12 +39,13 @@ class ConsultationsState extends State<Consultations> {
       drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFFDE8C07),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -84,13 +85,13 @@ class ConsultationsState extends State<Consultations> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/consultation.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),
           ),
           Expanded(
-            //color: Colors.red, // Couleur du container rouge
+            
             child: FutureBuilder<List<String>>(
               future: fetchData(),
               builder: (context, snapshot) {
@@ -106,7 +107,7 @@ class ConsultationsState extends State<Consultations> {
                   String queryResult = dataList.join('\n');
                   return SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(48.0),
                       child: Text(
                         queryResult,
                         
@@ -158,7 +159,7 @@ class ConsultationsState extends State<Consultations> {
                           child: const Text(
                             'Consultations',
                             style: TextStyle(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 7, 7, 7),
                               //backgroundColor:Colors.white,
@@ -199,7 +200,7 @@ class ConsultationsState extends State<Consultations> {
                           child: const Text(
                             'Déroulement',
                             style: TextStyle(
-                              fontSize: 26,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 7, 7, 7),
                             ),
@@ -248,7 +249,7 @@ class ConsultationsState extends State<Consultations> {
                       child: const Text(
                         'Téléconsultations',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 7, 7, 7),
                         ),
@@ -288,7 +289,7 @@ class ConsultationsState extends State<Consultations> {
                       child: const Text(
                         'Relations Mutuelle',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 7, 7, 7),
                         ),
@@ -298,6 +299,9 @@ class ConsultationsState extends State<Consultations> {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+          height: 10,
           ),
         ],
       ),

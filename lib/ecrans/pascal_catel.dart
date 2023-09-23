@@ -68,7 +68,7 @@ class PascalCatelState extends State<PascalCatel> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/matete.png',
                 width: 300, // Ajustez la largeur de l'image selon vos besoins
-                height: 300, // Ajustez la hauteur de l'image selon vos besoins
+                height: 200, // Ajustez la hauteur de l'image selon vos besoins
                 fit: BoxFit.cover,
               ),
             ),
@@ -91,7 +91,7 @@ class PascalCatelState extends State<PascalCatel> {
                   return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                       height: containerHeight*0.4,
                         child: SingleChildScrollView(
                           child: Padding(

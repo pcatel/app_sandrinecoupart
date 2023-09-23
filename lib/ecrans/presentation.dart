@@ -33,9 +33,9 @@ class PresentationState extends State<Presentation> {
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 1, 1, 1),
+            color: Color.fromARGB(255, 251, 251, 251),
           ),
         ),
       ),
@@ -52,7 +52,7 @@ class PresentationState extends State<Presentation> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                SizedBox(
+                const SizedBox(
                 height: 20,
                 ),
                   Container(
@@ -61,7 +61,7 @@ class PresentationState extends State<Presentation> {
                     child: ClipOval(
                       child: Container(
                         width: 300, // Largeur de l'image
-                        height: 300, // Hauteur de l'image
+                        height: 200, // Hauteur de l'image
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.black, // Couleur de la bordure

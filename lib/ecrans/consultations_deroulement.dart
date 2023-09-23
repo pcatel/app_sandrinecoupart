@@ -39,7 +39,7 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement>
             remainingText,
              textAlign: TextAlign.justify,
             style: const TextStyle(
-              fontSize: 26,
+              fontSize: 20,
               color: Colors.black,
             ),
           ),
@@ -102,13 +102,14 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement>
     return Scaffold(
     backgroundColor: Colors.white,
       appBar: AppBar(
-      backgroundColor: const Color(0xFFDE8C07),
+        backgroundColor: const Color(0xFFDE8C07),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 255, 255, 255)),
         ),
       ),
       body: Column(
@@ -145,17 +146,21 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement>
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/services/deroulement.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),
           ),
+        
           const Text(
             'les 7 points principaux',
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 7, 7, 7)),
+          ),
+            SizedBox(
+          height: 30,
           ),
           Container(
           width: containerWidth * 0.8,

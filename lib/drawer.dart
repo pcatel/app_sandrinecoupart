@@ -40,8 +40,8 @@ class MyDrawerWidget extends StatelessWidget {
                 );
               },
               child: Align(
-                alignment: Alignment.topCenter,
-                child: SizedBox(
+                alignment: Alignment.bottomCenter,
+                child: Container(
                   // header drawer
                   height: containerHeight * 0.3,
                   child: const DrawerHeader(
@@ -75,25 +75,22 @@ class MyDrawerWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-            height: 2,
-            color: Colors.white,
-         
+            //Container(
+            // height: 2,
+            // color: Colors.white,
 
-            ),
+            //),
             const SizedBox(
-            height: 20,
+              height: 20,
             ),
             // Liste des éléments ListTile avec 60% de l'espace
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-              
                 SizedBox(
                   height: containerHeight * 0.5,
                   child: ListView(
-                  
                     padding: EdgeInsets.zero,
                     children: [
                       GestureDetector(
@@ -138,7 +135,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                     .arrow_circle_right,// R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // R// Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -169,7 +166,7 @@ class MyDrawerWidget extends StatelessWidget {
                           children: [
                             Icon(
                               Icons
-                                     .arrow_circle_right, // Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
+                                  .arrow_circle_right, // Remplacez "votre_icone" par l'icône que vous souhaitez utiliser
                               color: Colors.white, // Couleur de l'icône
                             ),
                             SizedBox(
@@ -195,7 +192,7 @@ class MyDrawerWidget extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => const Recettes()));
                         },
-                         child: const Row(
+                        child: const Row(
                           children: [
                             Icon(
                               Icons
@@ -256,7 +253,6 @@ class MyDrawerWidget extends StatelessWidget {
                                   builder: (context) => const Contacts()));
                         },
                         child: const Row(
-                        
                           children: [
                             Icon(
                               Icons
@@ -284,12 +280,11 @@ class MyDrawerWidget extends StatelessWidget {
 
                 // Ligne des réseaux sociaux avec 20% de l'espace
                 Container(
-                
                   padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Column(
                     children: [
                       Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -325,7 +320,7 @@ class MyDrawerWidget extends StatelessWidget {
                         height: 20,
                       ),
                       GestureDetector(
-                       onTap: () {
+                        onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(

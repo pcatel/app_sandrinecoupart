@@ -203,7 +203,7 @@ class ListeRecettesTypesPlatsState extends State<ListeRecettesTypesPlats> {
         child: Image.network(
           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/types_plats/${widget.idCategorie}.jpg',
           width: containerWidth,
-          height: 300, // Hauteur de l'image
+          height: 200, // Hauteur de l'image
           fit: BoxFit.cover,
         ),
       ),

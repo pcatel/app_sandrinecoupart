@@ -40,6 +40,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
       drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF548235),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
@@ -88,7 +89,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/ateliers_prevention.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
                 
               ),
@@ -186,7 +187,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                           child: const Text(
                             'Alimentation durable',
                            style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 7, 7, 7),
                                
@@ -226,7 +227,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                           child: const Text(
                             'Cuisine enfants et parents',
                            style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 7, 7, 7),
                              
@@ -272,7 +273,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             child: const Text(
                               'Cuisine au quotidien',
                              style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 7, 7, 7),
                                
@@ -315,7 +316,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                             child: const Text(
                               'L\'alimentation au travail',
                               style: TextStyle(
-                                fontSize: 26,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 7, 7, 7),
                                
@@ -327,7 +328,11 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                     ],
                   ),
                 ),
+                  SizedBox(
+          height: 10,
+          ),
               ],
+              
             ),
           )
         ],

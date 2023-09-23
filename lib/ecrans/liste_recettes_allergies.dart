@@ -203,7 +203,7 @@ class ListeRecettesAllergiesState extends State<ListeRecettesAllergies> {
         child: Image.network(
           'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/allergies/${widget.idAllergie}.jpg',
           width: containerWidth,
-          height: 300, // Hauteur de l'image
+          height: 200, // Hauteur de l'image
           fit: BoxFit.cover,
         ),
       ),

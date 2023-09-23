@@ -15,19 +15,20 @@ class HomeScreen extends StatelessWidget {
     // Calcul du nombre de conteneurs
     int numberOfContainers = 6;
     // Calcul de la hauteur des conteneurs en fonction de l'espace disponible
-    double containerHeight =
-        MediaQuery.of(context).size.height / numberOfContainers;
+    //double containerHeight =
+       // MediaQuery.of(context).size.height / numberOfContainers;
     double containerWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF609a7d),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 14,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 1, 1, 1)),
+              color: Color.fromARGB(255, 254, 254, 254)),
         ),
       ),
       body: Column(

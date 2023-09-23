@@ -38,10 +38,11 @@ class CusineQuotidienState extends State<CusineQuotidien> {
       // drawer: const MyDrawerWidget(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF548235),
+         centerTitle: true,
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 255, 255, 255)),
         ),
@@ -81,7 +82,7 @@ class CusineQuotidienState extends State<CusineQuotidien> {
               child: Image.network(
                 'https://pascalcatel.com/maquettes/sandrineCoupart/appmobile/ateliers_prevention/cuisine_au_quotidien.jpg',
                 width: containerWidth,
-                height: 300, // Hauteur de l'image
+                height: 200, // Hauteur de l'image
                 fit: BoxFit.cover,
               ),
             ),
