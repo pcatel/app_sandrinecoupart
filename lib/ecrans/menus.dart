@@ -140,7 +140,7 @@ class MenusState extends State<Menus> {
                         child: const Text(
                           'Semaine 1',
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255),
                             backgroundColor: Color(0xFF9C27B0),
@@ -180,7 +180,7 @@ class MenusState extends State<Menus> {
                         child: const Text(
                           'Semaine 2',
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255),
                             backgroundColor: Color(0xFF9C27B0),
@@ -228,7 +228,7 @@ class MenusState extends State<Menus> {
                         child: const Text(
                           'Semaine 3',
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255),
                             backgroundColor: Color(0xFF9C27B0),
@@ -268,7 +268,7 @@ class MenusState extends State<Menus> {
                         child: const Text(
                           'Semaine 4',
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 255, 255, 255),
                             backgroundColor: Color(0xFF9C27B0),

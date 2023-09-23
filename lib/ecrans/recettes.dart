@@ -43,7 +43,7 @@ class RecettesState extends State<Recettes> {
         title: const Text(
           'Sandrine Coupart : Diététicienne - Nutritionniste',
           style: TextStyle(
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 255, 255, 255)),
         ),
@@ -99,7 +99,7 @@ class RecettesState extends State<Recettes> {
                         child: Text(
                           queryResult,
                           style: GoogleFonts.lato(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -139,7 +139,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Recettes par types d\'allergies',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
@@ -183,7 +183,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Recettes par types de plats',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                          color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
@@ -227,7 +227,7 @@ class RecettesState extends State<Recettes> {
                     child: const Text(
                       'Menus minceurs',
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                          color: Color.fromARGB(255, 255, 255, 255),
                         backgroundColor: Color(0xFF9C27B0),
