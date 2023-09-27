@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Calcul du nombre de conteneurs
-    int numberOfContainers = 6;
+    //int numberOfContainers = 6;
     // Calcul de la hauteur des conteneurs en fonction de l'espace disponible
     //double containerHeight =
        // MediaQuery.of(context).size.height / numberOfContainers;

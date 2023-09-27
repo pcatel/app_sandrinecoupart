@@ -300,7 +300,7 @@ class ConsultationsState extends State<Consultations> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
           height: 10,
           ),
         ],

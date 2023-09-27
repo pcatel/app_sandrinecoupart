@@ -159,7 +159,7 @@ class ConsultationsDeroulementState extends State<ConsultationsDeroulement>
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 7, 7, 7)),
           ),
-            SizedBox(
+            const SizedBox(
           height: 30,
           ),
           Container(

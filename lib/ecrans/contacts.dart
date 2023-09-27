@@ -326,9 +326,9 @@ class ContactsState extends State<Contacts> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(labelText: 'Email'),
                       validator: (value) {
-                        if (value?.isEmpty ?? true || !value!.contains('@')) {
-                          return 'Veuillez entrer une adresse e-mail valide';
-                        }
+                       // if (value?.isEmpty ?? true || !value!.contains('@')) {
+                        //  return 'Veuillez entrer une adresse e-mail valide';
+                      //  }
                         return null;
                       },
                     ),

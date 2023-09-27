@@ -136,6 +136,7 @@ class MenusState extends State<Menus> {
                     ),
                     child: Align(
                       alignment: Alignment.bottomCenter,
+                      // ignore: avoid_unnecessary_containers
                       child: Container(
                         child: const Text(
                           'Semaine 1',
@@ -176,6 +177,7 @@ class MenusState extends State<Menus> {
                     ),
                     child: Align(
                       alignment: Alignment.bottomCenter,
+                      // ignore: avoid_unnecessary_containers
                       child: Container(
                         child: const Text(
                           'Semaine 2',
@@ -224,6 +226,7 @@ class MenusState extends State<Menus> {
                     ),
                     child: Align(
                       alignment: Alignment.bottomCenter,
+                      // ignore: avoid_unnecessary_containers
                       child: Container(
                         child: const Text(
                           'Semaine 3',
@@ -264,6 +267,7 @@ class MenusState extends State<Menus> {
                     ),
                     child: Align(
                       alignment: Alignment.bottomCenter,
+                      // ignore: avoid_unnecessary_containers
                       child: Container(
                         child: const Text(
                           'Semaine 4',

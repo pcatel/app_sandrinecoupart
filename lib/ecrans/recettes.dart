@@ -135,6 +135,7 @@ class RecettesState extends State<Recettes> {
                 ),
                 child: Align(
                   alignment: Alignment.bottomCenter,
+                  // ignore: avoid_unnecessary_containers
                   child: Container(
                     child: const Text(
                       'Recettes par types d\'allergies',
@@ -179,6 +180,7 @@ class RecettesState extends State<Recettes> {
                 ),
                 child: Align(
                   alignment: Alignment.bottomCenter,
+                  // ignore: avoid_unnecessary_containers
                   child: Container(
                     child: const Text(
                       'Recettes par types de plats',
@@ -223,6 +225,7 @@ class RecettesState extends State<Recettes> {
                 ),
                 child: Align(
                   alignment: Alignment.bottomCenter,
+                  // ignore: avoid_unnecessary_containers
                   child: Container(
                     child: const Text(
                       'Menus minceurs',

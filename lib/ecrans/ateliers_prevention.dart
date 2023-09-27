@@ -109,6 +109,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                 } else {
                   List<String> dataList = snapshot.data ?? [];
                   return SingleChildScrollView(
+                    // ignore: avoid_unnecessary_containers
                     child: Container(
                       //color: const Color(0xFF84A66F),
                       child: Column(
@@ -328,7 +329,7 @@ class AtelierPreventionState extends State<AtelierPrevention> {
                     ],
                   ),
                 ),
-                  SizedBox(
+                  const SizedBox(
           height: 10,
           ),
               ],
